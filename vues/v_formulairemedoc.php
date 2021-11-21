@@ -5,18 +5,28 @@
                 <div class="col-lg-5">
                     <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire de médicament</h1>
                     <p class="feature-work-body text-muted light-300">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
-                        ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                        Formulaire permettant d'afficher toutes les informations
+                        à propos d'un médicament en particulier.
                     </p>
-                    <p class="feature-work-footer text-muted light-300">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
+                        <img class="img-fluid" src="assets/img/medicament.jpg">
+                    </a>
                 </div>
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
                         <form action="" method="post">
-                            <label for="name">Nom du médicament :</form>
-                            <input type="text" name="mednom" id="mednom" required></br></br>
+                            <label for="name">Liste des médicaments : </form>
+                            <select name="medicament" id="listemedicament">
+                                <option value="">Choisissez un médicament :</option>
+                                <?php
+                                
+                                    $result = getNomMedicament();
+                                    foreach($result as $key){
+                                        echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                    }
+                                
+                                ?>
+                            </select>
                             <input type="submit" value="Afficher les informations">
                         </form>
                     </div>
