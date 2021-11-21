@@ -17,7 +17,7 @@
                         <form action="" method="post">
                             <label for="name">Liste des médicaments : </form>
                             <select name="medicament" id="listemedicament">
-                                <option value="">Choisissez un médicament :</option>
+                                <option value="default">Choisissez un médicament :</option>
                                 <?php
                                 
                                     $result = getNomMedicament();
@@ -27,7 +27,19 @@
                                 
                                 ?>
                             </select>
+                                </br>
                             <input type="submit" value="Afficher les informations">
+
+                                <?php
+                                
+                                    if(isset($_POST['submit'])){
+
+                                        echo 'Hello';
+
+                                    }
+                                    
+                                ?>
+
                         </form>
                     </div>
                     

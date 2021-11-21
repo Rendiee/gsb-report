@@ -13,9 +13,9 @@ include_once 'bd.inc.php';
         	$monPdo = connexionPDO();
 			$req = 'SELECT MED_NOMCOMMERCIAL FROM medicament';
 			$res = $monPdo->query($req);
-			$nom = $res->fetchAll();
+			$result = $res->fetchAll();
 
-			return $nom;
+			return $result;
 		} 
 
 	catch (PDOException $e) 
@@ -23,6 +23,27 @@ include_once 'bd.inc.php';
        		print "Erreur !: " . $e->getMessage();
       	  	die();
 		}
+
+	}
+
+	function getAllInformationMedicament($nom){
+
+		try 
+		{
+        	$monPdo = connexionPDO();
+			$req = 'SELECT MED_DEPOTLEGAL, MED_NOMCOMMERCIAL, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC FROM medicament WHERE MED_NOMCOMMERCIAL = '.$nom;
+			$res = $monPdo->query($req);
+			$result = $res->fetchAll();
+
+			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
 
 	}
 
