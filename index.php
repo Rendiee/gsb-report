@@ -37,7 +37,7 @@ switch($uc)
       }
   case 'connexion' :
       {
-          include("vues/v_connexion.php");
+          include("controleur/c_connexion.php");
           break; 
       }
 }

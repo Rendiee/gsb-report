@@ -57,7 +57,7 @@ session_start();
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="index.php?uc=connexion"><i class='bx bx-user-circle bx-sm text-info'></i></a>
+                    <a class="nav-link" href="index.php?uc=connexion&action=connexion"><i class='bx bx-user-circle bx-sm text-info'></i></a>
                 </div>
             </div>
         </div>

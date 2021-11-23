@@ -29,17 +29,6 @@
                             </select>
                                 </br>
                             <input type="submit" value="Afficher les informations">
-
-                                <?php
-                                
-                                    if(isset($_POST['submit'])){
-
-                                        echo 'Hello';
-
-                                    }
-                                    
-                                ?>
-
                         </form>
                     </div>
                     
