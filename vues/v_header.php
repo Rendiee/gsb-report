@@ -51,9 +51,6 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite">Rapport de visite</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=contacteznous">Contactez-nous</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">

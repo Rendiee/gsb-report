@@ -14,9 +14,20 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="" method="post">
-                            <label for="name">Numéro du praticien :</form>
-                            <input type="text" name="numpraticien" id="numpraticien" required></br></br>
+                    <form class="form-signin" action="" method="post">
+                            <label for="name">Liste des praticiens : </form>
+                            <select name="medicament" id="listemedicament">
+                                <option class="form-control" value="default">- Choisissez un matricule -</option>
+                                <?php
+                                
+                                    $result = getAllMatriculePraticien();
+                                    foreach($result as $key){
+                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].'</option>';
+                                    }
+                                
+                                ?>
+                            </select>
+                                </br>
                             <input type="submit" value="Afficher les informations">
                         </form>
                     </div>

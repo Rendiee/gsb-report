@@ -14,15 +14,15 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="" method="post">
+                        <form action="" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
                             <select name="medicament" id="listemedicament">
-                                <option value="default">Choisissez un médicament :</option>
+                                <option class="form-control" value="default" >- Choisissez un médicament -</option>
                                 <?php
                                 
-                                    $result = getNomMedicament();
+                                    $result = getAllNomMedicament();
                                     foreach($result as $key){
-                                        echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_NOMCOMMERCIAL'].'</option>';
                                     }
                                 
                                 ?>

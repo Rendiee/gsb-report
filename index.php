@@ -1,6 +1,6 @@
 <?php
 include("vues/v_header.php") ;
-require_once("modele/bd.produits.inc.php");
+require_once("modele/bd.fonction.inc.php");
 
 if(!isset($_REQUEST['uc']))
      $uc = 'accueil';
@@ -28,11 +28,6 @@ switch($uc)
 	case 'rapportdevisite' :
 	  {
           include("controleur/c_rapportdevisite.php");
-          break; 
-      }
-  case 'contacteznous' :
-      {
-          include("vues/v_contacteznous.html");
           break; 
       }
   case 'connexion' :
