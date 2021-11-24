@@ -22,7 +22,7 @@
                                 
                                     $result = getAllMatriculePraticien();
                                     foreach($result as $key){
-                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
                                     }
                                 
                                 ?>

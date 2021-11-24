@@ -22,7 +22,7 @@
                                 
                                     $result = getAllNomMedicament();
                                     foreach($result as $key){
-                                        echo '<option class="form-control" value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
                                     }
                                 
                                 ?>

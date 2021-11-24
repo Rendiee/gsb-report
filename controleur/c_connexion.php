@@ -12,5 +12,10 @@ switch($action)
             include("vues/v_inscription.php");
 		    break;
 	    }
+	case 'profil':
+		{
+			include("vues/v_profil.php");
+			break;
+		}
 }
 ?>

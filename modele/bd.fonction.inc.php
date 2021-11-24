@@ -7,7 +7,7 @@ include_once 'bd.inc.php';
 		try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT PRA_NUM FROM praticien ORDER BY PRA_NUM';
+			$req = 'SELECT PRA_NUM, PRA_PRENOM, PRA_NOM FROM praticien ORDER BY PRA_NUM';
 			$res = $monPdo->query($req);
 			$result = $res->fetchAll();
 
@@ -28,7 +28,7 @@ include_once 'bd.inc.php';
 	try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT MED_NOMCOMMERCIAL FROM medicament ORDER BY MED_NOMCOMMERCIAL';
+			$req = 'SELECT MED_DEPOTLEGAL, MED_NOMCOMMERCIAL FROM medicament ORDER BY MED_NOMCOMMERCIAL';
 			$res = $monPdo->query($req);
 			$result = $res->fetchAll();
 
@@ -79,6 +79,26 @@ include_once 'bd.inc.php';
        		print "Erreur !: " . $e->getMessage();
       	  	die();
 		}
+	}
+
+	function getInformationCompte($identifiant, $mdp){
+
+		try 
+		{
+        	$monPdo = connexionPDO();
+			$req = 'SELECT ';
+			$res = $monPdo->query($req);
+			$result = $res->fetchAll();
+
+			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
 	}
 
 ?>

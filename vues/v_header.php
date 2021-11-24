@@ -28,7 +28,7 @@ session_start();
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="index.html">
+            <a class="navbar-brand h1" href="index.php?uc=accueil">
                 <i class="bi bi-journal-medical"></i>
                 <span class="text-dark h4">Projet</span> <span class="text-info h4">GSB</span>
             </a>

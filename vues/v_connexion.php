@@ -16,12 +16,43 @@
 
                 <div class="col-lg-5 offset-lg-1 align-left">
                     <div class="wrapper">
-                        <form class="form-signin">       
+                        <form class="form-signin" action="" method="post">       
                             <h2 class="form-signin-heading">Se connecter</h2>
                             <input type="text" class="form-control" name="username" placeholder="Login" required="" autofocus="" />
                             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required=""/>      
-                            <button class="btn btn-lg btn-info btn-block text-light" type="submit">Connexion</button>
+                            <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
                             <!-- <label>Pas de compte ? <a href="index.php?uc=connexion&action=inscription">Inscrivez-vous</a></label> -->
+
+                            <?php
+                            
+                                if(isset($_POST['connexion'])){
+
+                                    if(empty($_POST['username']) || empty($_POST['password'])){
+
+                                        echo '<p class="alert alert-danger">Des champs obligatoires sont vides !</p>';
+
+                                    }
+
+                                }else{
+
+                                    $getInfo = connexionPDO();
+                                    $res = $getInfo -> prepare('SELECT LOG_ID, LOG_MOTDEPASSE FROM login WHERE LOG_LOGIN = :login');
+                                    $res -> bindParam(':login', $_POST['username'], PDO::PARAM_STR);
+
+                                    if($a = $res -> fetch()){
+
+                                        if(password_verify($_POST['password'], $res['LOG_MOTDEPASSE'])){
+
+                                            
+
+                                        }
+
+                                    }
+
+                                }
+                            
+                            ?>
+
                         </form>
                     </div>
                     
