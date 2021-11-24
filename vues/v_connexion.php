@@ -9,8 +9,8 @@
                         Formulaire permettant de se connecter au site
                         et d'accèder au données.
                     </p>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/praticien.jpg">
-                        <img class="img-fluid" src="assets/img/connexion.png">
+                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/login.png">
+                        <img class="img-fluid" src="assets/img/login.png">
                     </a>
                 </div>
 
@@ -20,7 +20,7 @@
                             <h2 class="form-signin-heading">Se connecter</h2>
                             <input type="text" class="form-control" name="username" placeholder="Login" required="" autofocus="" />
                             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required=""/>      
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+                            <button class="btn btn-lg btn-info btn-block text-light" type="submit">Connexion</button>
                             <!-- <label>Pas de compte ? <a href="index.php?uc=connexion&action=inscription">Inscrivez-vous</a></label> -->
                         </form>
                     </div>

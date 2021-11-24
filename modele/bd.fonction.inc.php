@@ -7,7 +7,7 @@ include_once 'bd.inc.php';
 		try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT PRA_NUM FROM praticien';
+			$req = 'SELECT PRA_NUM FROM praticien ORDER BY PRA_NUM';
 			$res = $monPdo->query($req);
 			$result = $res->fetchAll();
 
@@ -28,7 +28,7 @@ include_once 'bd.inc.php';
 	try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT MED_NOMCOMMERCIAL FROM medicament';
+			$req = 'SELECT MED_NOMCOMMERCIAL FROM medicament ORDER BY MED_NOMCOMMERCIAL';
 			$res = $monPdo->query($req);
 			$result = $res->fetchAll();
 

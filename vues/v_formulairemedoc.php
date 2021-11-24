@@ -9,10 +9,10 @@
                         à propos d'un médicament en particulier.
                     </p>
                     <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
-                        <img class="img-fluid" src="assets/img/medicament.jpg">
+                        <img class="img-fluid" src="assets/img/medoc.jpeg">
                     </a>
                 </div>
-                <div class="col-lg-6 offset-lg-1 align-left">
+                <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
                         <form action="" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
@@ -28,7 +28,7 @@
                                 ?>
                             </select>
                                 </br>
-                            <input type="submit" value="Afficher les informations">
+                                <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
                         </form>
                     </div>
                     
