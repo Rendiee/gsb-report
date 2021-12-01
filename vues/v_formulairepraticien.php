@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                    <form class="form-signin" action="" method="post">
+                    <form class="form-signin" action="index.php?uc=medicaments&action=afficherpraticien" method="post">
                             <label for="name">Liste des praticiens : </form>
                             <select name="listemedicament" id="listemedicament">
                                 <option class="form-control" value="default">- Choisissez un matricule -</option>

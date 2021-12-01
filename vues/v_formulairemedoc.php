@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="" method="post" class="form-signin">
+                        <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
                             <select name="medicament" id="listemedicament">
                                 <option class="form-control" value="default" >- Choisissez un médicament -</option>

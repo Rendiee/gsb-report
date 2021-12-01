@@ -9,6 +9,8 @@ switch($action)
 	    }
 	case 'affichermedoc':
 	{
+			$med=$_REQUEST['medicament'];
+			$carac = getAllInformationMedicament($med);
             include("vues/v_affichermedoc.php");
 		    break;
 	    }
