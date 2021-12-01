@@ -28,7 +28,7 @@ session_start();
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="index.html">
+            <a class="navbar-brand h1" href="index.php?uc=accueil">
                 <i class="bi bi-journal-medical"></i>
                 <span class="text-dark h4">Projet</span> <span class="text-info h4">GSB</span>
             </a>
@@ -51,13 +51,10 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite">Rapport de visite</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=contacteznous">Contactez-nous</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="index.php?uc=connexion"><i class='bx bx-user-circle bx-sm text-info'></i></a>
+                    <a class="nav-link" href="index.php?uc=connexion&action=connexion"><i class='bx bx-user-circle bx-sm text-info'></i></a>
                 </div>
             </div>
         </div>

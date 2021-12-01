@@ -9,37 +9,26 @@
                         à propos d'un médicament en particulier.
                     </p>
                     <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
-                        <img class="img-fluid" src="assets/img/medicament.jpg">
+                        <img class="img-fluid" src="assets/img/medoc.jpeg">
                     </a>
                 </div>
-                <div class="col-lg-6 offset-lg-1 align-left">
+                <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="" method="post">
+                        <form action="" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
                             <select name="medicament" id="listemedicament">
-                                <option value="default">Choisissez un médicament :</option>
+                                <option class="form-control" value="default" >- Choisissez un médicament -</option>
                                 <?php
                                 
-                                    $result = getNomMedicament();
+                                    $result = getAllNomMedicament();
                                     foreach($result as $key){
-                                        echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
                                     }
                                 
                                 ?>
                             </select>
                                 </br>
-                            <input type="submit" value="Afficher les informations">
-
-                                <?php
-                                
-                                    if(isset($_POST['submit'])){
-
-                                        echo 'Hello';
-
-                                    }
-                                    
-                                ?>
-
+                                <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
                         </form>
                     </div>
                     

@@ -8,16 +8,27 @@
                         Formulaire permettant d'afficher les informations
                         à propos d'un praticien en particulier.
                     </p>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/praticien.jpg">
-                        <img class="img-fluid" src="assets/img/praticien.jpg">
+                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medecin.jpg">
+                        <img class="img-fluid" src="assets/img/medecin.jpg">
                     </a>
                 </div>
-                <div class="col-lg-6 offset-lg-1 align-left">
+                <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="" method="post">
-                            <label for="name">Numéro du praticien :</form>
-                            <input type="text" name="numpraticien" id="numpraticien" required></br></br>
-                            <input type="submit" value="Afficher les informations">
+                    <form class="form-signin" action="" method="post">
+                            <label for="name">Liste des praticiens : </form>
+                            <select name="listemedicament" id="listemedicament">
+                                <option class="form-control" value="default">- Choisissez un matricule -</option>
+                                <?php
+                                
+                                    $result = getAllMatriculePraticien();
+                                    foreach($result as $key){
+                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
+                                    }
+                                
+                                ?>
+                            </select>
+                                </br>
+                            <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
                         </form>
                     </div>
                     
