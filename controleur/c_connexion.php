@@ -10,6 +10,8 @@ switch($action)
 	case 'deconnexion':
 	{
 			//TODO : Session destroy et redirection
+			session_destroy();
+			header('Location: index.php?uc=accueil');
 			break;
 		}
 	case 'inscription':
