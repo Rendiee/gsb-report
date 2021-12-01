@@ -1,4 +1,11 @@
-<!-- Start Feature Work -->
+<?php
+
+    if(isset($_SESSION['login'])){
+
+        header('Location: index.php?uc=connexion&action=profil');
+
+    }
+?>
 <section class="bg-light py-5">
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">
@@ -16,7 +23,7 @@
 
                 <div class="col-lg-5 offset-lg-1 align-left">
                     <div class="wrapper">
-                        <form class="form-signin" action="" method="post">       
+                        <form class="form-signin" action="index.php?uc=connexion&action=connexion" method="post">       
                             <h2 class="form-signin-heading">Se connecter</h2>
                             <input type="text" class="form-control" name="username" placeholder="Identifiant" required="" autofocus="" />
                             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required=""/>      
@@ -24,8 +31,6 @@
                             <!-- <label>Pas de compte ? <a href="index.php?uc=connexion&action=inscription">Inscrivez-vous</a></label> -->
 
                             <?php
-
-                           // insertLogin();
                             
                                 if(isset($_POST['connexion'])){
 
@@ -35,30 +40,17 @@
 
                                 }else{
 
-                                    $getInfo = connexionPDO();
-                                    $req = $getInfo -> prepare('SELECT l.LOG_ID, l.COL_MATRICULE, c.HAB_ID FROM login l INNER JOIN collaborateur c ON l.COL_MATRICULE = c.COL_MATRICULE WHERE l.LOG_LOGIN = :identifiant AND l.LOG_MOTDEPASSE = "'.password_hash($_POST['username'], PASSWORD_DEFAULT).'"');
-                                    $req -> bindParam(':identifiant', $_POST['username'], PDO::PARAM_STR);
-                                    $req -> execute();
-                                    $res = $req -> fetch();
+                                    $arr = checkConnexion($_POST['username'], $_POST['password']);
 
-                                    echo $_POST['username'];
-                                    echo mhash(MHASH_SHA256, utf8_encode($_POST['username']));
+                                    if(empty($arr)){
 
-                                    var_dump($res);
-                                    //TODO : Changer la requete pour vérifier avec le mot de passe directement 
-
-                                    if($res != false){
-
-                                            $getHab = connexionPDO();
-                                            $res2 = $getHab -> prepare('SELECT HAB_ID FROM collaborateur WHERE COL_MATRICULE = '.$res['COL_MATRICULE']);
-                                            
-                                            $_SESSION['habilitation'] = $res2['HAB_ID'];
-                                            $_SESSION['login'] = $_POST['username'];
-
-                                            header('Location: index.php?uc=connexion&action=profil');
+                                        echo '<p class="alert alert-danger">Information incorrecte !</p>';
 
                                     }else{
-                                        echo '<p class="alert alert-danger">Information incorrecte !</p>';
+
+                                        $_SESSION['habilitation'] = $arr['habilitation'];
+                                        $_SESSION['login'] = $arr['id_log'];
+
                                     }
 
                                 }
