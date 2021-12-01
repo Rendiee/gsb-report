@@ -51,10 +51,41 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite">Rapport de visite</a>
                         </li>
+
+                        <?php
+                        
+                            if(isset($_SESSION['login'])){
+
+                                ?>
+
+                                <li class="nav-item">
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil">Profil</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
+                                </li>
+
+                                <?php
+
+                            }else{
+
+                                ?>
+
+                                <li class="nav-item">
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=connexion">Connexion</a>
+                                </li>
+
+                                <?php
+
+                            }
+
+                        ?>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=connexion">Connexion</a>
+                        </li> -->
                     </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="index.php?uc=connexion&action=connexion"><i class='bx bx-user-circle bx-sm text-info'></i></a>
                 </div>
             </div>
         </div>

@@ -98,6 +98,23 @@ include_once 'bd.inc.php';
        		print "Erreur !: " . $e->getMessage();
       	  	die();
 		}
+	}
+
+	function insertLogin(){
+
+		try 
+		{
+        	$monPdo = connexionPDO();
+			$req = 'INSERT INTO login VALUES (1, "villou", "'.mhash(MHASH_SHA512, "villou").'", "a131")';
+			$res = $monPdo->query($req);
+
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
 
 	}
 

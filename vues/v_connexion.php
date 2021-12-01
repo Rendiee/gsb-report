@@ -18,12 +18,14 @@
                     <div class="wrapper">
                         <form class="form-signin" action="" method="post">       
                             <h2 class="form-signin-heading">Se connecter</h2>
-                            <input type="text" class="form-control" name="username" placeholder="Login" required="" autofocus="" />
+                            <input type="text" class="form-control" name="username" placeholder="Identifiant" required="" autofocus="" />
                             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required=""/>      
                             <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
                             <!-- <label>Pas de compte ? <a href="index.php?uc=connexion&action=inscription">Inscrivez-vous</a></label> -->
 
                             <?php
+
+                           // insertLogin();
                             
                                 if(isset($_POST['connexion'])){
 
@@ -31,25 +33,37 @@
 
                                         echo '<p class="alert alert-danger">Des champs obligatoires sont vides !</p>';
 
-                                    }
-
                                 }else{
 
                                     $getInfo = connexionPDO();
-                                    $res = $getInfo -> prepare('SELECT LOG_ID, LOG_MOTDEPASSE FROM login WHERE LOG_LOGIN = :login');
-                                    $res -> bindParam(':login', $_POST['username'], PDO::PARAM_STR);
+                                    $req = $getInfo -> prepare('SELECT l.LOG_ID, l.COL_MATRICULE, c.HAB_ID FROM login l INNER JOIN collaborateur c ON l.COL_MATRICULE = c.COL_MATRICULE WHERE l.LOG_LOGIN = :identifiant AND l.LOG_MOTDEPASSE = "'.password_hash($_POST['username'], PASSWORD_DEFAULT).'"');
+                                    $req -> bindParam(':identifiant', $_POST['username'], PDO::PARAM_STR);
+                                    $req -> execute();
+                                    $res = $req -> fetch();
 
-                                    if($a = $res -> fetch()){
+                                    echo $_POST['username'];
+                                    echo mhash(MHASH_SHA256, utf8_encode($_POST['username']));
 
-                                        if(password_verify($_POST['password'], $res['LOG_MOTDEPASSE'])){
+                                    var_dump($res);
+                                    //TODO : Changer la requete pour vérifier avec le mot de passe directement 
 
+                                    if($res != false){
+
+                                            $getHab = connexionPDO();
+                                            $res2 = $getHab -> prepare('SELECT HAB_ID FROM collaborateur WHERE COL_MATRICULE = '.$res['COL_MATRICULE']);
                                             
+                                            $_SESSION['habilitation'] = $res2['HAB_ID'];
+                                            $_SESSION['login'] = $_POST['username'];
 
-                                        }
+                                            header('Location: index.php?uc=connexion&action=profil');
 
+                                    }else{
+                                        echo '<p class="alert alert-danger">Information incorrecte !</p>';
                                     }
 
                                 }
+
+                            }
                             
                             ?>
 
