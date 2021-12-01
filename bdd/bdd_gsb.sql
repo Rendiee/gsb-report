@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mer. 10 nov. 2021 à 16:22
+-- Généré le :  mer. 01 déc. 2021 à 16:17
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `collaborateur` (
 --
 
 INSERT INTO `collaborateur` (`COL_MATRICULE`, `COL_NOM`, `COL_PRENOM`, `COL_ADRESSE`, `COL_CP`, `COL_VILLE`, `COL_DATEEMBAUCHE`, `HAB_ID`, `LOG_ID`, `SEC_CODE`, `REG_CODE`) VALUES
-('a131', 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11 00:00:00', NULL, NULL, NULL, 'BN'),
+('a131', 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11 00:00:00', 1, 1, 'E', 'BN'),
 ('a17', 'Andre', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', '1991-08-26 00:00:00', NULL, NULL, NULL, 'RA'),
 ('a55', 'Bedos', 'Christian', '1 r Bénédictins', '65000', 'TARBES', '1987-07-17 00:00:00', NULL, NULL, NULL, 'RO'),
 ('a93', 'Tusseau', 'Louis', '22 r Renou', '86000', 'POITIERS', '1999-01-02 00:00:00', NULL, NULL, NULL, 'PC'),
@@ -324,11 +324,18 @@ DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
   `LOG_ID` int(11) NOT NULL,
   `LOG_LOGIN` varchar(50) COLLATE utf8_bin NOT NULL,
-  `LOG_MOTDEPASSE` varchar(50) COLLATE utf8_bin NOT NULL,
+  `LOG_MOTDEPASSE` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `COL_MATRICULE` varchar(10) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`LOG_ID`),
   UNIQUE KEY `login_collaborateur0_AK` (`COL_MATRICULE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `login`
+--
+
+INSERT INTO `login` (`LOG_ID`, `LOG_LOGIN`, `LOG_MOTDEPASSE`, `COL_MATRICULE`) VALUES
+(1, 'villou', '6cf17e0501b8078722f316f094e230341b4f1b2d4d14cc082c41494d6b462024f031beff6fc25145ed02a58181fc90a7fca58f0d879b349638df19dca85efa7f', 'a131');
 
 -- --------------------------------------------------------
 
