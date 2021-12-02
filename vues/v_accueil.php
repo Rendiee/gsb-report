@@ -1,4 +1,9 @@
-<!-- Start Banner Hero -->
+<?php
+
+    include("v_header.php");
+
+?>
+
 <div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
     <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
@@ -15,9 +20,7 @@
         </div>
     </div>
 </div>
-<!-- End Banner Hero -->
 
-<!-- Start Feature Work -->
     <section class="bg-light py-5">
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">
@@ -42,4 +45,3 @@
             </div>
         </div>
     </section>
- <!-- End Feature Work -->

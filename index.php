@@ -1,5 +1,4 @@
 <?php
-include("vues/v_header.php") ;
 require_once("modele/bd.fonction.inc.php");
 
 if(!isset($_REQUEST['uc']))
@@ -12,7 +11,7 @@ switch($uc)
 {
 	case 'accueil':
 		{
-            include("vues/v_accueil.html");
+            include("vues/v_accueil.php");
             break;
         }
 	case 'medicaments' :

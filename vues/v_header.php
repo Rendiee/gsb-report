@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +12,7 @@ session_start();
     <link href="assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/gsb.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -49,7 +43,7 @@ session_start();
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite">Rapport de visite</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite&action=redigerrapport">Rapport de visite</a>
                         </li>
 
                         <?php

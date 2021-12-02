@@ -1,8 +1,7 @@
 <?php
-/**
- * connexionPdo fournit un objet Pdo $conn
- * pour effectuer ensuite des requêtes
-*/
+
+session_start();
+
 function connexionPDO() {
     $login = 'employer';
     $mdp = 'employer';
