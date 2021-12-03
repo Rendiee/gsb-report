@@ -8,8 +8,8 @@
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
                     <h1 class="feature-work-heading h2 py-3 semi-bold-600">Informations du praticien :<br/><span class="carac"><?php echo $carac['0'].' '.$carac['1']; ?></span></h1>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
-                        <img class="img-fluid" src="assets/img/medoc.jpeg">
+                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medecin.jpg">
+                        <img class="img-fluid" src="assets/img/medecin.jpg">
                     </a>
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left affich">

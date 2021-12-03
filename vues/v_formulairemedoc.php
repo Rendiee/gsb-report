@@ -13,7 +13,7 @@
                         Formulaire permettant d'afficher toutes les informations
                         à propos d'un médicament en particulier.
                     </p>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
+                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medoc.jpeg">
                         <img class="img-fluid" src="assets/img/medoc.jpeg">
                     </a>
                 </div>
