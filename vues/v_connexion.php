@@ -13,17 +13,21 @@ if(isset($_SESSION['login'])){
 
 if(isset($_POST['connexion'])){
     
-    if(empty($_POST['username']) || empty($_POST['password'])){
+    if(empty($_POST['username'])){
+        $userEmpty="Veuillez saisir votre identifiant !";
+       
         
-        echo '<p class="alert alert-danger">Des champs obligatoires sont vides !</p>';
+    }elseif(empty($_POST['password'])){
+        $userEmpty="Veuillez saisir votre mot de passe !";
         
+
     }else{
         
         $arr = checkConnexion($_POST['username'], $_POST['password']);
         
         if(empty($arr)){
+            $userEmpty="Informations incorrecte !";
             
-            echo '<p class="alert alert-danger">Information incorrecte !</p>';
             
         }else{
             
@@ -53,12 +57,13 @@ if(isset($_POST['connexion'])){
 
     <div class="col-lg-5 offset-lg-1 align-left">
         <div class="wrapper">
+            <?php if (isset($userEmpty)){echo '<p class="alert alert-danger">'.$userEmpty.'</p>';} ?>
             <form class="form-signin" action="index.php?uc=connexion&action=connexion" method="post">    
 
                 <h2 class="form-signin-heading">Se connecter</h2>
 
-                <input type="text" class="form-control" name="username" placeholder="Identifiant" required="" autofocus="" />
-                <input type="password" class="form-control" name="password" placeholder="Mot de passe" required=""/>      
+                <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus="" />
+                <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>      
                 <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
 
             </form>
