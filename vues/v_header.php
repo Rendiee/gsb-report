@@ -67,7 +67,7 @@
                                 ?>
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=connexion">Connexion</a>
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=connexion"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Connexion</a>
                                 </li>
 
                                 <?php
