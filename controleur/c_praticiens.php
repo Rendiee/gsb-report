@@ -8,10 +8,17 @@ switch($action)
 		    break;
 	    }
 	case 'afficherpraticien':
-	{
+	{	
+
 		$pra=$_REQUEST['praticien'];
-		$carac = getAllInformationPraticien($pra);
+		if ($pra!='default')
+		{
+			$carac = getAllInformationPraticien($pra);
 		include("vues/v_afficherpraticien.php");
+		}
+		else{
+			include("vues/v_formulairepraticien.php");
+		}
 		break;
 	    }
 }
