@@ -9,8 +9,10 @@ switch($action)
 	    }
 	case 'afficherpraticien':
 	{
-            include("vues/v_afficherpraticien.php");
-		    break;
+		$pra=$_REQUEST['praticien'];
+		$carac = getAllInformationPraticien($pra);
+		include("vues/v_afficherpraticien.php");
+		break;
 	    }
 }
 ?>

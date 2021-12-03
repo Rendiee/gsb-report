@@ -8,7 +8,7 @@
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">
-                    <h1 class="feature-work-heading h2 py-3 semi-bold-600">Informations du médicament : <span style="text-decoration: underline;"><?php echo $carac['MED_NOMCOMMERCIAL']; ?></span></h1>
+                    <h1 class="feature-work-heading h2 py-3 semi-bold-600">Informations du médicament :<br/><span style="text-decoration: underline;"><?php echo $carac['MED_NOMCOMMERCIAL']; ?></span></h1>
                     <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medicament.jpg">
                         <img class="img-fluid" src="assets/img/medoc.jpeg">
                     </a>
