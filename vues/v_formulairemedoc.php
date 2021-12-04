@@ -1,4 +1,28 @@
+<?php
 
+if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
+
+    ?>
+
+        <section class="bg-light py-5">
+                <div class="feature-work container my-4">
+                    <div class="row d-flex d-flex align-items-center">
+                        <div class="col-lg-5">
+                            <h1 class="feature-work-heading h2 py-3 semi-bold-600">Accès interdit !</h1>
+                            <p class="feature-work-body text-muted light-300">Veuillez-vous connecter pour avoir accès à cette page.</p>
+                            <p><a href="index.php?uc=connexion&action=connexion">Se connecter</a></p>
+                        <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medoc.jpeg">
+                        <img class="img-fluid" src="">
+                        </a>
+                    </div>
+                </div>
+        </section>
+
+    <?php
+
+}else{
+
+?>
 <section class="bg-light py-5">
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">
@@ -36,3 +60,9 @@
             </div>
         </div>
     </section>
+
+    <?php
+    
+            }
+
+    ?>

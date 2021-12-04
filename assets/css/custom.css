@@ -1,5 +1,5 @@
 body {
-	background: #eee !important;	
+	background: #eee !important;
 }
 
 .wrapper {	
@@ -12,7 +12,7 @@ body {
   max-width: 380px;
   padding: 35px 35px 20px;
   background-color: #fff;
-  box-shadow: 2px 2px 20px  black;
+  box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.44);;
 }
 
 .form-signin-heading,

@@ -9,9 +9,33 @@
                 L'entité Galaxy Swiss Bourdin Europe a établi son siège administratif à Paris.
                 Le siège social de la multinationale est situé à Philadelphie, Pennsylvalnie, aux Etats-Unis</strong>
             </p>
+
+            <?php
+
+                if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
+
+            ?>
+
             <a href="index.php?uc=connexion&action=connexion">
                 <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300">Se connecter</button>
             </a>
+
+            <?php
+            
+                }else{
+
+                    ?>
+
+                    <a href="index.php?uc=connexion&action=connexion">
+                    <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300">Rapport de visite</button>
+                    </a>
+
+                    <?php
+
+                }
+            
+            ?>
+
         </div>
     </div>
 </div>
