@@ -121,4 +121,68 @@ include_once 'bd.inc.php';
 
 	}
 
+	function checkMatriculeInscription($matricule){
+
+		try 
+		{
+			$getInfo = connexionPDO();
+			$req = $getInfo -> prepare('select `COL_MATRICULE` as \'matricule\' from login where `COL_MATRICULE`=:matricule');
+			$req -> bindParam(':matricule', $matricule, PDO::PARAM_STR);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
+	function checkUserInscription($username){
+
+		try 
+		{
+			$getInfo = connexionPDO();
+			$req = $getInfo -> prepare('SELECT `LOG_LOGIN` from login where `LOG_LOGIN`=:username');
+			$req -> bindParam(':username', $username, PDO::PARAM_STR);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
+	function insertInscription($username, $mdp, $matricule){
+
+		try 
+		{	
+			$hash=hash('sha512', $mdp);
+			$getInfo = connexionPDO();
+			$req = $getInfo -> prepare('insert into login VALUES (0,:identifiant,:mdp,:matricule)');
+			$req -> bindParam(':identifiant', $username,PDO::PARAM_STR);
+			$req -> bindParam(':mdp', $hash,PDO::PARAM_STR);
+			$req -> bindParam(':matricule', $matricule,PDO::PARAM_STR);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
+
 ?>

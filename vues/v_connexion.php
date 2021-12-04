@@ -1,8 +1,4 @@
-<?php
 
-    include("v_header.php");
-
-?>
 <?php
 
 if(isset($_SESSION['login'])){
@@ -65,6 +61,7 @@ if(isset($_POST['connexion'])){
                 <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus="" />
                 <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>      
                 <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
+                <p><br/>Vous n'avez pas encore de compte ?<br/><a href="index.php?uc=connexion&action=inscription">S'inscrire</a></p>
 
             </form>
         </div>

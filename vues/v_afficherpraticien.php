@@ -1,8 +1,4 @@
-<?php
 
-    include("v_header.php");
-
-?>
 <section class="bg-light py-5">
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">

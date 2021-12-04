@@ -10,7 +10,7 @@ body {
 .form-signin {
 	margin : auto;
   max-width: 380px;
-  padding: 35px 35px 45px;
+  padding: 35px 35px 20px;
   background-color: #fff;
   box-shadow: 2px 2px 20px  black;
 }

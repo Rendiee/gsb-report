@@ -3,10 +3,12 @@ require_once("modele/bd.fonction.inc.php");
 
 if(!isset($_REQUEST['uc']))
      $uc = 'accueil';
-else
+else{
 	$uc = $_REQUEST['uc'];
+}
 
- 
+include("vues/v_header.php");
+
 switch($uc)
 {
 	case 'accueil':
