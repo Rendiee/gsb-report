@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mer. 01 déc. 2021 à 16:17
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Généré le : sam. 04 déc. 2021 à 12:37
+-- Version du serveur : 5.7.36
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `gsb`
+-- Base de données : `gsb`
 --
 
 -- --------------------------------------------------------
@@ -324,7 +323,7 @@ DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
   `LOG_ID` int(11) NOT NULL,
   `LOG_LOGIN` varchar(50) COLLATE utf8_bin NOT NULL,
-  `LOG_MOTDEPASSE` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `LOG_MOTDEPASSE` varchar(255) COLLATE utf8_bin NOT NULL,
   `COL_MATRICULE` varchar(10) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`LOG_ID`),
   UNIQUE KEY `login_collaborateur0_AK` (`COL_MATRICULE`)
@@ -335,7 +334,21 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`LOG_ID`, `LOG_LOGIN`, `LOG_MOTDEPASSE`, `COL_MATRICULE`) VALUES
-(1, 'villou', '6cf17e0501b8078722f316f094e230341b4f1b2d4d14cc082c41494d6b462024f031beff6fc25145ed02a58181fc90a7fca58f0d879b349638df19dca85efa7f', 'a131');
+(1, 'villou', '6cf17e0501b8078722f316f094e230341b4f1b2d4d14cc082c41494d6b462024f031beff6fc25145ed02a58181fc90a7fca58f0d879b349638df19dca85efa7f', 'a131'),
+(2, 'azerty', 'df6b9fb15cfdbb7527be5a8a6e39f39e572c8ddb943fbc79a943438e9d3d85ebfc2ccf9e0eccd9346026c0b6876e0e01556fe56f135582c05fbdbb505d46755a', 'a17'),
+(3, 'azertyu', '64f659726155b57f7565265402ca1545231a12d0dc153a285c8d543cabc7c69d127ce26c5126952af8239f368eb7ae3d9d86e04bb3c20991f32eb71acd5f5ba9', 'a55');
+
+--
+-- Déclencheurs `login`
+--
+DROP TRIGGER IF EXISTS `inscrire`;
+DELIMITER $$
+CREATE TRIGGER `inscrire` BEFORE INSERT ON `login` FOR EACH ROW BEGIN
+set @id=(SELECT COUNT(`LOG_ID`) from login)+1;
+set new.`LOG_ID`=@id;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -452,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `praticien` (
   `TYP_CODE` varchar(3) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`PRA_NUM`),
   KEY `praticien_type_praticien0_FK` (`TYP_CODE`)
-) ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `praticien`
@@ -607,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `rapport_visite` (
   `RAP_SAISITDEFINITIVE` tinyint(1) NOT NULL,
   `RAP_MOTIFAUTRE` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `OFF_QTE` int(11) NOT NULL,
-  `MED_DEPOTLEGAL_1` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `MED_DEPOTLEGAL_1` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `MED_DEPOTLEGAL_2` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `PRA_NUM` int(11) NOT NULL,
   `MOT_ID` int(11) NOT NULL,
@@ -873,75 +886,10 @@ ALTER TABLE `interagir`
   ADD CONSTRAINT `INTERAGIR_medicament1_FK` FOREIGN KEY (`MED_DEPOTLEGAL_medicament`) REFERENCES `medicament` (`MED_DEPOTLEGAL`);
 
 --
--- Contraintes pour la table `inviter`
---
-ALTER TABLE `inviter`
-  ADD CONSTRAINT `INVITER_activite_compl0_FK` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
-  ADD CONSTRAINT `INVITER_praticien1_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`);
-
---
 -- Contraintes pour la table `login`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`);
-
---
--- Contraintes pour la table `medicament`
---
-ALTER TABLE `medicament`
-  ADD CONSTRAINT `medicament_famille0_FK` FOREIGN KEY (`FAM_CODE`) REFERENCES `famille` (`FAM_CODE`);
-
---
--- Contraintes pour la table `posseder`
---
-ALTER TABLE `posseder`
-  ADD CONSTRAINT `POSSEDER_praticien1_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`),
-  ADD CONSTRAINT `POSSEDER_specialite0_FK` FOREIGN KEY (`SPE_CODE`) REFERENCES `specialite` (`SPE_CODE`);
-
---
--- Contraintes pour la table `praticien`
---
-ALTER TABLE `praticien`
-  ADD CONSTRAINT `praticien_type_praticien0_FK` FOREIGN KEY (`TYP_CODE`) REFERENCES `type_praticien` (`TYP_CODE`);
-
---
--- Contraintes pour la table `prescrire`
---
-ALTER TABLE `prescrire`
-  ADD CONSTRAINT `PRESCRIRE_dosage1_FK` FOREIGN KEY (`DOS_CODE`) REFERENCES `dosage` (`DOS_CODE`),
-  ADD CONSTRAINT `PRESCRIRE_medicament2_FK` FOREIGN KEY (`MED_DEPOTLEGAL`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
-  ADD CONSTRAINT `PRESCRIRE_type_individu0_FK` FOREIGN KEY (`TIN_CODE`) REFERENCES `type_individu` (`TIN_CODE`);
-
---
--- Contraintes pour la table `presentation_produit`
---
-ALTER TABLE `presentation_produit`
-  ADD CONSTRAINT `PRESENTATION_PRODUIT_medicament0_FK` FOREIGN KEY (`MED_DEPOTLEGAL`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
-  ADD CONSTRAINT `PRESENTATION_PRODUIT_rapport_visite1_FK` FOREIGN KEY (`COL_MATRICULE`,`RAP_NUM`) REFERENCES `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`);
-
---
--- Contraintes pour la table `rapport_visite`
---
-ALTER TABLE `rapport_visite`
-  ADD CONSTRAINT `rapport_visite_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`),
-  ADD CONSTRAINT `rapport_visite_medicament1_FK` FOREIGN KEY (`MED_DEPOTLEGAL_1`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
-  ADD CONSTRAINT `rapport_visite_medicament2_FK` FOREIGN KEY (`MED_DEPOTLEGAL_2`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
-  ADD CONSTRAINT `rapport_visite_motif_principale3_FK` FOREIGN KEY (`MOT_ID`) REFERENCES `motif_principale` (`MOT_ID`),
-  ADD CONSTRAINT `rapport_visite_praticien2_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`),
-  ADD CONSTRAINT `rapport_visite_praticien4_FK` FOREIGN KEY (`PRA_NUM_remplacant`) REFERENCES `praticien` (`PRA_NUM`);
-
---
--- Contraintes pour la table `realiser`
---
-ALTER TABLE `realiser`
-  ADD CONSTRAINT `REALISER_activite_compl1_FK` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
-  ADD CONSTRAINT `REALISER_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`);
-
---
--- Contraintes pour la table `region`
---
-ALTER TABLE `region`
-  ADD CONSTRAINT `region_secteur0_FK` FOREIGN KEY (`SEC_CODE`) REFERENCES `secteur` (`SEC_CODE`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
