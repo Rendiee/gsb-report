@@ -20,6 +20,7 @@ switch($action)
 	    }
 	case 'profil':
 		{
+			$info=getAllInformationCompte($_SESSION['matricule']);
 			include("vues/v_profil.php");
 			break;
 		}
