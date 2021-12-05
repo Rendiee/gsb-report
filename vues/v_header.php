@@ -53,11 +53,11 @@
                                 ?>
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil">Profil</a>
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Profil</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion">Déconnexion</a>
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion"><img style="max-width:15px;margin-bottom:4px;margin-right:5px" src="assets/img/deco.png">Déconnexion</a>
                                 </li>
 
                                 <?php
