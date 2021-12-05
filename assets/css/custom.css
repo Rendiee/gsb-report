@@ -71,4 +71,12 @@ input[type="submit"] {
 	padding-top: 3rem !important;
 	padding-bottom: 25rem !important;
   }
-  
+
+#work_banner {
+	height: auto;
+}
+
+.py-12 {
+	padding-top: 3rem !important;
+	padding-bottom: 3rem !important;
+  }
