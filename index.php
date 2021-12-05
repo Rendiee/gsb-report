@@ -6,7 +6,10 @@ if(!isset($_REQUEST['uc']))
 else{
 	$uc = $_REQUEST['uc'];
 }
-
+?>
+<body>
+    <div id="contenu">
+<?php
 include("vues/v_header.php");
 
 switch($uc)
@@ -37,6 +40,10 @@ switch($uc)
           break; 
       }
 }
-include("vues/v_footer.html") ;
+
 ?>
+</div>
+<?php include("vues/v_footer.html") ;?>
+</body>
+
 

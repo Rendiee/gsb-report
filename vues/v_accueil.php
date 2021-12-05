@@ -40,7 +40,7 @@
     </div>
 </div>
 
-    <section class="bg-light py-5">
+    <section class="bg-light py-5 anti">
         <div class="feature-work container my-4">
             <div class="row d-flex d-flex align-items-center">
                 <div class="col-lg-5">

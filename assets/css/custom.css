@@ -1,5 +1,7 @@
 body {
 	background: #eee !important;
+	min-height: 100%;
+	position: relative;
 }
 
 .wrapper {	
@@ -12,7 +14,6 @@ body {
   max-width: 380px;
   padding: 35px 35px 20px;
   background-color: #fff;
-  box-shadow: 0px 0px 8px 3px rgba(0,0,0,0.44);;
 }
 
 .form-signin-heading,
@@ -58,3 +59,16 @@ input[type="submit"] {
 .footercustom{
 	background-color: #007BFF;
 }
+#contenu{
+	min-height: 100%;
+}
+#foot{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.py-5 {
+	padding-top: 3rem !important;
+	padding-bottom: 25rem !important;
+  }
+  
