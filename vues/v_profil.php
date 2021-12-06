@@ -9,7 +9,7 @@
                 Vos informations personnelles.
             </p>
             <a class="col">
-                <img class="img-fluid" src="assets/img/profil.png">
+                <img class="img-fluid" src="assets/img/login.png">
             </a>
         </div>
         <div class="col-lg-4 offset-lg-1 align-left affich">
