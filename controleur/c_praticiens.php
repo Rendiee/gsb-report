@@ -1,5 +1,10 @@
 <?php
-$action = $_REQUEST['action'];
+if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
+	$action="formulairepraticien";
+}else{
+	$action = $_REQUEST['action'];
+}
+
 switch($action)
 {
 	case 'formulairepraticien':
@@ -21,5 +26,10 @@ switch($action)
 		}
 		break;
 	    }
+	default :
+	{
+		include("vues/v_formulairepraticien.php");
+        break;
+	}
 }
 ?>

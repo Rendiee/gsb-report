@@ -1,5 +1,9 @@
 <?php
-$action = $_REQUEST['action'];
+if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
+	$action="redigerrapport";
+}else{
+	$action = $_REQUEST['action'];
+}
 switch($action)
 {
 	case 'redigerrapport':
@@ -12,5 +16,10 @@ switch($action)
             include("vues/v_afficherrapport.php");
 		    break;
 	    }
+	default :
+	{
+		include("vues/v_rapportdevisite.php");
+		break;
+	}
 }
 ?>

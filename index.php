@@ -1,7 +1,7 @@
 <?php
 require_once("modele/bd.fonction.inc.php");
 
-if(!isset($_REQUEST['uc']))
+if(!isset($_REQUEST['uc']) || empty($_REQUEST['uc']))
      $uc = 'accueil';
 else{
 	$uc = $_REQUEST['uc'];
@@ -38,6 +38,11 @@ switch($uc)
       {
           include("controleur/c_connexion.php");
           break; 
+      }
+      default :
+      {
+        include("vues/v_accueil.php");
+        break;
       }
 }
 

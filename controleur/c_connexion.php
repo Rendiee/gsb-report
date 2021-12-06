@@ -1,5 +1,9 @@
 <?php
-$action = $_REQUEST['action'];
+if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
+	$action="connexion";
+}else{
+	$action = $_REQUEST['action'];
+}
 switch($action)
 {
 	case 'connexion':
@@ -24,5 +28,10 @@ switch($action)
 			include("vues/v_profil.php");
 			break;
 		}
+	default :
+	{
+		include("vues/v_connexion.php");
+		break;
+	}
 }
 ?>
