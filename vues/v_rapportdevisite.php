@@ -7,7 +7,7 @@
                         Formulaire permettant d'afficher toutes les informations
                         à propos d'un médicament en particulier.
                     </p>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/rapport.jpg">
+                    <a class="col">
                         <img class="img-fluid" src="assets/img/rapport.jpg">
                     </a>
                 </div>

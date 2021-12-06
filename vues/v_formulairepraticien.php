@@ -32,7 +32,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                         Formulaire permettant d'afficher les informations
                         à propos d'un praticien en particulier.
                     </p>
-                    <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/medecin.jpg">
+                    <a class="col">
                         <img class="img-fluid" src="assets/img/medecin.jpg">
                     </a>
                 </div>
