@@ -8,7 +8,7 @@
             <p class="feature-work-body text-muted light-300">
                 Vos informations personnelles.
             </p>
-            <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/profil.png">
+            <a class="col">
                 <img class="img-fluid" src="assets/img/profil.png">
             </a>
         </div>

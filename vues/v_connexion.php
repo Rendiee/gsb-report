@@ -46,7 +46,7 @@ if(isset($_POST['connexion'])){
             <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire de connexion</h1>
             <p class="feature-work-body text-muted light-300">Formulaire permettant de se connecter au site et d'accèder au données.</p>
 
-        <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/login.png">
+        <a class="col">
         <img class="img-fluid" src="assets/img/login.png">
         </a>
     </div>
