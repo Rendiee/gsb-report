@@ -1,3 +1,11 @@
+<?php
+    if(isset($_SESSION['login'])){
+        $css='justify-content-between';
+    }else{
+        $css='justify-content-end';
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +40,7 @@
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
                 <div class="flex-fill mx-xl-5 mb-2">
-                    <ul class="nav navbar-nav d-flex justify-content-end mx-xl-5 text-center text-dark">
+                    <ul class="nav navbar-nav d-flex <?php echo $css;?> mx-xl-5 text-center text-dark">
                         <li class="nav-item ecart">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil">Accueil</a>
                         </li>
