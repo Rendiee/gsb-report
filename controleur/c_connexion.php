@@ -4,6 +4,9 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 }else{
 	$action = $_REQUEST['action'];
 }
+if (!isset($_SESSION['matricule'])){
+	$action="connexion";
+}
 switch($action)
 {
 	case 'connexion':
@@ -29,7 +32,7 @@ switch($action)
 		    break;
 	    }
 	case 'profil':
-		{
+		{	
 			$info=getAllInformationCompte($_SESSION['matricule']);
 			include("vues/v_profil.php");
 			break;
