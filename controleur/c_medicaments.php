@@ -9,6 +9,7 @@ switch($action)
 {
 	case 'formulairemedoc':
 	{
+			$result = getAllNomMedicament();
 		    include("vues/v_formulairemedoc.php");
 		    break;
 	    }

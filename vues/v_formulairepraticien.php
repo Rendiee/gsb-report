@@ -44,7 +44,6 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 <option class="form-control" value="default">- Choisissez un matricule -</option>
                                 <?php
                                 
-                                    $result = getAllMatriculePraticien();
                                     foreach($result as $key){
                                         echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
                                     }

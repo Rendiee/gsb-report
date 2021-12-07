@@ -44,7 +44,6 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 <option class="form-control" value="default" >- Choisissez un médicament -</option>
                                 <?php
                                 
-                                    $result = getAllNomMedicament();
                                     foreach($result as $key){
                                         echo '<option class="form-control" value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
                                     }

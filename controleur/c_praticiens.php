@@ -8,7 +8,8 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 switch($action)
 {
 	case 'formulairepraticien':
-	{
+	{		
+			$result = getAllMatriculePraticien();
 		    include("vues/v_formulairepraticien.php");
 		    break;
 	    }
