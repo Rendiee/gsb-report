@@ -21,7 +21,7 @@ switch($action)
 	case 'deconnexion':
 	{
 			session_destroy();
-			header('Location: index.php?uc=accueil');
+			header('location: index.php?uc=accueil');
 			break;
 		}
 	case 'inscription':

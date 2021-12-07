@@ -1,8 +1,7 @@
 <?php
+    $css='justify-content-end';
     if(isset($_SESSION['login'])){
         $css='justify-content-between';
-    }else{
-        $css='justify-content-end';
     }
     
 ?>
@@ -44,11 +43,11 @@
                         <li class="nav-item ecart">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil">Accueil</a>
                         </li>
-                                                <?php
+                            <?php
                         
                             if(isset($_SESSION['login'])){
 
-                                ?>
+                            ?>
                                 <li class="nav-item ecart">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
                                 </li>
