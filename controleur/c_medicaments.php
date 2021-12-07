@@ -13,20 +13,25 @@ switch($action)
 		    break;
 	    }
 	case 'affichermedoc':
-	{	
-			$med=$_REQUEST['medicament'];
-			if ($med!='default'){
-			$carac = getAllInformationMedicament($med);
-            include("vues/v_affichermedoc.php");
+	{		
+			if(isset($_REQUEST['medicament'])){
+				$med=$_REQUEST['medicament'];
+				if ($med!='default'){
+				$carac = getAllInformationMedicament($med);
+				include("vues/v_affichermedoc.php");
+				}
+				else{
+					include("vues/v_formulairemedoc.php");
+				}
 			}
 			else{
-				include("vues/v_formulairemedoc.php");
+				header("location: index.php?uc=medicaments&action=formulairemedoc");
 			}
 		    break;
 	}
 	default :
 	{
-		include("vues/v_formulairemedoc.php");
+		header("location: index.php?uc=medicaments&action=formulairemedoc");
         break;
 	}
 }

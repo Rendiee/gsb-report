@@ -14,21 +14,24 @@ switch($action)
 	    }
 	case 'afficherpraticien':
 	{	
-
-		$pra=$_REQUEST['praticien'];
-		if ($pra!='default')
-		{
-			$carac = getAllInformationPraticien($pra);
-		include("vues/v_afficherpraticien.php");
-		}
-		else{
-			include("vues/v_formulairepraticien.php");
+		if(isset($_REQUEST['praticien'])){
+			$pra=$_REQUEST['praticien'];
+			if ($pra!='default')
+			{
+				$carac = getAllInformationPraticien($pra);
+			include("vues/v_afficherpraticien.php");
+			}
+			else{
+				include("vues/v_formulairepraticien.php");
+			}
+		}else{
+			header("location: index.php?uc=praticiens&action=formulairepraticien");
 		}
 		break;
 	    }
 	default :
 	{
-		include("vues/v_formulairepraticien.php");
+		header("location: index.php?uc=praticiens&action=formulairepraticien");
         break;
 	}
 }

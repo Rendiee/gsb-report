@@ -41,7 +41,7 @@ switch($uc)
       }
       default :
       {
-        include("vues/v_accueil.php");
+        header("location: index.php?uc=accueil");
         break;
       }
 }

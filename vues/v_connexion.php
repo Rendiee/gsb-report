@@ -1,12 +1,5 @@
 
 <?php
-
-if(isset($_SESSION['login'])){
-    
-    header('Location: index.php?uc=connexion&action=profil');
-    
-}
-
 if(isset($_POST['connexion'])){
     
     if(empty($_POST['username'])){

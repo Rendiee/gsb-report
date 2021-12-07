@@ -8,8 +8,14 @@ switch($action)
 {
 	case 'connexion':
 	{
+		if(isset($_SESSION['login'])){
+    
+			header('Location: index.php?uc=connexion&action=profil');
+			
+		}else{
 		    include("vues/v_connexion.php");
-		    break;
+		}    
+		break;
 	    }
 	case 'deconnexion':
 	{
@@ -30,7 +36,7 @@ switch($action)
 		}
 	default :
 	{
-		include("vues/v_connexion.php");
+		header('location: index.php?uc=connexion&action=connexion');
 		break;
 	}
 }
