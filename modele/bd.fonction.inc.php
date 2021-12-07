@@ -141,6 +141,26 @@ include_once 'bd.inc.php';
 		}
 
 	}
+	function checkMatricule($matricule){
+
+		try 
+		{
+			$getInfo = connexionPDO();
+			$req = $getInfo -> prepare('select `COL_MATRICULE` as \'matricule\' from collaborateur where `COL_MATRICULE`=:matricule');
+			$req -> bindParam(':matricule', $matricule, PDO::PARAM_STR);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
 	function checkUserInscription($username){
 
 		try 
