@@ -14,6 +14,7 @@ if(isset($_POST['inscription'])){
         
 
     }else{
+        if(checkMatriculeInscription($_POST['matricule'])){
         $arr = checkMatriculeInscription($_POST['matricule']);
         $user = checkUserInscription($_POST['username']);
         if(!empty($arr)){
@@ -24,7 +25,10 @@ if(isset($_POST['inscription'])){
             $ins = insertInscription($_POST['username'],$_POST['password'],$_POST['matricule']);
             $inscri="Inscription réussie !";
         }
-        
+        }else{
+            echo checkMatriculeInscription($_POST['matricule']);
+            $userEmpty= 'Le matricule "'.$_POST['matricule'].'" n\'existe pas !';
+        }
     }
     
 }
