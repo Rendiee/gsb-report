@@ -35,7 +35,7 @@ if(isset($_POST['inscription'])){
         <div class="row d-flex d-flex align-items-center">
 
         <div class="col-lg-5">
-            <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire de connexion</h1>
+            <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire d'inscription</h1>
             <p class="feature-work-body text-muted light-300">Formulaire permettant de se connecter au site et d'accèder au données.</p>
 
         <a class="col" data-type="image" data-fslightbox="gallery" href="assets/img/login.png">

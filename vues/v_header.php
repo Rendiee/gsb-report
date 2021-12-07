@@ -57,7 +57,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion"><img style="max-width:15px;margin-bottom:4px;margin-right:5px" src="assets/img/deco.png">Déconnexion</a>
+                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><img style="max-width:15px;margin-bottom:4px;margin-right:5px" src="assets/img/deco.png">Déconnexion</a>
                                 </li>
 
                                 <?php

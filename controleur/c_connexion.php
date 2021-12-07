@@ -4,9 +4,7 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 }else{
 	$action = $_REQUEST['action'];
 }
-if (!isset($_SESSION['matricule'])){
-	$action="connexion";
-}
+
 switch($action)
 {
 	case 'connexion':
@@ -33,8 +31,12 @@ switch($action)
 	    }
 	case 'profil':
 		{	
+			if (!isset($_SESSION['matricule'])){
+				header('location: index.php?uc=connexion&action=connexion');
+			}else{
 			$info=getAllInformationCompte($_SESSION['matricule']);
-			include("vues/v_profil.php");
+			$_SESSION['region']=$info[9];
+			include("vues/v_profil.php");}
 			break;
 		}
 	default :

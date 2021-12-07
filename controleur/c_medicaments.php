@@ -22,7 +22,7 @@ switch($action)
 				include("vues/v_affichermedoc.php");
 				}
 				else{
-					include("vues/v_formulairemedoc.php");
+					header("location: index.php?uc=medicaments&action=formulairemedoc");
 				}
 			}
 			else{

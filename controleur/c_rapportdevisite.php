@@ -8,7 +8,7 @@ switch($action)
 {
 	case 'redigerrapport':
 	{
-		    include("vues/v_rapportdevisite.php");
+		    include("vues/v_formulairerapportdevisite.php");
 		    break;
 	    }
 	case 'afficherrapport':

@@ -23,7 +23,7 @@ switch($action)
 			include("vues/v_afficherpraticien.php");
 			}
 			else{
-				include("vues/v_formulairepraticien.php");
+				header("location: index.php?uc=praticiens&action=formulairepraticien");
 			}
 		}else{
 			header("location: index.php?uc=praticiens&action=formulairepraticien");
