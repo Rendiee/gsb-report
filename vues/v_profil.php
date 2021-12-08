@@ -8,9 +8,7 @@
             <p class="feature-work-body text-muted light-300">
                 Vos informations personnelles.
             </p>
-            <a class="col">
                 <img class="img-fluid" src="assets/img/profil.png">
-            </a>
         </div>
         <div class="col-lg-4 offset-lg-1 align-left affich">
             <div class="row">
