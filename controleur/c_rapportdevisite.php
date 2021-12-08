@@ -4,21 +4,35 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 }else{
 	$action = $_REQUEST['action'];
 }
-switch($action)
+
+if(isset($_REQUEST['rapport'])){
+	$cr = $_REQUEST['rapport'];
+}else{
+	$cr = '';
+}
+
+
+switch($cr)
 {
+
 	case 'redigerrapport':
 	{
-		    include("vues/v_formulairerapportdevisite.php");
+		    include("vues/v_redigerrapport.php");
 		    break;
 	    }
-	case 'afficherrapport':
+	case 'rapportregion':
 	{
-            include("vues/v_afficherrapport.php");
+            include("vues/v_rapportregion.php");
 		    break;
 	    }
+	case 'rapportsecteur':
+		{
+			include("vues/v_rapportsecteur.php");
+			break;
+	}
 	default :
 	{
-		include("vues/v_rapportdevisite.php");
+		include("vues/v_formulairerapportdevisite.php");
 		break;
 	}
 }

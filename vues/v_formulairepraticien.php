@@ -41,7 +41,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                     <form class="form-signin" action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="form-signin">
                             <label for="name">Liste des praticiens : </form>
                             <select name="praticien" id="listechoix">
-                                <option class="form-control" value="default">- Choisissez un matricule -</option>
+                                <option class="form-control" value="default">- Choisissez un praticien -</option>
                                 <?php
                                 
                                     foreach($result as $key){

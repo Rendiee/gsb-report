@@ -40,7 +40,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                     <div class="row">
                         <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
-                            <select name="medicament" id="listemedicament">
+                            <select name="medicament" id="listechoix">
                                 <option class="form-control" value="default" >- Choisissez un médicament -</option>
                                 <?php
                                 
