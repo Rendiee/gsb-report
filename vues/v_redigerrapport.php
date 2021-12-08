@@ -32,14 +32,14 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                        <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="form-signin">
-                            <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2>
+                        <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rapport">
+                            <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
 
                             <label for="nbrapport">Numéro du rapport :</label>
-                            <input type="text" name="nbrapport" id="nbrapport">
+                            <input type="text" name="nbrapport" id="nbrapport"><br/>
 
                             <label for="matricule">Matricule du collaborateur :</label>
-                            <select name="medicament" id="listechoix">
+                            <select name="medicament" id="listemotif">
                                 <option class="form-control" value="default" >- Choisissez un matricule -</option>
                                 <?php
 
@@ -48,10 +48,10 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                     }
                                 
                                 ?>
-                            </select>
+                            </select><br/>
 
                             <label for="praticien">Praticien concerné :</label>
-                            <select name="medicament" id="listechoix">
+                            <select name="medicament" id="listemotif">
                                 <option class="form-control" value="default" >- Choisissez un praticien -</option>
                                 <?php
 
@@ -60,16 +60,16 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                     }
                                 
                                 ?>
-                            </select>
+                            </select><br/>
 
                             <label for="datevisite">Date de visite :</label>
-                            <input type="date" name="datevisite" id="datevisite">
+                            <input type="date" name="datevisite" id="datevisite"><br/>
 
                             <label for="bilan">Bilan du rapport :</label>
-                            <textarea name="bilanrapport" id="bilanrapport"></textarea>
+                            <textarea name="bilanrapport" id="bilanrapport"></textarea><br/>
 
                             <label for="datesaisit">Date de saisit du rapport :</label>
-                            <input type="date" name="datesaisit" id="datesaisit">
+                            <input type="date" name="datesaisit" id="datesaisit"><br/>
 
                             <label for="motif">Motif :</label>
                             <select name="motif" id="listemotif">
@@ -81,7 +81,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                     }
                                 
                                 ?>
-                            </select>
+                            </select><br/>
 
                             <label for="medicamentproposer">Médicament proposé :</label>
                             <select name="motif" id="listemotif">
@@ -93,15 +93,18 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                     }
                                 
                                 ?>
-                            </select>
-
+                            </select><br/>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
                             <label for="echantillon">Échantillon distribué :</label>
                             <input type="checkbox" name="echantillon" id="echantillonS">
-
+                                </div>
+                                <div>
                             <label for="saisitdefinitive">Saisit définitive :</label>
-                            <input type="checkbox" name="saisitdefinitive" id="saisitdefinitive">
-
-                            <input class="btn btn-info text-light" type="submit" value="Valider le rapport">
+                            <input type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br/>
+                                </div>  
+                                </div>
+                            <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport">
                         </form>
                     </div>
                     

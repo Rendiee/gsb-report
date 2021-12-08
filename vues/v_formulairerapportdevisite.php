@@ -1,7 +1,7 @@
 <?php
 
 if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
-    $choixRap = $_REQUEST['rapport'];
+    //$choixRap = $_REQUEST['rapport'];
     // TODO : Erreur quand on met (index.php?uc=rapportdevisite&action=choixoptionrapport) sans être connecté
     ?>
 
@@ -45,7 +45,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 
                             </select>
                                 </br>
-                            <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
+                            <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
                         </form>
                     </div>
                     

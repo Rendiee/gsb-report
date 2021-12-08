@@ -23,9 +23,7 @@
                             <p><span class="carac">Confiance</span> : <?php echo $carac[6] ?></p>
 
                     </div>
-                    <div class="row">
-                       <input class="btn btn-info text-light" type="button" onclick="window.location.href='index.php?uc=praticiens&action=formulairepraticien';" value="Retour">
-                    </div>
+                       <input class="btn btn-info text-light valider" type="button" onclick="window.location.href='index.php?uc=praticiens&action=formulairepraticien';" value="Retour">
                 </div>
             </div>
         </div>

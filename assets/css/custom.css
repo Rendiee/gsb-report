@@ -57,6 +57,14 @@ input[type="submit"] {
 	border-radius: 5px;
 }
 
+#listemotif{
+	width: 100%; 
+	height: 40px;
+	margin-top: 0px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+}
+
 .footercustom{
 	background-color: #007BFF;
 }
@@ -81,3 +89,56 @@ input[type="submit"] {
 	padding-top: 3rem !important;
 	padding-bottom: 3rem !important;
   }
+
+.rapport{
+	margin : auto;
+  padding: 35px 35px 45px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  border:1px solid;
+  min-width: 500px;
+  max-width: 500px;
+}
+
+@media (max-width: 990px) {
+	.rapport{
+		margin : auto;
+	  padding: 35px 35px 45px;
+	  padding-bottom: 20px;
+	  background-color: #fff;
+	  border:1px solid;
+	  min-width: 400px;
+	  max-width: 400px;
+	}
+}
+@media (max-width: 575px) {
+	.rapport{
+		margin : auto;
+		margin-bottom: 50px;
+		padding: 35px 35px 45px;
+	  padding-bottom: 20px;
+	  background-color: #fff;
+	  border:1px solid;
+	  min-width: 80%;
+	  max-width: 80%;
+	}
+}
+
+textarea{
+	resize: none;
+	width: 100%;
+	margin-bottom: 15px;
+	height: 80px;
+}
+
+#datevisite, #datesaisit{
+	align-items: right;
+	margin-bottom: 20px;
+}
+
+.valider{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 50%;
+}

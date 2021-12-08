@@ -16,9 +16,7 @@
                             <p><span class="carac">Contre indication</span> : <?php echo $carac[4] ?></p>
                             
                     </div>
-                    <div class="row">
-                       <input class="btn btn-info text-light" type="button" onclick="window.location.href='index.php?uc=medicaments&action=formulairemedoc';" value="Retour">
-                    </div>
+                       <input class="btn btn-info text-light valider" type="button" onclick="window.location.href='index.php?uc=medicaments&action=formulairemedoc';" value="Retour">
                 </div>
             </div>
         </div>

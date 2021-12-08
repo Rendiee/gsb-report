@@ -175,6 +175,7 @@ footer a.text-light:hover {
 .affich{
   margin : auto;
   padding: 35px 35px 45px;
+  padding-bottom: 20px;
   background-color: #fff;
   border:1px solid;
 }
