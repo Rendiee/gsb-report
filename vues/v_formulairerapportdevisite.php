@@ -38,13 +38,12 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                     <div class="row">
                     <form class="form-signin" action="index.php?uc=praticiens&action=afficherpraticien" method="post">
                             <label for="name">Liste des rapport de visite de la région <?php echo $_SESSION['region'];?> : </form>
-                            <select name="praticien" id="listepraticien">
+                            <select name="praticien" id="listechoix">
                                 <option class="form-control" value="default">- Choisissez un rapport -</option>
                                 <?php
-                                    //foreach($result as $key){
-                                    //    echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
-                                    //}
-                                
+                                    
+                                    
+
                                 ?>
                             </select>
                                 </br>

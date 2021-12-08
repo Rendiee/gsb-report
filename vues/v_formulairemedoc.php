@@ -50,7 +50,6 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 
                                 ?>
                             </select>
-                                </br>
                                 <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
                         </form>
                     </div>

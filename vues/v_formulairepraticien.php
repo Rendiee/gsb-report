@@ -38,9 +38,9 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                    <form class="form-signin" action="index.php?uc=praticiens&action=afficherpraticien" method="post">
+                    <form class="form-signin" action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="form-signin">
                             <label for="name">Liste des praticiens : </form>
-                            <select name="praticien" id="listepraticien">
+                            <select name="praticien" id="listechoix">
                                 <option class="form-control" value="default">- Choisissez un matricule -</option>
                                 <?php
                                 
@@ -50,7 +50,6 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 
                                 ?>
                             </select>
-                                </br>
                             <input class="btn btn-info text-light" type="submit" value="Afficher les informations">
                         </form>
                     </div>

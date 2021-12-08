@@ -9,7 +9,7 @@
                 Vos informations personnelles.
             </p>
             <a class="col">
-                <img class="img-fluid" src="assets/img/login.png">
+                <img class="img-fluid" src="assets/img/profil.png">
             </a>
         </div>
         <div class="col-lg-4 offset-lg-1 align-left affich">
@@ -20,13 +20,18 @@
                             $info[$i]='Non définie';
                         } 
                     }
-                    echo '<p><span class="carac">Matricule</span> : '.$info[0].'</p><br/><br/>
-                    <p><span class="carac">Nom</span> : '.$info[1].'</p><br/><br/><p><span class="carac">Prenom</span> : '.$info[2].'</p><br/><br/>
-                    <p><span class="carac">Rue</span> : '.$info[3].'</p><br/><br/><p><span class="carac">Code Postal</span> : '.$info[4].'</p><br/><br/>
-                    <p><span class="carac">Ville</span> : '.$info[5].'</p><br/><br/><p><span class="carac">Date d\'embauche</span> : '.$info[6].'</p><br/><br/>
-                    <p><span class="carac">Habilitation</span> : '.$info[7].'</p><br/><br/><p><span class="carac">Secteur</span> : '.$info[8].'</p><br/><br/>
-                    <p><span class="carac">Région</span> : '.$info[9];?></p>
-            </div>    
+                    ?>
+
+                    <p><span class="carac">Matricule</span> : <?php echo $info[0] ?></p>
+                    <p><span class="carac">Nom</span> : <?php echo $info[1] ?></p>
+                    <p><span class="carac">Prenom</span> : <?php echo $info[2] ?></p>
+                    <p><span class="carac">Rue</span> : <?php echo $info[3] ?></p>
+                    <p><span class="carac">Code Postal</span> : <?php echo $info[4] ?></p>
+                    <p><span class="carac">Ville</span> : <?php echo $info[5] ?></p>
+                    <p><span class="carac">Date d'embauche</span> : <?php echo $info[6] ?></p>
+                    <p><span class="carac">Habilitation</span> : <?php echo $info[7] ?></p>
+                    <p><span class="carac">Secteur</span> : <?php echo $info[8] ?></p>
+                    <p><span class="carac">Région</span> : <?php echo $info[9]?></p>
         </div>
         </div>
     </div>

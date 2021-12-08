@@ -10,9 +10,13 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left affich">
                     <div class="row">
-                         <?php echo '<p><span class="carac">Dépot légal</span> : '.$carac[0].'</p><br/><br/>
-                            <p><span class="carac">Nom commercial</span> : '.$carac[1].'</p><br/><br/><p><span class="carac">Composition</span> : '.$carac[2].'</p><br/><br/>
-                            <p><span class="carac">Effets</span> : '.$carac[3].'</p><br/><br/><p><span class="carac">Contre indication</span> : '.$carac[4] ; ?></p>
+
+                            <p><span class="carac">Dépot légal</span> : <?php echo $carac[0] ?></p>
+                            <p><span class="carac">Nom commercial</span> : <?php echo $carac[1] ?></p>
+                            <p><span class="carac">Composition</span> : <?php echo $carac[2] ?></p>
+                            <p><span class="carac">Effets</span> : <?php echo $carac[3] ?></p>
+                            <p><span class="carac">Contre indication</span> : <?php echo $carac[4] ?></p>
+                            
                     </div>
                     <div class="row">
                        <input class="btn btn-info text-light" type="button" onclick="window.location.href='index.php?uc=medicaments&action=formulairemedoc';" value="Retour">

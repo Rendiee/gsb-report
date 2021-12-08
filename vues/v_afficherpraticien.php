@@ -13,11 +13,17 @@
                          <?php 
                             if(empty($carac[6])){
                                 $carac[6]='Non définie';
-                            }                            
-                            echo '<p><span class="carac">Nom</span> : '.$carac[0].'</p><br/><br/>
-                            <p><span class="carac">Prénom</span> : '.$carac[1].'</p><br/><br/><p><span class="carac">Adresse</span> : '.$carac[2].'</p><br/><br/>
-                            <p><span class="carac">Code Postal</span> : '.$carac[3].'</p><br/><br/><p><span class="carac">Ville</span> : '.$carac[4].'</p><br/><br/>
-                            <p><span class="carac">Notoriété</span> : '.$carac[5].'</p><br/><br/><p><span class="carac">Confiance</span> : '.$carac[6] ; ?></p>
+                            }      
+                            ?>
+                                                  
+                            <p><span class="carac">Nom</span> : <?php echo $carac[0] ?></p>
+                            <p><span class="carac">Prénom</span> : <?php echo $carac[1] ?></p>
+                            <p><span class="carac">Adresse</span> : <?php echo $carac[2] ?></p>
+                            <p><span class="carac">Code Postal</span> : <?php echo $carac[3] ?></p>
+                            <p><span class="carac">Ville</span> : <?php echo $carac[4] ?></p>
+                            <p><span class="carac">Notoriété</span> : <?php echo $carac[5] ?></p>
+                            <p><span class="carac">Confiance</span> : <?php echo $carac[6] ?></p>
+
                     </div>
                     <div class="row">
                        <input class="btn btn-info text-light" type="button" onclick="window.location.href='index.php?uc=praticiens&action=formulairepraticien';" value="Retour">
