@@ -17,6 +17,10 @@ switch($cr)
 
 	case 'redigerrapport':
 	{
+			$result = getAllMatriculeCollaborateur();
+			$motif = getMotif();
+			$medoc = getAllNomMedicament();
+			$prat = getAllMatriculePraticien();
 		    include("vues/v_redigerrapport.php");
 		    break;
 	    }

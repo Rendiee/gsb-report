@@ -181,20 +181,18 @@ include_once 'bd.inc.php';
 		}
 
 	}
-	function insertInscription($username, $mdp, $matricule){
+
+	function getAllMatriculeCollaborateur(){
 
 		try 
 		{	
-			$hash=hash('sha512', $mdp);
-			$getInfo = connexionPDO();
-			$req = $getInfo -> prepare('insert into login VALUES (0,:identifiant,:mdp,:matricule)');
-			$req -> bindParam(':identifiant', $username,PDO::PARAM_STR);
-			$req -> bindParam(':mdp', $hash,PDO::PARAM_STR);
-			$req -> bindParam(':matricule', $matricule,PDO::PARAM_STR);
-			$req -> execute();
-			$res = $req -> fetch();
 
-			return $res;
+			$monPdo = connexionPDO();
+			$req = 'SELECT COL_MATRICULE FROM collaborateur ORDER BY COL_MATRICULE';
+			$res = $monPdo->query($req);
+			$result = $res->fetchAll();
+
+			return $result;
 		} 
 
 		catch (PDOException $e) 
@@ -202,7 +200,26 @@ include_once 'bd.inc.php';
        		print "Erreur !: " . $e->getMessage();
       	  	die();
 		}
+	}
 
+	function getMotif(){
+
+		try 
+		{	
+
+			$monPdo = connexionPDO();
+			$req = 'SELECT MOT_ID, MOT_LIBELLE FROM motif_principale';
+			$res = $monPdo->query($req);
+			$result = $res->fetchAll();
+
+			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
 	}
 
 ?>
