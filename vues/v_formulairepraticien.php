@@ -35,7 +35,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                    <form class="form-signin" action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="form-signin">
+                    <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="form-signin">
                             <label for="name">Liste des praticiens : </form>
                             <select name="praticien" id="listechoix">
                                 <option class="form-control" value="default">- Choisissez un praticien -</option>
