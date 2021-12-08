@@ -55,9 +55,7 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
-                        <a class="col" >
                             <img class="img-fluid" src="assets/img/logo_gsb.png">
-                        </a>
                     </div>
                     
                 </div>

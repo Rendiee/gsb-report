@@ -11,9 +11,6 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             <h1 class="feature-work-heading h2 py-3 semi-bold-600">Accès interdit !</h1>
                             <p class="feature-work-body text-muted light-300">Veuillez-vous connecter pour avoir accès à cette page.</p>
                             <p><a href="index.php?uc=connexion&action=connexion">Se connecter</a></p>
-                        <a class="col">
-                        <img class="img-fluid" src="">
-                        </a>
                     </div>
                 </div>
         </section>
@@ -32,9 +29,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                         Formulaire permettant d'afficher toutes les informations
                         à propos d'un médicament en particulier.
                     </p>
-                    <a class="col">
                         <img class="img-fluid" src="assets/img/medoc.jpeg">
-                    </a>
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
