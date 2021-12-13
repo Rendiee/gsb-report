@@ -34,7 +34,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
-                    <form class="form-signin" action="index.php?uc=rapportdevisite&action=choixoptionrapport" method="post">
+                    <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapport" method="post">
                             <label for="name">Option rapport de visite :</form>
                             <select name="rapport" id="listechoix">
 

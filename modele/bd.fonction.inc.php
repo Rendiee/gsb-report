@@ -222,4 +222,44 @@ include_once 'bd.inc.php';
 		}
 	}
 
+	function getNonValide(){
+
+		try 
+		{	
+
+			$monPdo = connexionPDO();
+			$req = 'SELECT COUNT(`RAP_SAISITDEFINITIVE`) FROM `rapport_visite` WHERE `RAP_SAISITDEFINITIVE`=0';
+			$res = $monPdo->query($req);
+			$result = $res->fetch();
+
+			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+	}
+
+	function getInformationNonValide(){
+
+		try 
+		{	
+
+			$monPdo = connexionPDO();
+			$req = 'SELECT * FROM `rapport_visite` WHERE `RAP_SAISITDEFINITIVE`=0';
+			$res = $monPdo->query($req);
+			$result = $res->fetchAll();
+
+			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+	}
+
 ?>

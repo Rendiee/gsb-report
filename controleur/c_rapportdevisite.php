@@ -1,29 +1,46 @@
 <?php
 if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
-	$action="redigerrapport";
+	$action="rapport";
 }else{
 	$action = $_REQUEST['action'];
 }
-
 if(isset($_REQUEST['rapport'])){
-	$cr = $_REQUEST['rapport'];
-}else{
-	$cr = '';
+	$action = $_REQUEST['rapport'];
 }
-
-
-switch($cr)
+switch($action)
 {
-
+	case 'rapport' :
+		{
+			include("vues/v_formulairerapportdevisite.php");
+			break;
+		}
 	case 'redigerrapport':
-	{
-			$result = getAllMatriculeCollaborateur();
-			$motif = getMotif();
-			$medoc = getAllNomMedicament();
-			$prat = getAllMatriculePraticien();
-		    include("vues/v_redigerrapport.php");
+	{		if(getNonValide()>0 && !isset($_REQUEST['nouveau'])){
+				$info = getInformationNonValide();
+				include("vues/v_formulairerapportnonvalide.php");
+			}else{
+				$result = getAllMatriculeCollaborateur();
+				$motif = getMotif();
+				$medoc = getAllNomMedicament();
+				$prat = getAllMatriculePraticien();
+				include("vues/v_redigerrapport.php");
+			}
 		    break;
 	    }
+	case 'rapportNonValide':
+	{		
+		if(isset($_REQUEST['nonValide'])){
+			$rap=$_REQUEST['nonValide'];
+			if ($rap!='default'){
+			include("vues/v_rapportnonvalide.php");
+			}else{
+				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
+			}
+		}else{
+			header("location: index.php?uc=rapportdevisite&action=redigerrapport");
+		}
+			break;
+		}
 	case 'rapportregion':
 	{
             include("vues/v_rapportregion.php");

@@ -54,7 +54,7 @@
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=praticiens&action=formulairepraticien"><img style="max-width:20px;margin-bottom:5px" src="assets/img/praticien.png">Praticiens</a>
                                 </li>
                                 <li class="nav-item ecart">
-                                  <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite&action=redigerrapport"><img style="max-width:18px;margin-bottom:5px;margin-right:2px" src="assets/img/rapport.png">Rapport de visite</a>
+                                  <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite&action=rapport"><img style="max-width:18px;margin-bottom:5px;margin-right:2px" src="assets/img/rapport.png">Rapport de visite</a>
                                 </li>
                                 <li class="nav-item ecart">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Profil</a>
