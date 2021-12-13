@@ -67,7 +67,7 @@ include_once 'bd.inc.php';
 		try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, PRA_COEFCONFIANCE FROM praticien WHERE PRA_NUM = '.$mat;
+			$req = 'SELECT PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, PRA_COEFCONFIANCE FROM praticien WHERE PRA_NUM = '.$mat;
 			$res = $monPdo->query($req);
 			$result = $res->fetch();
 
@@ -242,7 +242,7 @@ include_once 'bd.inc.php';
 		}
 	}
 
-	function getInformationNonValide(){
+	function getAllInformationNonValide(){
 
 		try 
 		{	
@@ -253,6 +253,46 @@ include_once 'bd.inc.php';
 			$result = $res->fetchAll();
 
 			return $result;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+	}
+
+	function getInformationNonValide($num){
+
+		try 
+		{	
+			$monPdo = connexionPDO();
+			$req = $monPdo -> prepare('SELECT * FROM `rapport_visite` WHERE `RAP_NUM`=:num');
+			$req -> bindParam(':num', $num, PDO::PARAM_INT);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+	}
+
+	function getNomMotif($num){
+
+		try 
+		{	
+			$monPdo = connexionPDO();
+			$req = $monPdo -> prepare('SELECT `MOT_ID`,`MOT_LIBELLE` FROM `motif_principale` where MOT_ID = :num');
+			$req -> bindParam(':num', $num, PDO::PARAM_INT);
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
 		} 
 
 		catch (PDOException $e) 

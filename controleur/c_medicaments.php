@@ -32,7 +32,7 @@ switch($action)
 	}
 	default :
 	{
-		header("location: index.php?uc=medicaments&action=formulairemedoc");
+		include("vues/v_formulairemedoc.php");
         break;
 	}
 }

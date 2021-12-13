@@ -15,8 +15,9 @@ switch($action)
 			break;
 		}
 	case 'redigerrapport':
-	{		if(getNonValide()>0 && !isset($_REQUEST['nouveau'])){
-				$info = getInformationNonValide();
+	{		
+		if(getNonValide()>0 && !isset($_REQUEST['nouveau'])){
+				$info = getAllInformationNonValide();				
 				include("vues/v_formulairerapportnonvalide.php");
 			}else{
 				$result = getAllMatriculeCollaborateur();
@@ -32,7 +33,14 @@ switch($action)
 		if(isset($_REQUEST['nonValide'])){
 			$rap=$_REQUEST['nonValide'];
 			if ($rap!='default'){
-			include("vues/v_rapportnonvalide.php");
+				$nonValide = getInformationNonValide($rap);
+				$nomPraticien = getAllInformationPraticien($nonValide[10]);
+				$nomMotif = getNomMotif($nonValide[11]);
+				$result = getAllMatriculeCollaborateur();
+				$motif = getMotif();
+				$medoc = getAllNomMedicament();
+				$prat = getAllMatriculePraticien();
+				include("vues/v_rapportnonvalide.php");
 			}else{
 				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 			}
