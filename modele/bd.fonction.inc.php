@@ -302,4 +302,66 @@ include_once 'bd.inc.php';
 		}
 	}
 
+	function getMaxIdRapportVisite(){
+		
+		try 
+		{	
+			$monPdo = connexionPDO();
+			$req = $monPdo -> prepare('SELECT RAP_NUM as \'max_id\' FROM rapport_visite');
+			$req -> execute();
+			$res = $req -> fetch();
+
+			return $res;
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
+
+	function insertRapportVisite($colMatricule, $dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $qteOffert, $med1, $med2, $praNum, $motifId, $praNumRemplacant){
+
+		try 
+		{	
+			$getId = getMaxIdRapportVisite();
+			$num = 0;
+			if($getId == null){
+				$num = 1;
+			}else{
+				$num = $getId['max_id'] + 1;
+			}
+
+
+			$monPdo = connexionPDO();
+			$req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :qteOff, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
+			$req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
+			$req -> bindParam(':rapNum', $num, PDO::PARAM_INT);
+			$req -> bindParam(':rapDateVisite', $dateVisite, PDO::PARAM_STR);
+			$req -> bindParam(':rapBilan', $bilan, PDO::PARAM_STR);
+			$req -> bindParam(':rapDateSaisit', $dateSaisit, PDO::PARAM_STR);
+			$req -> bindParam(':rapSaisitDefinitive', $saisitDef, PDO::PARAM_BOOL);
+			$req -> bindParam(':rapMotifAutre', $motifAutre, PDO::PARAM_STR);
+			$req -> bindParam(':qteOff', $qteOffert, PDO::PARAM_INT);
+			$req -> bindParam(':medoc1', $med1, PDO::PARAM_STR);
+			$req -> bindParam(':medoc2', $med2, PDO::PARAM_STR);
+			$req -> bindParam(':praNum', $praNum, PDO::PARAM_INT);
+			$req -> bindParam(':motId', $motifId, PDO::PARAM_INT);
+			$req -> bindParam(':praNumRemplacant', $praNumRemplacant, PDO::PARAM_INT);
+
+			$req->execute();
+			//$req->debugDumpParams();
+
+		} 
+
+		catch (PDOException $e) 
+		{
+       		print "Erreur !: " . $e->getMessage();
+      	  	die();
+		}
+
+	}
+
 ?>

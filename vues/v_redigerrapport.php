@@ -36,10 +36,27 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
 
                             <label for="nbrapport">Numéro du rapport :</label>
-                            <input type="text" name="nbrapport" id="nbrapport"><br/>
+                            <?php
+                            
+                                $getId = getMaxIdRapportVisite();
+
+                                if($getId == null){
+
+                                    $num = 1;
+
+                                }else{
+
+                                    $num = $getId['max_id'] + 1;
+
+                                }
+
+                                echo '<input type="text" name="nbrapport" id="nbrapport" value="'.$num.'" disabled><br/>
+                                ';
+
+                            ?>
 
                             <label for="matricule">Matricule du collaborateur :</label>
-                            <select name="medicament" id="listemotif">
+                            <select name="matricule" id="listemotif">
                                 <option class="form-control" value="default" >- Choisissez un matricule -</option>
                                 <?php
 
@@ -51,7 +68,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             </select><br/>
 
                             <label for="praticien">Praticien concerné :</label>
-                            <select name="medicament" id="listemotif">
+                            <select name="praticien" id="listemotif">
                                 <option class="form-control" value="default" >- Choisissez un praticien -</option>
                                 <?php
 
@@ -84,7 +101,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             </select><br/>
 
                             <label for="medicamentproposer">Médicament proposé :</label>
-                            <select name="motif" id="listemotif">
+                            <select name="medicamentproposer" id="listemotif">
                                 <option class="form-control" value="default" >- Choisissez le médicament présenté -</option>
                                 <?php
 
@@ -94,7 +111,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 
                                 ?>
                             </select><br/>
-                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
                             <div>
                             <label for="echantillon">Échantillon distribué :</label>
                             <input type="checkbox" name="echantillon" id="echantillonS">
@@ -104,10 +121,10 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             <input type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br/>
                                 </div>  
                                 </div>
-                            <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport">
+                            <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport" name="valider" id="valider">
+
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </div>

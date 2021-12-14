@@ -16,6 +16,32 @@ switch($action)
 		}
 	case 'redigerrapport':
 	{		
+
+		if(isset($_POST['valider'])){
+
+			if(isset($_POST['saisitdefinitive'])){
+				$def = 1;
+			}else{
+				$def = 0;
+			}
+
+			insertRapportVisite($_POST['matricule'],
+			$_POST['datevisite'],
+			$_POST['bilanrapport'],
+			$_POST['datesaisit'],
+			$def,
+			null,
+			5,
+			$_POST['medicamentproposer'],
+			null,
+			$_POST['praticien'],
+			$_POST['motif'],
+			null);
+
+			echo '<p class="alert alert-success">Rapport saisit avec succès !</p>';
+
+		}
+
 		if(getNonValide()>0 && !isset($_REQUEST['nouveau'])){
 				$info = getAllInformationNonValide();				
 				include("vues/v_formulairerapportnonvalide.php");
