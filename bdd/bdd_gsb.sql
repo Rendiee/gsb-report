@@ -219,7 +219,7 @@ CREATE TABLE visiteur(
 CREATE TABLE rapport_visite(
         VIS_MATRICULE Varchar (10) NOT NULL ,
         RAP_NUM       Int NOT NULL ,
-        RAP_DATE      Datetime ,
+        RAP_DATE      Date ,
         RAP_BILAN     Varchar (255) ,
         RAP_MOTIF     Varchar (255) ,
         PRA_NUM       Int NOT NULL
