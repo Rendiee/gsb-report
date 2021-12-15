@@ -336,7 +336,7 @@ include_once 'bd.inc.php';
 
 
 			$monPdo = connexionPDO();
-			$req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :qteOff, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
+			$req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
 			$req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
 			$req -> bindParam(':rapNum', $num, PDO::PARAM_INT);
 			$req -> bindParam(':rapDateVisite', $dateVisite, PDO::PARAM_STR);
@@ -344,7 +344,6 @@ include_once 'bd.inc.php';
 			$req -> bindParam(':rapDateSaisit', $dateSaisit, PDO::PARAM_STR);
 			$req -> bindParam(':rapSaisitDefinitive', $saisitDef, PDO::PARAM_BOOL);
 			$req -> bindParam(':rapMotifAutre', $motifAutre, PDO::PARAM_STR);
-			$req -> bindParam(':qteOff', $qteOffert, PDO::PARAM_INT);
 			$req -> bindParam(':medoc1', $med1, PDO::PARAM_STR);
 			$req -> bindParam(':medoc2', $med2, PDO::PARAM_STR);
 			$req -> bindParam(':praNum', $praNum, PDO::PARAM_INT);
