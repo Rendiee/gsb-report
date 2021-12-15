@@ -1,7 +1,5 @@
 <?php
 
-require ('modele/connexion.modele.inc.php');
-
 if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 	$action="connexion";
 }else{

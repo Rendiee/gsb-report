@@ -1,7 +1,5 @@
 <?php
 
-require ('modele/medicament.modele.inc.php');
-
 if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 	$action="formulairemedoc";
 }else{
