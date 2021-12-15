@@ -26,7 +26,7 @@ include_once 'bd.inc.php';
 		try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, PRA_COEFCONFIANCE FROM praticien WHERE PRA_NUM = '.$mat;
+			$req = 'SELECT p.PRA_NUM AS \'num\', p.PRA_NOM AS \'nom\', p.PRA_PRENOM AS \'prenom\', p.PRA_ADRESSE AS \'adresse\', p.PRA_CP AS \'cp\', p.PRA_VILLE AS \'ville\', p.PRA_COEFNOTORIETE AS \'coefnoto\', p.PRA_COEFCONFIANCE AS \'coefconf\', tp.TYP_LIBELLE AS \'typeprat\' FROM praticien p INNER JOIN type_praticien tp ON tp.TYP_CODE = p.TYP_CODE WHERE p.PRA_NUM = '.$mat;
 			$res = $monPdo->query($req);
 			$result = $res->fetch();
 
