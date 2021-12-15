@@ -81,20 +81,21 @@
                                 ?>
                             </select><br/>
                             <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                            <label for="echantillon">Échantillon distribué :</label>
-                            <input type="checkbox" name="echantillon" id="echantillonS">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="echantillon">
+                                    <label for="echantillon" class="form-check-label">Échantillon distribué</label>                            
                                 </div>
-                                <div>
-                            <label for="saisitdefinitive">Saisie définitive :</label>
-                            <input type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br/>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="saisitdefinitive" id="saisitdefinitive">
+                                    <label for="saisitdefinitive" class="form-check-label">Saisie définitive</label><br/>                            
                                 </div>  
-                                </div>
+                            </div>
                             <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport" name="valider" id="valider">
-
+                        
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</div>
