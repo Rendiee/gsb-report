@@ -40,8 +40,8 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 
                                 <option class="form-control" value="default">- Choisissez une option -</option>
                                 <option class="form-control" value="redigerrapport">1 - Rédiger un rapport de visite</option>
-                                <option class="form-control" value="rapportregion">2 - Voir les rapports de région</option>
-                                <option class="form-control" value="rapportsecteur">3 - Voir les rapports de secteur</option>
+                                <option class="form-control" value="mesrapports">2 - Mes rapports de visite</option>
+                                <option class="form-control" value="rapportregion">3 - Rapports de visite de ma région</option>
 
                             </select>
                                 </br>

@@ -1,4 +1,9 @@
 <?php
+
+require ('modele/medicament.modele.inc.php');
+require ('modele/praticien.modele.inc.php');
+require ('modele/rapportvisite.modele.inc.php');
+
 if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 	$action="rapport";
 }else{
@@ -24,9 +29,7 @@ switch($action)
 			}else{
 				$def = 0;
 			}
-
-			insertRapportVisite($_POST['matricule'],
-			$_POST['datevisite'],
+			insertRapportVisite($_POST['datevisite'],
 			$_POST['bilanrapport'],
 			$_POST['datesaisit'],
 			$def,
@@ -41,8 +44,8 @@ switch($action)
 
 		}
 
-		if(getNonValide()>0 && !isset($_REQUEST['nouveau'])){
-				$info = getAllInformationNonValide();				
+		if(!empty(getAllInformationNonValide($_SESSION['matricule'])) && !isset($_REQUEST['nouveau'])){
+				$info = getAllInformationNonValide($_SESSION['matricule']);
 				include("vues/v_formulairerapportnonvalide.php");
 			}else{
 				$result = getAllMatriculeCollaborateur();
@@ -79,9 +82,9 @@ switch($action)
             include("vues/v_rapportregion.php");
 		    break;
 	    }
-	case 'rapportsecteur':
+	case 'mesrapports':
 		{
-			include("vues/v_rapportsecteur.php");
+			include("vues/v_mesrapports.php");
 			break;
 	}
 	default :

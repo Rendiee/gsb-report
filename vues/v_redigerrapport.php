@@ -56,16 +56,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             ?>
 
                             <label for="matricule">Matricule du collaborateur :</label>
-                            <select name="matricule" id="listemotif">
-                                <option class="form-control" value="default" >- Choisissez un matricule -</option>
-                                <?php
-
-                                    foreach($result as $key){
-                                        echo '<option class="form-control" value="'.$key['COL_MATRICULE'].'">'.$key['COL_MATRICULE'].'</option>';
-                                    }
-                                
-                                ?>
-                            </select><br/>
+                            <input type="text" disabled name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>"><br/>
 
                             <label for="praticien">Praticien concerné :</label>
                             <select name="praticien" id="listemotif">
