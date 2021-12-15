@@ -15,7 +15,6 @@ else{
     <div id="contenu">
 <?php
 include("vues/v_header.php");
-
 switch($uc)
 {
 	case 'accueil':
@@ -24,18 +23,30 @@ switch($uc)
             break;
         }
 	case 'medicaments' :
-		{
-            include("controleur/c_medicaments.php");
+		{   
+            if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
+                include("controleur/c_medicaments.php");
+            }else{
+                include("vues/v_interdit.php");
+            }
             break;
         }
 	case 'praticiens' :
-		{
-            include("controleur/c_praticiens.php");
+		{   
+            if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
+                include("controleur/c_praticiens.php");
+            }else{
+                include("vues/v_interdit.php");
+            }
             break;
         }
 	case 'rapportdevisite' :
-	  {
+	  { 
+        if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
           include("controleur/c_rapportdevisite.php");
+        }else{
+            include("vues/v_interdit.php");
+        }
           break; 
       }
   case 'connexion' :
@@ -49,6 +60,7 @@ switch($uc)
         break;
       }
 }
+
 
 ?>
 </div>
