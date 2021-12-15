@@ -15,7 +15,7 @@ if(isset($_POST['connexion'])){
         $arr = checkConnexion($_POST['username'], $_POST['password']);
         
         if(empty($arr)){
-            $userEmpty="Informations incorrecte !";
+            $userEmpty="Informations incorrectes !";
             
             
         }else{
