@@ -58,7 +58,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 
                             <label for="medicamentproposer">Médicament proposé :</label>
                             <select name="motif" id="listemotif">
-                                <option class="form-control" value="<?php echo $nonValide[8];?>" ><?php echo $nonValide[8];?></option>
+                                <option class="form-control" value="<?php echo $nonValide[7];?>" ><?php echo $nonValide[7];?></option>
                                 <?php
 
                                     foreach($medoc as $key){
