@@ -64,7 +64,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 <?php
 
                                     foreach($prat as $key){
-                                        echo '<option class="form-control" value="'.$key['num'].'">'.$key['num'].' - '.$key['nom'].' '.$key['prenom'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
                                     }
                                 
                                 ?>
