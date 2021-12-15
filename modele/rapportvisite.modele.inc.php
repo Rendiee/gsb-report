@@ -121,7 +121,7 @@ function getMaxIdRapportVisite(){
 
 }
 
-function insertRapportVisite($colMatricule, $dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $med1, $med2, $praNum, $motifId, $praNumRemplacant){
+function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $med1, $med2, $praNum, $motifId, $praNumRemplacant){
 
     try 
     {	
@@ -133,6 +133,7 @@ function insertRapportVisite($colMatricule, $dateVisite, $bilan, $dateSaisit, $s
             $num = $getId['max_id'] + 1;
         }
 
+        $colMatricule = $_SESSION['matricule'];
 
         $monPdo = connexionPDO();
         $req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
