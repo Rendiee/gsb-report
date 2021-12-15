@@ -14,7 +14,7 @@
                             <p><span class="carac">Composition</span> : <?php echo $carac[2] ?></p>
                             <p><span class="carac">Effets</span> : <?php echo $carac[3] ?></p>
                             <p><span class="carac">Contre indication</span> : <?php echo $carac[4] ?></p>
-                            <p><span class="carac">Prix de l'échantillon</span> : <?php echo $carac[5] ?></p>
+                            <p><span class="carac">Prix de l'échantillon</span> : <?php echo $carac[5].'€' ?></p>
                             <p><span class="carac">Famille</span> : <?php echo $carac[6] ?></p>
                             
                     </div>
