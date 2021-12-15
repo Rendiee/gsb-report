@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mar. 14 déc. 2021 à 13:35
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Généré le :  mer. 15 déc. 2021 à 07:24
+-- Version du serveur :  8.0.18
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -117,7 +117,7 @@ INSERT INTO `collaborateur` (`COL_MATRICULE`, `COL_NOM`, `COL_PRENOM`, `COL_ADRE
 ('n42', 'Letessier', 'Stéphane', '5 chem Capuche', '27000', 'EVREUX', '1996-03-06 00:00:00', NULL, NULL, NULL, 'HN'),
 ('n58', 'Loirat', 'Didier', 'Les Pêchers cité Bourg la Croix', '45000', 'ORLEANS', '1992-08-30 00:00:00', NULL, NULL, NULL, 'CE'),
 ('n59', 'Maffezzoli', 'Thibaud', '5 r Chateaubriand', '2000', 'LAON', '1994-12-19 00:00:00', NULL, NULL, NULL, 'PI'),
-('o26', 'Mancini', 'Anne', '5 r D\'Agier', '48000', 'MENDE', '1995-01-05 00:00:00', NULL, NULL, NULL, 'LG'),
+('o26', 'Mancini', 'Anne', '5 r D''Agier', '48000', 'MENDE', '1995-01-05 00:00:00', NULL, NULL, NULL, 'LG'),
 ('p32', 'Marcouiller', 'Gérard', '7 pl St Gilles', '91000', 'ISSY LES MOULINEAUX', '1992-12-24 00:00:00', NULL, NULL, NULL, 'IF'),
 ('p40', 'Michel', 'Jean-Claude', '5 r Gabriel Péri', '61000', 'FLERS', '1992-12-14 00:00:00', NULL, NULL, NULL, 'BN'),
 ('p41', 'Montecot', 'Françoise', '6 r Paul Valéry', '17000', 'SAINTES', '1998-07-27 00:00:00', NULL, NULL, NULL, 'PC'),
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `famille` (
 INSERT INTO `famille` (`FAM_CODE`, `FAM_LIBELLE`) VALUES
 ('AA', 'Antalgiques en association'),
 ('AAA', 'Antalgiques antipyrétiques en association'),
-('AAC', 'Antidépresseur d\'action centrale'),
+('AAC', 'Antidépresseur d''action centrale'),
 ('AAH', 'Antivertigineux antihistaminique H1'),
 ('ABA', 'Antibiotique antituberculeux'),
 ('ABC', 'Antibiotique antiacnéique local'),
@@ -324,7 +324,7 @@ DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
   `LOG_ID` int(11) NOT NULL,
   `LOG_LOGIN` varchar(50) COLLATE utf8_bin NOT NULL,
-  `LOG_MOTDEPASSE` varchar(255) COLLATE utf8_bin NOT NULL,
+  `LOG_MOTDEPASSE` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `COL_MATRICULE` varchar(10) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`LOG_ID`),
   UNIQUE KEY `login_collaborateur0_AK` (`COL_MATRICULE`)
@@ -336,18 +336,6 @@ CREATE TABLE IF NOT EXISTS `login` (
 
 INSERT INTO `login` (`LOG_ID`, `LOG_LOGIN`, `LOG_MOTDEPASSE`, `COL_MATRICULE`) VALUES
 (1, 'villou', '6cf17e0501b8078722f316f094e230341b4f1b2d4d14cc082c41494d6b462024f031beff6fc25145ed02a58181fc90a7fca58f0d879b349638df19dca85efa7f', 'a131');
-
---
--- Déclencheurs `login`
---
-DROP TRIGGER IF EXISTS `inscrire`;
-DELIMITER $$
-CREATE TRIGGER `inscrire` BEFORE INSERT ON `login` FOR EACH ROW BEGIN
-set @id=(SELECT COUNT(`LOG_ID`) from login)+1;
-set new.`LOG_ID`=@id;
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -373,34 +361,34 @@ CREATE TABLE IF NOT EXISTS `medicament` (
 --
 
 INSERT INTO `medicament` (`MED_DEPOTLEGAL`, `MED_NOMCOMMERCIAL`, `MED_COMPOSITION`, `MED_EFFETS`, `MED_CONTREINDIC`, `MED_PRIXECHANTILLON`, `FAM_CODE`) VALUES
-('3MYC7', 'TRIMYCINE', 'Triamcinolone (acétonide) + Néomycine + Nystatine', 'Ce médicament est un corticoïde à  activité forte ou très forte associé à  un antibiotique et un antifongique, utilisé en application locale dans certaines atteintes cutanées surinfectées.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'infections de la peau ou de parasitisme non traités, d\'acné. Ne pas appliquer sur une plaie, ni sous un pansement occlusif.', NULL, 'CRT'),
-('ADIMOL9', 'ADIMOL', 'Amoxicilline + Acide clavulanique', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines ou aux céphalosporines.', NULL, 'ABP'),
-('AMOPIL7', 'AMOPIL', 'Amoxicilline', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', NULL, 'ABP'),
+('3MYC7', 'TRIMYCINE', 'Triamcinolone (acétonide) + Néomycine + Nystatine', 'Ce médicament est un corticoïde à  activité forte ou très forte associé à  un antibiotique et un antifongique, utilisé en application locale dans certaines atteintes cutanées surinfectées.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants, d''infections de la peau ou de parasitisme non traités, d''acné. Ne pas appliquer sur une plaie, ni sous un pansement occlusif.', NULL, 'CRT'),
+('ADIMOL9', 'ADIMOL', 'Amoxicilline + Acide clavulanique', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie aux pénicillines ou aux céphalosporines.', NULL, 'ABP'),
+('AMOPIL7', 'AMOPIL', 'Amoxicilline', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie aux pénicillines. Il doit être administré avec prudence en cas d''allergie aux céphalosporines.', NULL, 'ABP'),
 ('AMOX45', 'AMOXAR', 'Amoxicilline', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'La prise de ce médicament peut rendre positifs les tests de dépistage du dopage.', NULL, 'ABP'),
-('AMOXIG12', 'AMOXI Gé', 'Amoxicilline', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', NULL, 'ABP'),
-('APATOUX22', 'APATOUX Vitamine C', 'Tyrothricine + Tétracaïne + Acide ascorbique (Vitamine C)', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, en cas de phénylcétonurie et chez l\'enfant de moins de 6 ans.', NULL, 'ALO'),
-('BACTIG10', 'BACTIGEL', 'Erythromycine', 'Ce médicament est utilisé en application locale pour traiter l\'acné et les infections cutanées bactériennes associées.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques de la famille des macrolides ou des lincosanides.', NULL, 'ABC'),
-('BACTIV13', 'BACTIVIL', 'Erythromycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', NULL, 'AFM'),
-('BITALV', 'BIVALIC', 'Dextropropoxyphène + Paracétamol', 'Ce médicament est utilisé pour traiter les douleurs d\'intensité modérée ou intense.', 'Ce médicament est contre-indiqué en cas d\'allergie aux médicaments de cette famille, d\'insuffisance hépatique ou d\'insuffisance rénale.', NULL, 'AAA'),
-('CARTION6', 'CARTION', 'Acide acétylsalicylique (aspirine) + Acide ascorbique (Vitamine C) + Paracétamol', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas de troubles de la coagulation (tendances aux hémorragies), d\'ulcère gastroduodénal, maladies graves du foie.', NULL, 'AAA'),
-('CLAZER6', 'CLAZER', 'Clarithromycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques. Il est également utilisé dans le traitement de l\'ulcère gastro-duodénal, en association avec d\'autres médicaments.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', NULL, 'AFM'),
-('DEPRIL9', 'DEPRAMIL', 'Clomipramine', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères, certaines douleurs rebelles, les troubles obsessionnels compulsifs et certaines énurésies chez l\'enfant.', 'Ce médicament est contre-indiqué en cas de glaucome ou d\'adénome de la prostate, d\'infarctus récent, ou si vous avez reà§u un traitement par IMAO durant les 2 semaines précédentes ou en cas d\'allergie aux antidépresseurs imipraminiques.', NULL, 'AIM'),
-('DIMIRTAM6', 'DIMIRTAM', 'Mirtazapine', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères.', 'La prise de ce produit est contre-indiquée en cas de d\'allergie à  l\'un des constituants.', NULL, 'AAC'),
-('DOLRIL7', 'DOLORIL', 'Acide acétylsalicylique (aspirine) + Acide ascorbique (Vitamine C) + Paracétamol', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas d\'allergie au paracétamol ou aux salicylates.', NULL, 'AAA'),
-('DORNOM8', 'NORMADOR', 'Doxylamine', 'Ce médicament est utilisé pour traiter l\'insomnie chez l\'adulte.', 'Ce médicament est contre-indiqué en cas de glaucome, de certains troubles urinaires (rétention urinaire) et chez l\'enfant de moins de 15 ans.', NULL, 'HYP'),
-('EQUILARX6', 'EQUILAR', 'Méclozine', 'Ce médicament est utilisé pour traiter les vertiges et pour prévenir le mal des transports.', 'Ce médicament ne doit pas être utilisé en cas d\'allergie au produit, en cas de glaucome ou de rétention urinaire.', NULL, 'AAH'),
-('EVILR7', 'EVEILLOR', 'Adrafinil', 'Ce médicament est utilisé pour traiter les troubles de la vigilance et certains symptomes neurologiques chez le sujet agé.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', NULL, 'PSA'),
-('INSXT5', 'INSECTIL', 'Diphénydramine', 'Ce médicament est utilisé en application locale sur les piqûres d\'insecte et l\'urticaire.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antihistaminiques.', NULL, 'AH'),
-('JOVAI8', 'JOVENIL', 'Josamycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', NULL, 'AFM'),
-('LIDOXY23', 'LIDOXYTRACINE', 'Oxytétracycline +Lidocaïne', 'Ce médicament est utilisé en injection intramusculaire pour traiter certaines infections spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants. Il ne doit pas être associé aux rétinoïdes.', NULL, 'AFC'),
-('LITHOR12', 'LITHORINE', 'Lithium', 'Ce médicament est indiqué dans la prévention des psychoses maniaco-dépressives ou pour traiter les états maniaques.', 'Ce médicament ne doit pas être utilisé si vous êtes allergique au lithium. Avant de prendre ce traitement, signalez à  votre médecin traitant si vous souffrez d\'insuffisance rénale, ou si vous avez un régime sans sel.', NULL, 'AP'),
-('PARMOL16', 'PARMOCODEINE', 'Codéine + Paracétamol', 'Ce médicament est utilisé pour le traitement des douleurs lorsque des antalgiques simples ne sont pas assez efficaces.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, chez l\'enfant de moins de 15 Kg, en cas d\'insuffisance hépatique ou respiratoire, d\'asthme, de phénylcétonurie et chez la femme qui allaite.', NULL, 'AA'),
-('PHYSOI8', 'PHYSICOR', 'Sulbutiamine', 'Ce médicament est utilisé pour traiter les baisses d\'activité physique ou psychique, souvent dans un contexte de dépression.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', NULL, 'PSA'),
-('PIRIZ8', 'PIRIZAN', 'Pyrazinamide', 'Ce médicament est utilisé, en association à  d\'autres antibiotiques, pour traiter la tuberculose.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'insuffisance rénale ou hépatique, d\'hyperuricémie ou de porphyrie.', NULL, 'ABA'),
-('POMDI20', 'POMADINE', 'Bacitracine', 'Ce médicament est utilisé pour traiter les infections oculaires de la surface de l\'oeil.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques appliqués localement.', NULL, 'AO'),
-('TROXT21', 'TROXADET', 'Paroxétine', 'Ce médicament est utilisé pour traiter la dépression et les troubles obsessionnels compulsifs. Il peut également être utilisé en prévention des crises de panique avec ou sans agoraphobie.', 'Ce médicament est contre-indiqué en cas d\'allergie au produit.', NULL, 'AIN'),
-('TXISOL22', 'TOUXISOL Vitamine C', 'Tyrothricine + Acide ascorbique (Vitamine C)', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants et chez l\'enfant de moins de 6 ans.', NULL, 'ALO'),
-('URIEG6', 'URIREGUL', 'Fosfomycine trométamol', 'Ce médicament est utilisé pour traiter les infections urinaires simples chez la femme de moins de 65 ans.', 'La prise de ce médicament est contre-indiquée en cas d\'allergie à  l\'un des constituants et d\'insuffisance rénale.', NULL, 'AUM');
+('AMOXIG12', 'AMOXI Gé', 'Amoxicilline', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie aux pénicillines. Il doit être administré avec prudence en cas d''allergie aux céphalosporines.', NULL, 'ABP'),
+('APATOUX22', 'APATOUX Vitamine C', 'Tyrothricine + Tétracaïne + Acide ascorbique (Vitamine C)', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants, en cas de phénylcétonurie et chez l''enfant de moins de 6 ans.', NULL, 'ALO'),
+('BACTIG10', 'BACTIGEL', 'Erythromycine', 'Ce médicament est utilisé en application locale pour traiter l''acné et les infections cutanées bactériennes associées.', 'Ce médicament est contre-indiqué en cas d''allergie aux antibiotiques de la famille des macrolides ou des lincosanides.', NULL, 'ABC'),
+('BACTIV13', 'BACTIVIL', 'Erythromycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie aux macrolides (dont le chef de file est l''érythromycine).', NULL, 'AFM'),
+('BITALV', 'BIVALIC', 'Dextropropoxyphène + Paracétamol', 'Ce médicament est utilisé pour traiter les douleurs d''intensité modérée ou intense.', 'Ce médicament est contre-indiqué en cas d''allergie aux médicaments de cette famille, d''insuffisance hépatique ou d''insuffisance rénale.', NULL, 'AAA'),
+('CARTION6', 'CARTION', 'Acide acétylsalicylique (aspirine) + Acide ascorbique (Vitamine C) + Paracétamol', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas de troubles de la coagulation (tendances aux hémorragies), d''ulcère gastroduodénal, maladies graves du foie.', NULL, 'AAA'),
+('CLAZER6', 'CLAZER', 'Clarithromycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques. Il est également utilisé dans le traitement de l''ulcère gastro-duodénal, en association avec d''autres médicaments.', 'Ce médicament est contre-indiqué en cas d''allergie aux macrolides (dont le chef de file est l''érythromycine).', NULL, 'AFM'),
+('DEPRIL9', 'DEPRAMIL', 'Clomipramine', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères, certaines douleurs rebelles, les troubles obsessionnels compulsifs et certaines énurésies chez l''enfant.', 'Ce médicament est contre-indiqué en cas de glaucome ou d''adénome de la prostate, d''infarctus récent, ou si vous avez reà§u un traitement par IMAO durant les 2 semaines précédentes ou en cas d''allergie aux antidépresseurs imipraminiques.', NULL, 'AIM'),
+('DIMIRTAM6', 'DIMIRTAM', 'Mirtazapine', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères.', 'La prise de ce produit est contre-indiquée en cas de d''allergie à  l''un des constituants.', NULL, 'AAC'),
+('DOLRIL7', 'DOLORIL', 'Acide acétylsalicylique (aspirine) + Acide ascorbique (Vitamine C) + Paracétamol', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas d''allergie au paracétamol ou aux salicylates.', NULL, 'AAA'),
+('DORNOM8', 'NORMADOR', 'Doxylamine', 'Ce médicament est utilisé pour traiter l''insomnie chez l''adulte.', 'Ce médicament est contre-indiqué en cas de glaucome, de certains troubles urinaires (rétention urinaire) et chez l''enfant de moins de 15 ans.', NULL, 'HYP'),
+('EQUILARX6', 'EQUILAR', 'Méclozine', 'Ce médicament est utilisé pour traiter les vertiges et pour prévenir le mal des transports.', 'Ce médicament ne doit pas être utilisé en cas d''allergie au produit, en cas de glaucome ou de rétention urinaire.', NULL, 'AAH'),
+('EVILR7', 'EVEILLOR', 'Adrafinil', 'Ce médicament est utilisé pour traiter les troubles de la vigilance et certains symptomes neurologiques chez le sujet agé.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants.', NULL, 'PSA'),
+('INSXT5', 'INSECTIL', 'Diphénydramine', 'Ce médicament est utilisé en application locale sur les piqûres d''insecte et l''urticaire.', 'Ce médicament est contre-indiqué en cas d''allergie aux antihistaminiques.', NULL, 'AH'),
+('JOVAI8', 'JOVENIL', 'Josamycine', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie aux macrolides (dont le chef de file est l''érythromycine).', NULL, 'AFM'),
+('LIDOXY23', 'LIDOXYTRACINE', 'Oxytétracycline +Lidocaïne', 'Ce médicament est utilisé en injection intramusculaire pour traiter certaines infections spécifiques.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants. Il ne doit pas être associé aux rétinoïdes.', NULL, 'AFC'),
+('LITHOR12', 'LITHORINE', 'Lithium', 'Ce médicament est indiqué dans la prévention des psychoses maniaco-dépressives ou pour traiter les états maniaques.', 'Ce médicament ne doit pas être utilisé si vous êtes allergique au lithium. Avant de prendre ce traitement, signalez à  votre médecin traitant si vous souffrez d''insuffisance rénale, ou si vous avez un régime sans sel.', NULL, 'AP'),
+('PARMOL16', 'PARMOCODEINE', 'Codéine + Paracétamol', 'Ce médicament est utilisé pour le traitement des douleurs lorsque des antalgiques simples ne sont pas assez efficaces.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants, chez l''enfant de moins de 15 Kg, en cas d''insuffisance hépatique ou respiratoire, d''asthme, de phénylcétonurie et chez la femme qui allaite.', NULL, 'AA'),
+('PHYSOI8', 'PHYSICOR', 'Sulbutiamine', 'Ce médicament est utilisé pour traiter les baisses d''activité physique ou psychique, souvent dans un contexte de dépression.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants.', NULL, 'PSA'),
+('PIRIZ8', 'PIRIZAN', 'Pyrazinamide', 'Ce médicament est utilisé, en association à  d''autres antibiotiques, pour traiter la tuberculose.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants, d''insuffisance rénale ou hépatique, d''hyperuricémie ou de porphyrie.', NULL, 'ABA'),
+('POMDI20', 'POMADINE', 'Bacitracine', 'Ce médicament est utilisé pour traiter les infections oculaires de la surface de l''oeil.', 'Ce médicament est contre-indiqué en cas d''allergie aux antibiotiques appliqués localement.', NULL, 'AO'),
+('TROXT21', 'TROXADET', 'Paroxétine', 'Ce médicament est utilisé pour traiter la dépression et les troubles obsessionnels compulsifs. Il peut également être utilisé en prévention des crises de panique avec ou sans agoraphobie.', 'Ce médicament est contre-indiqué en cas d''allergie au produit.', NULL, 'AIN'),
+('TXISOL22', 'TOUXISOL Vitamine C', 'Tyrothricine + Acide ascorbique (Vitamine C)', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d''allergie à  l''un des constituants et chez l''enfant de moins de 6 ans.', NULL, 'ALO'),
+('URIEG6', 'URIREGUL', 'Fosfomycine trométamol', 'Ce médicament est utilisé pour traiter les infections urinaires simples chez la femme de moins de 65 ans.', 'La prise de ce médicament est contre-indiquée en cas d''allergie à  l''un des constituants et d''insuffisance rénale.', NULL, 'AUM');
 
 -- --------------------------------------------------------
 
@@ -426,8 +414,24 @@ INSERT INTO `motif_principale` (`MOT_ID`, `MOT_LIBELLE`) VALUES
 (4, 'Nouvelle législation'),
 (5, 'Changement taux de remboursement'),
 (6, 'Chute de prescription'),
-(7, 'Sollicitation du médecin : besoin d\'information complémentaire sur un médicament'),
-(8, 'Sollicitation du médecin : constatation d\'effets bizarres, besoin de précision');
+(7, 'Besoin d''information complémentaire'),
+(8, 'Constatation d''effets bizarres');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `offrir`
+--
+
+DROP TABLE IF EXISTS `offrir`;
+CREATE TABLE IF NOT EXISTS `offrir` (
+  `MED_DEPOTLEGAL` varchar(10) COLLATE utf8_bin NOT NULL,
+  `COL_MATRICULE` varchar(10) COLLATE utf8_bin NOT NULL,
+  `RAP_NUM` int(11) NOT NULL,
+  `OFF_QTE` int(11) NOT NULL,
+  PRIMARY KEY (`MED_DEPOTLEGAL`,`COL_MATRICULE`,`RAP_NUM`),
+  KEY `OFFRIR_rapport_visite0_FK` (`COL_MATRICULE`,`RAP_NUM`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -464,7 +468,7 @@ CREATE TABLE IF NOT EXISTS `praticien` (
   `TYP_CODE` varchar(3) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`PRA_NUM`),
   KEY `praticien_type_praticien0_FK` (`TYP_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `praticien`
@@ -613,13 +617,12 @@ DROP TABLE IF EXISTS `rapport_visite`;
 CREATE TABLE IF NOT EXISTS `rapport_visite` (
   `COL_MATRICULE` varchar(10) COLLATE utf8_bin NOT NULL,
   `RAP_NUM` int(11) NOT NULL,
-  `RAP_DATEVISITE` date DEFAULT NULL,
+  `RAP_DATEVISITE` datetime DEFAULT NULL,
   `RAP_BILAN` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `RAP_DATESAISIT` date NOT NULL,
   `RAP_SAISITDEFINITIVE` tinyint(1) NOT NULL,
   `RAP_MOTIFAUTRE` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `OFF_QTE` int(11) NOT NULL,
-  `MED_DEPOTLEGAL_1` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `MED_DEPOTLEGAL_1` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `MED_DEPOTLEGAL_2` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `PRA_NUM` int(11) NOT NULL,
   `MOT_ID` int(11) NOT NULL,
@@ -636,10 +639,11 @@ CREATE TABLE IF NOT EXISTS `rapport_visite` (
 -- Déchargement des données de la table `rapport_visite`
 --
 
-INSERT INTO `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`, `RAP_DATEVISITE`, `RAP_BILAN`, `RAP_DATESAISIT`, `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `OFF_QTE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, `PRA_NUM`, `MOT_ID`, `PRA_NUM_remplacant`) VALUES
-('a131', 3, '2002-04-18', 'Médecin curieux, à recontacter en décembre pour réunion.', '2002-04-18', 0, NULL, 1, 'AMOXIG12', NULL, 23, 3, NULL),
-('a131', 7, '2003-03-23', 'RAS.\r\nChangement de tel : 05 89 89 89 89.', '2003-03-23', 1, NULL, 2, 'BITALV', 'JOVAI8', 41, 3, NULL),
-('a17', 4, '2003-05-21', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique.', '2003-05-21', 1, NULL, 1, 'PIRIZ8', NULL, 4, 6, NULL);
+INSERT INTO `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`, `RAP_DATEVISITE`, `RAP_BILAN`, `RAP_DATESAISIT`, `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, `PRA_NUM`, `MOT_ID`, `PRA_NUM_remplacant`) VALUES
+('a131', 3, '2002-04-18 14:51:22', 'Médecin curieux, à recontacter en décembre pour réunion.', '2002-04-18', 0, NULL, 'AMOXIG12', NULL, 23, 2, NULL),
+('a131', 7, '2003-03-23 12:23:45', 'RAS.\r\nChangement de tel : 05 89 89 89 89.', '2003-03-23', 1, NULL, 'BITALV', 'JOVAI8', 41, 3, NULL),
+('a17', 4, '2003-05-21 17:51:42', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique.', '2003-05-21', 1, NULL, 'PIRIZ8', NULL, 4, 6, NULL),
+('p6', 5, '2021-12-30 00:00:00', 'Test', '2021-12-31', 1, NULL, 'TXISOL22', NULL, 44, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -690,7 +694,7 @@ INSERT INTO `region` (`REG_CODE`, `REG_NOM`, `SEC_CODE`) VALUES
 ('LI', 'Limousin', 'P'),
 ('MP', 'Midi Pyrénée', 'S'),
 ('NP', 'Nord Pas de Calais', 'N'),
-('PA', 'Provence Alpes Cote d\'Azur', 'S'),
+('PA', 'Provence Alpes Cote d''Azur', 'S'),
 ('PC', 'Poitou Charente', 'O'),
 ('PI', 'Picardie', 'N'),
 ('PL', 'Pays de Loire', 'O'),
@@ -773,7 +777,7 @@ INSERT INTO `specialite` (`SPE_CODE`, `SPE_LIBELLE`) VALUES
 ('ODM', 'orthopédie dento maxillo-faciale'),
 ('OPH', 'ophtalmologie'),
 ('ORL', 'oto-rhino-laryngologie'),
-('PEA', 'psychiatrie de l\'enfant et de l\'adolescent'),
+('PEA', 'psychiatrie de l''enfant et de l''adolescent'),
 ('PME', 'pédiatrie maladies des enfants'),
 ('PNM', 'pneumologie'),
 ('PSC', 'psychiatrie'),
@@ -885,10 +889,82 @@ ALTER TABLE `interagir`
   ADD CONSTRAINT `INTERAGIR_medicament1_FK` FOREIGN KEY (`MED_DEPOTLEGAL_medicament`) REFERENCES `medicament` (`MED_DEPOTLEGAL`);
 
 --
+-- Contraintes pour la table `inviter`
+--
+ALTER TABLE `inviter`
+  ADD CONSTRAINT `INVITER_activite_compl0_FK` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
+  ADD CONSTRAINT `INVITER_praticien1_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`);
+
+--
 -- Contraintes pour la table `login`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`);
+
+--
+-- Contraintes pour la table `medicament`
+--
+ALTER TABLE `medicament`
+  ADD CONSTRAINT `medicament_famille0_FK` FOREIGN KEY (`FAM_CODE`) REFERENCES `famille` (`FAM_CODE`);
+
+--
+-- Contraintes pour la table `offrir`
+--
+ALTER TABLE `offrir`
+  ADD CONSTRAINT `OFFRIR_medicament_FK` FOREIGN KEY (`MED_DEPOTLEGAL`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
+  ADD CONSTRAINT `OFFRIR_rapport_visite0_FK` FOREIGN KEY (`COL_MATRICULE`,`RAP_NUM`) REFERENCES `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`);
+
+--
+-- Contraintes pour la table `posseder`
+--
+ALTER TABLE `posseder`
+  ADD CONSTRAINT `POSSEDER_praticien1_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`),
+  ADD CONSTRAINT `POSSEDER_specialite0_FK` FOREIGN KEY (`SPE_CODE`) REFERENCES `specialite` (`SPE_CODE`);
+
+--
+-- Contraintes pour la table `praticien`
+--
+ALTER TABLE `praticien`
+  ADD CONSTRAINT `praticien_type_praticien0_FK` FOREIGN KEY (`TYP_CODE`) REFERENCES `type_praticien` (`TYP_CODE`);
+
+--
+-- Contraintes pour la table `prescrire`
+--
+ALTER TABLE `prescrire`
+  ADD CONSTRAINT `PRESCRIRE_dosage1_FK` FOREIGN KEY (`DOS_CODE`) REFERENCES `dosage` (`DOS_CODE`),
+  ADD CONSTRAINT `PRESCRIRE_medicament2_FK` FOREIGN KEY (`MED_DEPOTLEGAL`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
+  ADD CONSTRAINT `PRESCRIRE_type_individu0_FK` FOREIGN KEY (`TIN_CODE`) REFERENCES `type_individu` (`TIN_CODE`);
+
+--
+-- Contraintes pour la table `presentation_produit`
+--
+ALTER TABLE `presentation_produit`
+  ADD CONSTRAINT `PRESENTATION_PRODUIT_medicament0_FK` FOREIGN KEY (`MED_DEPOTLEGAL`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
+  ADD CONSTRAINT `PRESENTATION_PRODUIT_rapport_visite1_FK` FOREIGN KEY (`COL_MATRICULE`,`RAP_NUM`) REFERENCES `rapport_visite` (`COL_MATRICULE`, `RAP_NUM`);
+
+--
+-- Contraintes pour la table `rapport_visite`
+--
+ALTER TABLE `rapport_visite`
+  ADD CONSTRAINT `rapport_visite_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`),
+  ADD CONSTRAINT `rapport_visite_medicament1_FK` FOREIGN KEY (`MED_DEPOTLEGAL_1`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
+  ADD CONSTRAINT `rapport_visite_medicament2_FK` FOREIGN KEY (`MED_DEPOTLEGAL_2`) REFERENCES `medicament` (`MED_DEPOTLEGAL`),
+  ADD CONSTRAINT `rapport_visite_motif_principale3_FK` FOREIGN KEY (`MOT_ID`) REFERENCES `motif_principale` (`MOT_ID`),
+  ADD CONSTRAINT `rapport_visite_praticien2_FK` FOREIGN KEY (`PRA_NUM`) REFERENCES `praticien` (`PRA_NUM`),
+  ADD CONSTRAINT `rapport_visite_praticien4_FK` FOREIGN KEY (`PRA_NUM_remplacant`) REFERENCES `praticien` (`PRA_NUM`);
+
+--
+-- Contraintes pour la table `realiser`
+--
+ALTER TABLE `realiser`
+  ADD CONSTRAINT `REALISER_activite_compl1_FK` FOREIGN KEY (`AC_NUM`) REFERENCES `activite_compl` (`AC_NUM`),
+  ADD CONSTRAINT `REALISER_collaborateur0_FK` FOREIGN KEY (`COL_MATRICULE`) REFERENCES `collaborateur` (`COL_MATRICULE`);
+
+--
+-- Contraintes pour la table `region`
+--
+ALTER TABLE `region`
+  ADD CONSTRAINT `region_secteur0_FK` FOREIGN KEY (`SEC_CODE`) REFERENCES `secteur` (`SEC_CODE`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
