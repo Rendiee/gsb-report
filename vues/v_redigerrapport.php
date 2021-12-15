@@ -64,7 +64,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                                 <?php
 
                                     foreach($prat as $key){
-                                        echo '<option class="form-control" value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['num'].'">'.$key['num'].' - '.$key['nom'].' '.$key['prenom'].'</option>';
                                     }
                                 
                                 ?>
@@ -76,7 +76,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             <label for="bilan">Bilan du rapport :</label>
                             <textarea name="bilanrapport" id="bilanrapport"></textarea><br/>
 
-                            <label for="datesaisit">Date de saisit du rapport :</label>
+                            <label for="datesaisit">Date de saisie du rapport :</label>
                             <input type="date" name="datesaisit" id="datesaisit"><br/>
 
                             <label for="motif">Motif :</label>
@@ -108,7 +108,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                             <input type="checkbox" name="echantillon" id="echantillonS">
                                 </div>
                                 <div>
-                            <label for="saisitdefinitive">Saisit définitive :</label>
+                            <label for="saisitdefinitive">Saisie définitive :</label>
                             <input type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br/>
                                 </div>  
                                 </div>

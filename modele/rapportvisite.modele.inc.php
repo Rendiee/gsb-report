@@ -106,7 +106,7 @@ function getMaxIdRapportVisite(){
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT RAP_NUM as \'max_id\' FROM rapport_visite');
+        $req = $monPdo -> prepare('SELECT MAX(RAP_NUM) as \'max_id\' FROM rapport_visite');
         $req -> execute();
         $res = $req -> fetch();
 
@@ -126,11 +126,10 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
     try 
     {	
         $getId = getMaxIdRapportVisite();
-        $num = 0;
         if($getId == null){
-            $num = 1;
+            $getId = 1;
         }else{
-            $num = $getId['max_id'] + 1;
+            $getId = $getId['max_id'] + 1;
         }
 
         $colMatricule = $_SESSION['matricule'];
@@ -138,7 +137,7 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
         $monPdo = connexionPDO();
         $req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
         $req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
-        $req -> bindParam(':rapNum', $num, PDO::PARAM_INT);
+        $req -> bindParam(':rapNum', $getId, PDO::PARAM_INT);
         $req -> bindParam(':rapDateVisite', $dateVisite, PDO::PARAM_STR);
         $req -> bindParam(':rapBilan', $bilan, PDO::PARAM_STR);
         $req -> bindParam(':rapDateSaisit', $dateSaisit, PDO::PARAM_STR);
