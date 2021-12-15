@@ -307,7 +307,7 @@ include_once 'bd.inc.php';
 		try 
 		{	
 			$monPdo = connexionPDO();
-			$req = $monPdo -> prepare('SELECT RAP_NUM as \'max_id\' FROM rapport_visite');
+			$req = $monPdo -> prepare('SELECT MAX(RAP_NUM) as \'max_id\' FROM rapport_visite');
 			$req -> execute();
 			$res = $req -> fetch();
 
@@ -322,7 +322,7 @@ include_once 'bd.inc.php';
 
 	}
 
-	function insertRapportVisite($colMatricule, $dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $qteOffert, $med1, $med2, $praNum, $motifId, $praNumRemplacant){
+	function insertRapportVisite($colMatricule, $dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $med1, $med2, $praNum, $motifId, $praNumRemplacant){
 
 		try 
 		{	

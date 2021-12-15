@@ -31,7 +31,6 @@ switch($action)
 			$_POST['datesaisit'],
 			$def,
 			null,
-			5,
 			$_POST['medicamentproposer'],
 			null,
 			$_POST['praticien'],
@@ -60,8 +59,8 @@ switch($action)
 			$rap=$_REQUEST['nonValide'];
 			if ($rap!='default'){
 				$nonValide = getInformationNonValide($rap);
-				$nomPraticien = getAllInformationPraticien($nonValide[10]);
-				$nomMotif = getNomMotif($nonValide[11]);
+				$nomPraticien = getAllInformationPraticien($nonValide[9]);
+				$nomMotif = getNomMotif($nonValide[10]);
 				$result = getAllMatriculeCollaborateur();
 				$motif = getMotif();
 				$medoc = getAllNomMedicament();

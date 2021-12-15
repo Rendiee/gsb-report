@@ -35,7 +35,7 @@ if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
                         <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin">
                             <label for="name">Liste des rapports non valide : </form>
                             <select name="nonValide" id="listechoix">
-                                <option class="form-control" value="default" >- Choisissez un rapport -</option>
+                                <option class="form-control" value="default" >- Choisissez un rapport non valide -</option>
                                 <?php
                                 
                                     foreach($info as $key){
