@@ -19,8 +19,11 @@
                                 <option class="form-control" value="default">- Choisissez une option -</option>
                                 <option class="form-control" value="redigerrapport">1 - Rédiger un rapport de visite</option>
                                 <option class="form-control" value="mesrapports">2 - Mes rapports de visite</option>
-                                <option class="form-control" value="rapportregion">3 - Rapports de visite de ma région</option>
-
+                                <?php
+                                    if($_SESSION['habilitation']!=1){
+                                        echo '<option class="form-control" value="rapportregion">3 - Rapports de visite de ma région</option>';
+                                    }
+                                ?>
                             </select>
                                 </br>
                             <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">

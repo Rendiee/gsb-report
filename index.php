@@ -24,7 +24,7 @@ switch($uc)
         }
 	case 'medicaments' :
 		{   
-            if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
+            if(!empty($_SESSION['login'])){
                 include("controleur/c_medicaments.php");
             }else{
                 include("vues/v_interdit.php");
@@ -33,7 +33,7 @@ switch($uc)
         }
 	case 'praticiens' :
 		{   
-            if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
+            if(!empty($_SESSION['login'])){
                 include("controleur/c_praticiens.php");
             }else{
                 include("vues/v_interdit.php");
@@ -42,7 +42,7 @@ switch($uc)
         }
 	case 'rapportdevisite' :
 	  { 
-        if(!empty($_SESSION['login']) && !empty($_SESSION['habilitation'])){
+        if(!empty($_SESSION['login'])){
           include("controleur/c_rapportdevisite.php");
         }else{
             include("vues/v_interdit.php");
