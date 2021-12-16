@@ -14,10 +14,10 @@
                             <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
 
                             <label for="nbrapport">Numéro du rapport :</label>
-                            <input type="text" disabled name="nbrapport" id="nbrapport" value="<?php echo $nonValide[1];?>"><br/>
+                            <input type="text" style="background-color:white;border:none;" disabled name="nbrapport" id="nbrapport" value="<?php echo $nonValide[1];?>"><br/>
 
                             <label for="matricule">Matricule du collaborateur :</label>
-                            <input type="text" disabled name="medicament" id="nbrapport" value="<?php echo $nonValide[0];?>"><br/>
+                            <input type="text" style="background-color:white;border:none;" disabled name="medicament" id="nbrapport" value="<?php echo $nonValide[0];?>"><br/>
 
                             <label for="praticien">Praticien concerné :</label>
                             <input type="text" disabled name="medicament" id="nbrapport" value="<?php echo $nomPraticien[0].' - '.$nomPraticien[1].' '.$nomPraticien[2];?>"><br/>

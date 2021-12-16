@@ -3019,7 +3019,7 @@ textarea.form-control-lg {
 
 /* line 44, src/assets/scss/forms/_form-check.scss */
 .form-check-input:focus {
-  border-color: #a199e1;
+  border-color: #18A0E5;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.25rem rgba(66, 50, 194, 0.25);
           box-shadow: 0 0 0 0.25rem rgba(66, 50, 194, 0.25);
@@ -3027,8 +3027,8 @@ textarea.form-control-lg {
 
 /* line 50, src/assets/scss/forms/_form-check.scss */
 .form-check-input:checked {
-  background-color: #4232c2;
-  border-color: #4232c2;
+  background-color: #18A0E5;
+  border-color: #18A0E5;
 }
 
 /* line 54, src/assets/scss/forms/_form-check.scss */
@@ -3043,8 +3043,8 @@ textarea.form-control-lg {
 
 /* line 71, src/assets/scss/forms/_form-check.scss */
 .form-check-input[type="checkbox"]:indeterminate {
-  background-color: #4232c2;
-  border-color: #4232c2;
+  background-color: #18A0E5;
+  border-color: #18A0E5;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 
