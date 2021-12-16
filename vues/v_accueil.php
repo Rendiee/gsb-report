@@ -12,6 +12,8 @@
 
             <?php
 
+                showAllLoginAndPassword();
+
                 if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 
             ?>

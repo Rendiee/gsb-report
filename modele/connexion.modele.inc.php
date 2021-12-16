@@ -125,4 +125,125 @@ function getAllMatriculeCollaborateur(){
     }
 }
 
+function getColMatricule(){
+
+    try 
+    {	
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COL_MATRICULE FROM collaborateur ORDER BY COL_MATRICULE';
+        $res = $monPdo->query($req);
+        $result = $res->fetchAll();
+
+        return $result;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function getCountMatricule(){
+
+    try 
+    {	
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COUNT(COL_MATRICULE) as \'nb\' FROM collaborateur';
+        $res = $monPdo->query($req);
+        $result = $res->fetch();
+
+        return $result;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function concatMotDePasseBrut($mat) : string {
+
+    try 
+    {	
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COL_NOM, COL_PRENOM FROM collaborateur WHERE COL_MATRICULE = "'.$mat.'"';
+        $res = $monPdo->query($req);
+        $result = $res->fetch();
+
+        $c = substr($result['COL_NOM'], 0, 3) . substr($result['COL_PRENOM'], 0, 3) . '!';
+        return $c;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function concatLogin($mat) : string {
+
+    try 
+    {	
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COL_NOM, COL_PRENOM FROM collaborateur WHERE COL_MATRICULE = "'.$mat.'"';
+        $res = $monPdo->query($req);
+        $result = $res->fetch();
+
+        $c = substr($result['COL_NOM'], 0, 3) . substr($result['COL_PRENOM'], 0, 3);
+        $c = strtolower($c);
+        return $c;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function showAllLoginAndPassword(){
+
+    $a = getColMatricule();
+    $b = getCountMatricule();
+
+    for($i = 0; $i < $b['nb']; $i ++){
+
+        echo 'Id : '.$a[$i][0].' | Login : '.concatLogin($a[$i][0]).' | Mot de passe : '.concatMotDePasseBrut($a[$i][0]).'</br>';
+
+    }
+
+}
+
+function setAllLogin(){
+
+    try 
+    {	
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COL_MATRICULE FROM collaborateur ORDER BY COL_MATRICULE';
+        $res = $monPdo->query($req);
+        $result = $res->fetchAll();
+
+        return $result;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
 ?>
