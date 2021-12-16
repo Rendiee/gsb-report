@@ -28,13 +28,13 @@
 
                                 }
 
-                                echo '<input type="text" name="nbrapport" id="nbrapport" value="'.$num.'" disabled><br/>
+                                echo '<input style="background-color:white;border:none;" type="text" name="nbrapport" id="nbrapport" value="'.$num.'" disabled><br/>
                                 ';
 
                             ?>
 
                             <label for="matricule">Matricule du collaborateur :</label>
-                            <input type="text" disabled name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>"><br/>
+                            <input style="background-color:white;border:none;" type="text" disabled name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>"><br/>
 
                             <label for="praticien">Praticien concerné :</label>
                             <select name="praticien" id="listemotif">
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="saisitdefinitive" id="saisitdefinitive">
-                                    <label for="saisitdefinitive" class="form-check-label">Saisie définitive</label><br/>                            
+                                    <label for="saisitdefinitive" class="form-check-label ">Saisie définitive</label><br/>                            
                                 </div>  
                             </div>
                             <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport" name="valider" id="valider">
