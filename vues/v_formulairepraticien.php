@@ -15,8 +15,8 @@
                     <div class="row">
                     <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="form-signin">
                             <label for="name">Liste des praticiens : </form>
-                            <select name="praticien" id="listechoix">
-                                <option class="form-control" value="default">- Choisissez un praticien -</option>
+                            <select required name="praticien" id="listechoix">
+                                <option class="form-control" value="">- Choisissez un praticien -</option>
                                 <?php
                                 
                                     foreach($result as $key){

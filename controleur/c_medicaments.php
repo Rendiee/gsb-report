@@ -18,13 +18,8 @@ switch($action)
 	{		
 			if(isset($_REQUEST['medicament'])){
 				$med=$_REQUEST['medicament'];
-				if ($med!='default'){
 				$carac = getAllInformationMedicament($med);
-				include("vues/v_affichermedoc.php");
-				}
-				else{
-					header("location: index.php?uc=medicaments&action=formulairemedoc");
-				}
+				include("vues/v_affichermedoc.php");				
 			}
 			else{
 				header("location: index.php?uc=medicaments&action=formulairemedoc");

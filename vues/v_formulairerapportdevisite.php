@@ -14,9 +14,9 @@
                     <div class="row">
                     <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapport" method="post">
                             <label for="name">Option rapport de visite :</form>
-                            <select name="rapport" id="listechoix">
+                            <select required  name="rapport" id="listechoix">
 
-                                <option class="form-control" value="default">- Choisissez une option -</option>
+                                <option class="form-control" value="">- Choisissez une option -</option>
                                 <option class="form-control" value="redigerrapport">1 - Rédiger un rapport de visite</option>
                                 <option class="form-control" value="mesrapports">2 - Mes rapports de visite</option>
                                 <?php

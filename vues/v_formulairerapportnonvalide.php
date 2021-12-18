@@ -10,10 +10,11 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
+                    <?php if (isset($succes)){echo $succes;} ?>
                         <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin">
                             <label for="name">Liste des rapports non valide : </form>
-                            <select name="nonValide" id="listechoix">
-                                <option class="form-control" value="default" >- Choisissez un rapport non valide -</option>
+                            <select required name="nonValide" id="listechoix">
+                                <option class="form-control" value="" >- Choisissez un rapport non valide -</option>
                                 <?php
                                 
                                     foreach($info as $key){

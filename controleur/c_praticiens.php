@@ -18,14 +18,8 @@ switch($action)
 	{	
 		if(isset($_REQUEST['praticien'])){
 			$pra=$_REQUEST['praticien'];
-			if ($pra!='default')
-			{
-				$carac = getAllInformationPraticien($pra);
+			$carac = getAllInformationPraticien($pra);
 			include("vues/v_afficherpraticien.php");
-			}
-			else{
-				header("location: index.php?uc=praticiens&action=formulairepraticien");
-			}
 		}else{
 			header("location: index.php?uc=praticiens&action=formulairepraticien");
 		}

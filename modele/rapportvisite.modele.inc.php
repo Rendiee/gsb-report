@@ -101,12 +101,13 @@ function getNomMotif($num){
     }
 }
 
-function getMaxIdRapportVisite(){
+function getMaxIdRapportVisite($colMatricule){
 		
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT MAX(RAP_NUM) as \'max_id\' FROM rapport_visite');
+        $req = $monPdo -> prepare('SELECT MAX(RAP_NUM) as \'max_id\' FROM rapport_visite WHERE COL_Matricule=:colMat');
+        $req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
         $req -> execute();
         $res = $req -> fetch();
 
@@ -125,14 +126,18 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
 
     try 
     {	
-        $getId = getMaxIdRapportVisite();
+
+        $colMatricule = $_SESSION['matricule'];
+
+        $getId = getMaxIdRapportVisite($colMatricule);
+
         if($getId == null){
             $getId = 1;
         }else{
             $getId = $getId['max_id'] + 1;
         }
 
-        $colMatricule = $_SESSION['matricule'];
+        
 
         $monPdo = connexionPDO();
         $req = $monPdo -> prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');

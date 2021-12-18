@@ -25,6 +25,13 @@ switch($action)
 			}else{
 				$def = 0;
 			}
+			if(empty($_POST['datevisite'])){
+				$_POST['datevisite']=NULL;
+			}
+			if($_POST['medicamentproposer']=='default'){
+				$_POST['medicamentproposer']=NULL;
+			}
+			
 			insertRapportVisite($_POST['datevisite'],
 			$_POST['bilanrapport'],
 			$_POST['datesaisit'],
@@ -36,7 +43,7 @@ switch($action)
 			$_POST['motif'],
 			null);
 
-			echo '<p class="alert alert-success">Rapport saisit avec succès !</p>';
+			$succes = '<p class="alert alert-success">Rapport saisit avec succès !</p>';
 
 		}
 
@@ -55,8 +62,7 @@ switch($action)
 	case 'rapportNonValide':
 	{		
 		if(isset($_REQUEST['nonValide'])){
-			$rap=$_REQUEST['nonValide'];
-			if ($rap!='default'){
+				$rap=$_REQUEST['nonValide'];
 				$nonValide = getInformationNonValide($rap);
 				$nomPraticien = getAllInformationPraticien($nonValide[9]);
 				$nomMotif = getNomMotif($nonValide[10]);
@@ -65,9 +71,6 @@ switch($action)
 				$medoc = getAllNomMedicament();
 				$prat = getAllMatriculePraticien();
 				include("vues/v_rapportnonvalide.php");
-			}else{
-				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
-			}
 		}else{
 			header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 		}
