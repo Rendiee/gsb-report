@@ -64,7 +64,7 @@ switch($uc)
 
 ?>
 </div>
-<?php include("vues/v_footer.html") ;?>
+<?php include("vues/v_footer.php") ;?>
 </body>
 
 

@@ -26,6 +26,14 @@
                         <li class="pb-2">
                             <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=rapportdevisite&action=rapport">Rapport de visite</a>
                         </li>
+                        <?php
+                            if(isset($_SESSION['login'])){
+                                echo 
+                                '<li class="pb-2">
+                                    <i class="bx-fw bx bxs-chevron-right bx-xs"></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=profil">Profil</a>
+                                </li>';
+                            }
+                        ?>
                     </ul>
             </div>
         </div>
