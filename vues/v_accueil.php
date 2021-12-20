@@ -11,7 +11,13 @@
             </p>
 
             <?php
-
+            /* $a = getColMatricule();
+            $b = getCountMatricule();
+            for($i = 0; $i < $b['nb']; $i ++){
+                setAllHabil($a,random_int(1,2),$i);
+                setAllLogin($a,$i);
+            }   C'EST POUR LES LOGINS ET HABILITATIONS */
+            
 
                 if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 

@@ -212,37 +212,21 @@ function concatLogin($mat) : string {
 
 }
 
-function showAllLoginAndPassword(){
-
-    $a = getColMatricule();
-    $b = getCountMatricule();
-
-    for($i = 0; $i < $b['nb']; $i ++){
-
-        echo 'Id : '.$a[$i][0].' | Login : '.concatLogin($a[$i][0]).' | Mot de passe : '.concatMotDePasseBrut($a[$i][0]).'</br>';
-
-    }
+function setAllLogin($a,$i){
+    $monPdo = connexionPDO();
+        $id=$i+1;
+        //echo 'Id : '.$a[$i][0].' | Login : '.concatLogin($a[$i][0]).' | Mot de passe : '.concatMotDePasseBrut($a[$i][0]).'</br>';
+        
+        $req = 'INSERT INTO login VALUES('.$id.',"'.concatLogin($a[$i][0]).'","'.hash('sha512', concatMotDePasseBrut($a[$i][0])).'","'.$a[$i][0].'"); UPDATE collaborateur SET LOG_ID='.$id.' WHERE COL_MATRICULE="'.$a[$i][0].'"' ;
+        $res = $monPdo->query($req);
+    
 
 }
-
-function setAllLogin(){
-
-    try 
-    {	
-
-        $monPdo = connexionPDO();
-        $req = 'SELECT COL_MATRICULE FROM collaborateur ORDER BY COL_MATRICULE';
+function setAllHabil($a,$id,$i){
+    $monPdo = connexionPDO();
+        $req = 'UPDATE collaborateur SET HAB_ID='.$id.' WHERE COL_MATRICULE="'.$a[$i][0].'"' ;
         $res = $monPdo->query($req);
-        $result = $res->fetchAll();
-
-        return $result;
-    } 
-
-    catch (PDOException $e) 
-    {
-           print "Erreur !: " . $e->getMessage();
-            die();
-    }
+    
 
 }
 
