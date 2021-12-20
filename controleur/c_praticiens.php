@@ -16,7 +16,7 @@ switch($action)
 	    }
 	case 'afficherpraticien':
 	{	
-		if(isset($_REQUEST['praticien'])){
+		if(isset($_REQUEST['praticien']) && is_numeric($_REQUEST['praticien']) && getAllInformationPraticien($_REQUEST['praticien'])){
 			$pra=$_REQUEST['praticien'];
 			$carac = getAllInformationPraticien($pra);
 			include("vues/v_afficherpraticien.php");

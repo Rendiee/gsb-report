@@ -14,7 +14,7 @@
                         <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="form-signin">
                             <label for="name">Liste des médicaments : </form>
                             <select required name="medicament" id="listechoix">
-                                <option class="form-control" value="" >- Choisissez un médicament -</option>
+                                <option class="form-control" value>- Choisissez un médicament -</option>
                                 <?php
                                 
                                     foreach($result as $key){

@@ -14,7 +14,7 @@
                         <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin">
                             <label for="name">Liste des rapports non valide : </form>
                             <select required name="nonValide" id="listechoix">
-                                <option class="form-control" value="" >- Choisissez un rapport non valide -</option>
+                                <option class="form-control" value>- Choisissez un rapport non valide -</option>
                                 <?php
                                 
                                     foreach($info as $key){

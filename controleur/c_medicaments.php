@@ -16,7 +16,7 @@ switch($action)
 	    }
 	case 'affichermedoc':
 	{		
-			if(isset($_REQUEST['medicament'])){
+			if(isset($_REQUEST['medicament']) && getAllInformationMedicament($_REQUEST['medicament'])){
 				$med=$_REQUEST['medicament'];
 				$carac = getAllInformationMedicament($med);
 				include("vues/v_affichermedoc.php");				

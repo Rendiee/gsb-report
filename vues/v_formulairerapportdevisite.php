@@ -16,11 +16,11 @@
                             <label for="name">Option rapport de visite :</form>
                             <select required  name="rapport" id="listechoix">
 
-                                <option class="form-control" value="">- Choisissez une option -</option>
+                                <option class="form-control" value>- Choisissez une option -</option>
                                 <option class="form-control" value="redigerrapport">1 - Rédiger un rapport de visite</option>
                                 <option class="form-control" value="mesrapports">2 - Mes rapports de visite</option>
                                 <?php
-                                    if($_SESSION['habilitation']!=1){
+                                    if($_SESSION['habilitation']==2){
                                         echo '<option class="form-control" value="rapportregion">3 - Rapports de visite de ma région</option>';
                                     }
                                 ?>

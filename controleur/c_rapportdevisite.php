@@ -8,6 +8,9 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 if(isset($_REQUEST['rapport'])){
 	$action = $_REQUEST['rapport'];
 }
+if(isset($_REQUEST['mesrapports'])){
+	$action = 'mesrapports';
+}
 switch($action)
 {
 	case 'rapport' :
@@ -78,7 +81,20 @@ switch($action)
 		}
 	case 'rapportregion':
 	{
-            include("vues/v_rapportregion.php");
+            
+			if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){
+				
+				if(!empty($_REQUEST['nouveauxRapports'])){
+					include("vues/v_nouveauxRapports.php");
+				}elseif(!empty($_REQUEST['historiqueRapports'])){
+					include("vues/v_historiqueRapports.php");
+				}
+				else{
+					include("vues/v_rapportregion.php");
+				}
+			}else{
+				header("location: index.php?uc=rapportdevisite&action=rapport");
+			}
 		    break;
 	    }
 	case 'mesrapports':
