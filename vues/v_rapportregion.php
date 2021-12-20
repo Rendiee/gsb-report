@@ -16,7 +16,7 @@
                             <label for="name">Nouveaux rapports :</form>
                             <select required  name="nouveauxRapports" id="listechoix">
 
-                                <option class="form-control" value>- Choisissez une option -</option>
+                                <option class="form-control" value>- Nouveaux rapports -</option>
                                 
 
 
@@ -28,10 +28,10 @@
                     </br>
                     <div class="row">
                     <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
-                            <label for="name">Historique des rapports :</form>
+                            <label for="name">Anciens rapports :</form>
                             <select required  name="historiqueRapports" id="listechoix">
 
-                                <option class="form-control" value>- Choisissez une option -</option>
+                                <option class="form-control" value>- Anciens rapports -</option>
                                 
 
 

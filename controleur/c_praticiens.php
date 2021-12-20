@@ -19,6 +19,9 @@ switch($action)
 		if(isset($_REQUEST['praticien']) && is_numeric($_REQUEST['praticien']) && getAllInformationPraticien($_REQUEST['praticien'])){
 			$pra=$_REQUEST['praticien'];
 			$carac = getAllInformationPraticien($pra);
+			if(empty($carac[7])){
+				$carac[7]='Non défini(e)';
+			}   
 			include("vues/v_afficherpraticien.php");
 		}else{
 			header("location: index.php?uc=praticiens&action=formulairepraticien");

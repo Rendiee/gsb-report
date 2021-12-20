@@ -183,6 +183,7 @@ footer a.text-light:hover {
 .carac{
   text-decoration: underline;
   font-weight: 700;
+  color : #000;
 }
 
 .ecart{

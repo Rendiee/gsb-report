@@ -14,25 +14,9 @@
                         <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rapport">
                             <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
 
-                            <label for="nbrapport">Numéro du rapport :</label>
-                            <?php
+                            <label for="nbrapport">Numéro du rapport :</label>    
+                            <input style="background-color:white;border:none;" type="text" name="nbrapport" id="nbrapport" value="<?php echo $num;?>" disabled><br/>
                             
-                                $getId = getMaxIdRapportVisite($_SESSION['matricule']);
-
-                                if($getId == null){
-
-                                    $num = 1;
-
-                                }else{
-
-                                    $num = $getId['max_id'] + 1;
-
-                                }
-
-                                echo '<input style="background-color:white;border:none;" type="text" name="nbrapport" id="nbrapport" value="'.$num.'" disabled><br/>
-                                ';
-
-                            ?>
 
                             <label for="matricule">Matricule du collaborateur :</label>
                             <input style="background-color:white;border:none;" type="text" disabled name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>"><br/>

@@ -18,7 +18,7 @@
                                 <?php
                                 
                                     foreach($info as $key){
-                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'"> '.$key['RAP_NUM'].' - '.$key['COL_MATRICULE'].'</option>';
+                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].'</option>';
                                     }
                                 
                                 ?>

@@ -19,6 +19,9 @@ switch($action)
 			if(isset($_REQUEST['medicament']) && getAllInformationMedicament($_REQUEST['medicament'])){
 				$med=$_REQUEST['medicament'];
 				$carac = getAllInformationMedicament($med);
+				if(empty($carac[7])){
+					$carac[7]='Non défini(e)';
+				}   
 				include("vues/v_affichermedoc.php");				
 			}
 			else{

@@ -8,12 +8,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left affich">
                     <div class="row">
-                         <?php 
-                            if(empty($carac[7])){
-                                $carac[7]='Non définie';
-                            }      
-                            ?>
-                                                  
+                                    
                             <p><span class="carac">Nom</span> : <?php echo $carac[1] ?></p>
                             <p><span class="carac">Prénom</span> : <?php echo $carac[2] ?></p>
                             <p><span class="carac">Adresse</span> : <?php echo $carac[3] ?></p>

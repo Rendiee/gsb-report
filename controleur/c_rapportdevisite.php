@@ -35,16 +35,7 @@ switch($action)
 				$_POST['medicamentproposer']=NULL;
 			}
 			
-			insertRapportVisite($_POST['datevisite'],
-			$_POST['bilanrapport'],
-			$_POST['datesaisit'],
-			$def,
-			null,
-			$_POST['medicamentproposer'],
-			null,
-			$_POST['praticien'],
-			$_POST['motif'],
-			null);
+			insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null);
 
 			$succes = '<p class="alert alert-success">Rapport saisit avec succès !</p>';
 
@@ -58,6 +49,12 @@ switch($action)
 				$motif = getMotif();
 				$medoc = getAllNomMedicament();
 				$prat = getAllMatriculePraticien();
+				$getId = getMaxIdRapportVisite($_SESSION['matricule']);
+				if($getId == null){
+					$num = 1;
+				}else{
+					$num = $getId['max_id'] + 1;
+				}
 				include("vues/v_redigerrapport.php");
 			}
 		    break;
