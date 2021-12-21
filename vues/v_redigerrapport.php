@@ -12,6 +12,7 @@
                     <div class="row">
                     <?php if (isset($succes)){echo $succes;} ?>
                         <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rapport">
+                            <p style="color:grey;margin-top:-10px"><span style="color:red">*</span>Champs obligatoires</p>
                             <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
 
                             <label for="nbrapport">Numéro du rapport :</label>    
@@ -21,9 +22,9 @@
                             <label for="matricule">Matricule du collaborateur :</label>
                             <input style="background-color:white;border:none;" type="text" disabled name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>"><br/>
 
-                            <label for="praticien">Praticien concerné :</label>
+                            <label for="praticien">Praticien concerné <span style="color:red">*</span></label>
                             <select required name="praticien" id="listemotif">
-                                <option class="form-control" value="" >- Choisissez un praticien -</option>
+                                <option class="form-control" value>- Choisissez un praticien -</option>
                                 <?php
 
                                     foreach($prat as $key){
@@ -33,18 +34,18 @@
                                 ?>
                             </select><br/>
 
-                            <label for="datevisite">Date de visite :</label>
+                            <label for="datevisite">Date de visite </label>
                             <input type="date" name="datevisite" id="datevisite"><br/>
 
-                            <label for="bilan">Bilan du rapport :</label>
+                            <label for="bilan">Bilan du rapport</label>
                             <textarea name="bilanrapport" id="bilanrapport"></textarea><br/>
 
-                            <label for="datesaisit">Date de saisie du rapport :</label>
+                            <label for="datesaisit">Date de saisie du rapport <span style="color:red">*</span></label>
                             <input type="date" required name="datesaisit" id="datesaisit"><br/>
 
-                            <label for="motif">Motif :</label>
+                            <label for="motif">Motif <span style="color:red">*</span></label>
                             <select required name="motif" id="listemotif">
-                                <option class="form-control" value="" >- Choisissez un motif -</option>
+                                <option class="form-control" value >- Choisissez un motif -</option>
                                 <?php
 
                                     foreach($motif as $key){
@@ -54,9 +55,9 @@
                                 ?>
                             </select><br/>
 
-                            <label for="medicamentproposer">Médicament proposé :</label>
+                            <label for="medicamentproposer">Médicament proposé</label>
                             <select name="medicamentproposer" id="listemotif">
-                                <option class="form-control" value="default" >- Choisissez le médicament présenté -</option>
+                                <option class="form-control" value>- Choisissez le médicament présenté -</option>
                                 <?php
 
                                     foreach($medoc as $key){

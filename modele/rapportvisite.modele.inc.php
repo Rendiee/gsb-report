@@ -156,7 +156,7 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
 
         $req->execute();
         //$req->debugDumpParams();
-
+        return $req;
     } 
 
     catch (PDOException $e) 

@@ -39,6 +39,24 @@ include_once 'bd.inc.php';
                 print "Erreur !: " . $e->getMessage();
                 die();
         }
-    }       
+    }
+    function getDepotMedoc($nom){
+
+        try 
+        {
+            $monPdo = connexionPDO();
+            $req = 'SELECT MED_DEPOTLEGAL FROM medicament WHERE MED_DEPOTLEGAL = "'.$nom.'"';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+    
+            return $result;
+        } 
+    
+        catch (PDOException $e) 
+        {
+                print "Erreur !: " . $e->getMessage();
+                die();
+        }
+    }     
 
 ?>

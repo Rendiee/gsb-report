@@ -11,6 +11,9 @@ if(isset($_REQUEST['rapport'])){
 if(isset($_REQUEST['mesrapports'])){
 	$action = 'mesrapports';
 }
+if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
+	unset($_SESSION['stop']);
+}
 switch($action)
 {
 	case 'rapport' :
@@ -20,9 +23,9 @@ switch($action)
 		}
 	case 'redigerrapport':
 	{		
-
-		if(isset($_POST['valider'])){
-
+		
+		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){
+			
 			if(isset($_POST['saisitdefinitive'])){
 				$def = 1;
 			}else{
@@ -31,20 +34,22 @@ switch($action)
 			if(empty($_POST['datevisite'])){
 				$_POST['datevisite']=NULL;
 			}
-			if($_POST['medicamentproposer']=='default'){
+			if(!getDepotMedoc($_POST['medicamentproposer'])){
 				$_POST['medicamentproposer']=NULL;
 			}
-			
-			insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null);
-
-			$succes = '<p class="alert alert-success">Rapport saisit avec succès !</p>';
-
+			if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null)){
+				$succes = '<p class="alert alert-success">Rapport saisit avec succès !</p>';
+			}else{
+				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport !</p>';
+			}
+			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
+			$_SESSION['stop']=true;
 		}
 
 		if(!empty(getAllInformationNonValide($_SESSION['matricule'])) && !isset($_REQUEST['nouveau'])){
 				$info = getAllInformationNonValide($_SESSION['matricule']);
 				include("vues/v_formulairerapportnonvalide.php");
-			}else{
+		}else{
 				$result = getAllMatriculeCollaborateur();
 				$motif = getMotif();
 				$medoc = getAllNomMedicament();
