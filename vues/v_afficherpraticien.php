@@ -19,7 +19,7 @@
                             <p><span class="carac">Type de praticien</span> : <?php echo $carac[8] ?></p>
 
                     </div>
-                       <input class="btn btn-info text-light valider" type="button" onclick="window.location.href='index.php?uc=praticiens&action=formulairepraticien';" value="Retour">
+                       <input class="btn btn-info text-light valider" type="button" onclick="history.go(-1)" value="Retour">
                 </div>
             </div>
         </div>

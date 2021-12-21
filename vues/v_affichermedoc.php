@@ -18,7 +18,7 @@
                             <p><span class="carac">Famille</span> : <?php echo $carac[6] ?></p>
                             
                     </div>
-                       <input class="btn btn-info text-light valider" type="button" onclick="window.location.href='index.php?uc=medicaments&action=formulairemedoc';" value="Retour">
+                       <input class="btn btn-info text-light valider" type="button" onclick="history.go(-1)" value="Retour">
                 </div>
             </div>
         </div>
