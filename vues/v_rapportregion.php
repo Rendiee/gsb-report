@@ -6,14 +6,12 @@
                     <p class="feature-work-body text-muted light-300">
                         Formulaire permettant d'afficher toutes les rapports de visite de votre région
                     </p>
-                    <a class="col">
                         <img class="img-fluid" src="assets/img/rapport.jpg">
-                    </a>
                 </div>
                 <div class="col-lg-4 offset-lg-1 align-left">
                     <div class="row">
                     <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
-                            <label for="name">Nouveaux rapports :</form>
+                            <label for="name">Nouveaux rapports :</label>
                             <select required  name="nouveauxRapports" id="listechoix">
 
                                 <option class="form-control" value>- Nouveaux rapports -</option>
@@ -21,14 +19,14 @@
 
 
                             </select>
-                                </br>
+                                <br/>
                             <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
                         </form>
                     </div>
-                    </br>
+                    <br/>
                     <div class="row">
                     <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
-                            <label for="name">Anciens rapports :</form>
+                            <label for="name">Anciens rapports :</label>
                             <select required  name="historiqueRapports" id="listechoix">
 
                                 <option class="form-control" value>- Anciens rapports -</option>
@@ -36,7 +34,7 @@
 
 
                             </select>
-                                </br>
+                                <br/>
                             <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
                         </form>
                     </div>
