@@ -11,13 +11,19 @@
             </p>
 
             <?php
-            /* $a = getColMatricule();
-            $b = getCountMatricule();
-            for($i = 0; $i < $b['nb']; $i ++){
-                setAllHabil($a,random_int(1,2),$i);
-                setAllLogin($a,$i);
-            }   C'EST POUR LES LOGINS ET HABILITATIONS */
-            
+            /* 
+                $a = getColMatricule();
+                $b = getCountMatricule();
+                for($i = 0; $i < $b['nb']; $i ++){
+                    setAllHabil($a,random_int(1,2),$i);
+                    setAllLogin($a,$i);
+                }   
+                $a = getIdMedoc();
+                $b = getNbMedoc();
+                for($i = 0; $i < $b[0]; $i ++){
+                    setMonnaieMedoc($a,random_int(15,99),$i);
+                }   C'EST POUR LES LOGINS, HABILITATIONS ET MONNAIE DES MDOCS
+            */
 
                 if(empty($_SESSION['login']) && empty($_SESSION['habilitation'])){
 

@@ -229,5 +229,29 @@ function setAllHabil($a,$id,$i){
     
 
 }
+function getIdMedoc(){
+        $monPdo = connexionPDO();
+        $req = 'SELECT `MED_DEPOTLEGAL` FROM `medicament`;' ;
+        $res = $monPdo->query($req);
+        $result = $res->fetchAll();
+        return $result;    
+
+}
+function getNbMedoc(){
+    $monPdo = connexionPDO();
+    $req = 'SELECT COUNT(`MED_DEPOTLEGAL`) FROM `medicament`;' ;
+    $res = $monPdo->query($req);
+    $result = $res->fetch();
+    return $result; 
+
+}
+function setMonnaieMedoc($a,$id,$i){
+    $monPdo = connexionPDO();
+    $id=$id+0.99;
+        $req = 'UPDATE medicament SET `MED_PRIXECHANTILLON`='.$id.' WHERE `MED_DEPOTLEGAL`="'.$a[$i][0].'"' ;
+        $res = $monPdo->query($req);
+    
+
+}
 
 ?>
