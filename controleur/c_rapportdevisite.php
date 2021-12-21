@@ -37,11 +37,16 @@ switch($action)
 			if(!getDepotMedoc($_POST['medicamentproposer'])){
 				$_POST['medicamentproposer']=NULL;
 			}
-			if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null)){
-				$succes = '<p class="alert alert-success">Rapport saisit avec succès !</p>';
+			if(getNomMotif($_POST['motif'])){
+				if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null)){
+					$succes = '<p class="alert alert-success">Rapport saisit avec succès</p>';
+				}else{
+					$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
+				}
 			}else{
-				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport !</p>';
+				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
 			}
+			
 			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
 			$_SESSION['stop']=true;
 		}

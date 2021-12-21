@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le : mar. 21 déc. 2021 à 00:11
+-- Généré le : mar. 21 déc. 2021 à 13:55
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -82,7 +82,6 @@ INSERT INTO `collaborateur` (`COL_MATRICULE`, `COL_NOM`, `COL_PRENOM`, `COL_ADRE
 ('b59', 'Cottin', 'Vincenne', '36 sq Capucins', '5000', 'GAP', '1995-10-21 00:00:00', 1, 13, NULL, 'RA'),
 ('c14', 'Daburon', 'François', '13 r Champs Elysées', '6000', 'NICE', '1989-02-01 00:00:00', 1, 14, NULL, 'PA'),
 ('c3', 'De', 'Philippe', '13 r Charles Peguy', '10000', 'TROYES', '1992-05-05 00:00:00', 1, 15, NULL, 'CA'),
-('c54', 'Debelle', 'Michel', '181 r Caponière', '88000', 'EPINAL', '1991-04-09 00:00:00', 2, 16, NULL, 'AL'),
 ('d13', 'Debelle', 'Jeanne', '134 r Stalingrad', '44000', 'NANTES', '1991-12-05 00:00:00', 2, 17, NULL, 'PL'),
 ('d51', 'Debroise', 'Michel', '2 av 6 Juin', '70000', 'VESOUL', '1997-11-18 00:00:00', 1, 18, NULL, 'FC'),
 ('e22', 'Desmarquest', 'Nathalie', '14 r Fédérico Garcia Lorca', '54000', 'NANCY', '1989-03-24 00:00:00', 2, 19, NULL, 'AL'),
@@ -349,7 +348,6 @@ INSERT INTO `login` (`LOG_ID`, `LOG_LOGIN`, `LOG_MOTDEPASSE`, `COL_MATRICULE`) V
 (13, 'cotvin', '733fca838b5eef95d0c591ae6839db3e9be78265b62af31fc885b41ce145969a311569cc63bcaa4d85d87eef846e8db277e1adac34ba4d604561c611c00b912b', 'b59'),
 (14, 'dabfra', '3b35c54ac57dac17f7075312440a2e6287e46751a07c6ec0457dad257ace9494748f43df0bd87a17faa1ca3956e75c50e753be1f005e59aa0e93877d0e2b38d2', 'c14'),
 (15, 'dephi', '2caee44259e51e536fba90c1a24deb98f64aca25691acd61bf8f056b8cca0c66c6e9df3b29a8f0eb928f305cc272ce32ef2a9b51de9ddab45f4226c36b90956e', 'c3'),
-(16, 'debmic', 'f77970e99958536d97bec3e8ba62a47c5b0897b175f12c19b7b43dcd9ba5ad15052ce414bf824abfd5daa09e281e8bf5838a1e6acd6ee90a2c040474e0be9e0d', 'c54'),
 (17, 'debjea', 'dffebdcfcc45ec47f43d35b54fcbf6983b718a27a8c78a1f3d780cc927001143860ae4288e3598b46a8ef036398af81b6f7b044f63c31127ae90b1e9550a9732', 'd13'),
 (18, 'debmic', 'f77970e99958536d97bec3e8ba62a47c5b0897b175f12c19b7b43dcd9ba5ad15052ce414bf824abfd5daa09e281e8bf5838a1e6acd6ee90a2c040474e0be9e0d', 'd51'),
 (19, 'desnat', '1a793b1672cf59b0478e392047b0f29609df8788a9beb03e965b1a7163e2023fbd2924a414666f9a9a1d675b6c8ea8584e34c1c681e8d73b7f4ee49cbd5e040f', 'e22'),
