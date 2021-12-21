@@ -2,11 +2,9 @@
     $css='justify-content-end';
     if(isset($_SESSION['login'])){
         $css='justify-content-between';
-    }
-    
+    }    
 ?>
-<!DOCTYPE html>
-<html lang="fr">
+
 
 <head>
     <title>Projet GSB</title>
@@ -25,6 +23,7 @@
 </head>
 
 <body>
+<div id="contenu">
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
