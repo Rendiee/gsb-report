@@ -16,14 +16,6 @@ if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5
 }
 switch($action)
 {
-	case 'rapport' :
-	{
-
-		include("vues/v_formulairerapportdevisite.php");
-		break;
-
-	}
-
 	case 'redigerrapport':
 	{		
 		
