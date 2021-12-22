@@ -116,7 +116,16 @@ switch($action)
 		if(isset($_POST['mesrapports'])){
 			$dated=date_create($_POST['datedebut']);
 			$datef=date_create($_POST['datefin']);
-			if($dated<=$datef && is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
+			if(!empty($_POST['praticien']) ){
+				if(is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
+					$pra=true;
+				}else{
+					$pra=false;
+				}
+			}else{
+				$pra=true;
+			}
+			if($dated<=$datef && $pra){
 				include("vues/v_affichermesrapports.php");
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);

@@ -12,6 +12,7 @@
                 <div class="row">
                     
                 </div>
+                <input class="btn btn-info text-light valider" type="button" onclick="window.location.href='index.php?uc=rapportdevisite&action=mesrapports'" value="Retour">
             </div>
         </div>
     </div>
