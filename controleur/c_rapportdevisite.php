@@ -112,11 +112,32 @@ switch($action)
 	}
 
 	case 'mesrapports':
-	{
-
-		include("vues/v_mesrapports.php");
+	{	
+		if(isset($_POST['mesrapports'])){
+			$dated=date_create($_POST['datedebut']);
+			$datef=date_create($_POST['datefin']);
+			if($dated<=$datef && is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
+				include("vues/v_affichermesrapports.php");
+			}else{
+				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+				if($dated>$datef){
+					$succes='<p class="alert alert-danger" style="text-align:center">La fourchette selectionnée est incorrecte.</p>';					
+					include("vues/v_mesrapports.php");
+				}else{
+					$succes='<p class="alert alert-danger" style="text-align:center">Un problème est survenu lors da selection d\'un praticien.</p>';
+					include("vues/v_mesrapports.php");
+				}
+			}
+		}else{
+			if(getAllInformationPraticienVisite($_SESSION['matricule'])){
+				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+				include("vues/v_mesrapports.php");
+			}else{
+				$succes='<p class="alert alert-danger" style="text-align:center">Vous n\'avez aucun rapport de visite à votre nom.</p>';
+				include("vues/v_aucunrapport.php");
+			}
+		}
 		break;
-
 	}
 	
 	default :

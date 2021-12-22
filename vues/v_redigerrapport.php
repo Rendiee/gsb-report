@@ -31,14 +31,14 @@
                             ?>
                         </select>
                         <br/>
-                        <label for="datevisite">Date de visite </label>
+                        <label for="datevisite">Date de visite : </label>
                         <input type="date" name="datevisite" id="datevisite"><br/>
 
                         <label for="bilan">Bilan du rapport</label>
                         <textarea name="bilanrapport" id="bilanrapport"></textarea><br/>
 
-                        <label for="datesaisit">Date de saisie du rapport <span style="color:red">*</span></label>
-                        <input type="date" required name="datesaisit" id="datesaisit"><br/>
+                        <label for="datesaisit">Date de saisie du rapport : </label>
+                        <input type="date" required name="datesaisit" id="datesaisit"><span style="color:red"> *</span><br/>
 
                         <label for="motif">Motif <span style="color:red">*</span></label>
                         <select required name="motif" id="listemotif">
