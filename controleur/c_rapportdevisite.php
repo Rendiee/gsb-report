@@ -11,7 +11,7 @@ if(isset($_REQUEST['rapport'])){
 if(isset($_REQUEST['mesrapports'])){
 	$action = 'mesrapports';
 }
-if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
+if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport a l'infini)
 	unset($_SESSION['stop']);
 }
 switch($action)
@@ -48,7 +48,7 @@ switch($action)
 			}else{
 				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
 			}			
-			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
+			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport a l'infini)
 			$_SESSION['stop']=true;
 		}
 

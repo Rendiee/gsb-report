@@ -57,6 +57,25 @@ include_once 'bd.inc.php';
                 print "Erreur !: " . $e->getMessage();
                 die();
         }
-    }     
+    }
+    
+    function getNbMedicament(){
+
+        try 
+        {
+            $monPdo = connexionPDO();
+            $req = 'SELECT COUNT(MED_DEPOTLEGAL) as \'nb\' FROM medicament';
+            $res = $monPdo->query($req);
+            $result = $res->fetch();
+    
+            return $result;
+        } 
+    
+        catch (PDOException $e) 
+        {
+                print "Erreur !: " . $e->getMessage();
+                die();
+        }
+    }
 
 ?>
