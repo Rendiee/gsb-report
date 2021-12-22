@@ -189,3 +189,27 @@ footer a.text-light:hover {
 .ecart{
   margin-right: 25px;
 }
+.nav-linki {
+  display: block;
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.down{
+  border-radius: 50rem 50rem 0px 0px;
+}
+.down:hover{
+  color:black;
+  border-radius: 50rem 50rem 0px 0px;
+}
+.dropdown-menu-dark .dropdown-item:hover, .dropdown-menu-dark .dropdown-item:focus {
+  color: #fff;
+  background-color: #53595f;
+}
+

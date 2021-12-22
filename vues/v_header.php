@@ -52,8 +52,13 @@
                                 <li class="nav-item ecart">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=praticiens&action=formulairepraticien"><img style="max-width:20px;margin-bottom:5px" src="assets/img/praticien.png">Praticiens</a>
                                 </li>
-                                <li class="nav-item ecart">
-                                  <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=rapportdevisite&action=rapport"><img style="max-width:18px;margin-bottom:5px;margin-right:2px" src="assets/img/rapport.png">Rapport de visite</a>
+                                <li class="nav-item ecart dropdown">
+                                    <a class="nav-link dropdown-toggle btn-outline-info rounded-pill px-3" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img style="max-width:18px;margin-bottom:5px;margin-right:2px" src="assets/img/rapport.png">Rapport de visite</a>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=redigerrapport">Rédiger un rapport</a></li>
+                                        <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=mesrapports">Mes rapports</a></li>
+                                        <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=rapportregion">Rapport de ma région</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item ecart">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Profil</a>
