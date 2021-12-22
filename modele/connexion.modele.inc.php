@@ -167,6 +167,8 @@ function getCountMatricule(){
 
 }
 
+/* FONCTIONS PLUS UTILES
+
 function concatMotDePasseBrut($mat) : string {
 
     try 
@@ -250,8 +252,6 @@ function setMonnaieMedoc($a,$id,$i){
     $id=$id+0.99;
         $req = 'UPDATE medicament SET `MED_PRIXECHANTILLON`='.$id.' WHERE `MED_DEPOTLEGAL`="'.$a[$i][0].'"' ;
         $res = $monPdo->query($req);
-    
-
-}
+} FONCTIONS PLUS UTILES */
 
 ?>

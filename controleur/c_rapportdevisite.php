@@ -17,15 +17,17 @@ if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5
 switch($action)
 {
 	case 'rapport' :
-		{
-			include("vues/v_formulairerapportdevisite.php");
-			break;
-		}
+	{
+
+		include("vues/v_formulairerapportdevisite.php");
+		break;
+
+	}
+
 	case 'redigerrapport':
 	{		
 		
-		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){
-			
+		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){			
 			if(isset($_POST['saisitdefinitive'])){
 				$def = 1;
 			}else{
@@ -45,74 +47,84 @@ switch($action)
 				}
 			}else{
 				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
-			}
-			
+			}			
 			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et vévite d'inserer un rapport a l'infini)
 			$_SESSION['stop']=true;
 		}
 
 		if(!empty(getAllInformationNonValide($_SESSION['matricule'])) && !isset($_REQUEST['nouveau'])){
-				$info = getAllInformationNonValide($_SESSION['matricule']);
-				include("vues/v_formulairerapportnonvalide.php");
+			$info = getAllInformationNonValide($_SESSION['matricule']);
+			include("vues/v_formulairerapportnonvalide.php");
 		}else{
-				$result = getAllMatriculeCollaborateur();
-				$motif = getMotif();
-				$medoc = getAllNomMedicament();
-				$prat = getAllMatriculePraticien();
-				$getId = getMaxIdRapportVisite($_SESSION['matricule']);
-				if($getId == null){
-					$num = 1;
-				}else{
-					$num = $getId['max_id'] + 1;
-				}
-				include("vues/v_redigerrapport.php");
+			$result = getAllMatriculeCollaborateur();
+			$motif = getMotif();
+			$medoc = getAllNomMedicament();
+			$prat = getAllMatriculePraticien();
+			$getId = getMaxIdRapportVisite($_SESSION['matricule']);
+			if($getId == null){
+				$num = 1;
+			}else{
+				$num = $getId['max_id'] + 1;
 			}
-		    break;
-	    }
+			include("vues/v_redigerrapport.php");
+		}
+		break;
+
+	}
+
 	case 'rapportNonValide':
 	{		
+
 		if(isset($_REQUEST['nonValide'])){
-				$rap=$_REQUEST['nonValide'];
-				$nonValide = getInformationNonValide($rap);
-				$nomPraticien = getAllInformationPraticien($nonValide[9]);
-				$nomMotif = getNomMotif($nonValide[10]);
-				$result = getAllMatriculeCollaborateur();
-				$motif = getMotif();
-				$medoc = getAllNomMedicament();
-				$prat = getAllMatriculePraticien();
-				include("vues/v_rapportnonvalide.php");
+			$rap=$_REQUEST['nonValide'];
+			$nonValide = getInformationNonValide($rap);
+			$nomPraticien = getAllInformationPraticien($nonValide[9]);
+			$nomMotif = getNomMotif($nonValide[10]);
+			$result = getAllMatriculeCollaborateur();
+			$motif = getMotif();
+			$medoc = getAllNomMedicament();
+			$prat = getAllMatriculePraticien();
+			include("vues/v_rapportnonvalide.php");
 		}else{
 			header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 		}
-			break;
-		}
+		break;
+
+	}
+
 	case 'rapportregion':
 	{
-            
-			if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){
-				
-				if(!empty($_REQUEST['nouveauxRapports'])){
-					include("vues/v_nouveauxRapports.php");
-				}elseif(!empty($_REQUEST['historiqueRapports'])){
-					include("vues/v_historiqueRapports.php");
-				}
-				else{
-					include("vues/v_rapportregion.php");
-				}
-			}else{
-				header("location: index.php?uc=rapportdevisite&action=rapport");
+
+		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){				
+			if(!empty($_REQUEST['nouveauxRapports'])){
+				include("vues/v_nouveauxRapports.php");
+			}elseif(!empty($_REQUEST['historiqueRapports'])){
+				include("vues/v_historiqueRapports.php");
 			}
-		    break;
-	    }
-	case 'mesrapports':
-		{
-			include("vues/v_mesrapports.php");
-			break;
+			else{
+				include("vues/v_rapportregion.php");
+			}
+		}else{
+			header("location: index.php?uc=rapportdevisite&action=rapport");
+		}
+		break;
+
 	}
+
+	case 'mesrapports':
+	{
+
+		include("vues/v_mesrapports.php");
+		break;
+
+	}
+	
 	default :
 	{
+
 		include("vues/v_formulairerapportdevisite.php");
 		break;
+
 	}
 }
 ?>
