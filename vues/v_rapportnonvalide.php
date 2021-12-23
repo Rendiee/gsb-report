@@ -1,17 +1,16 @@
-<section class="bg-light py-5">
-    <div class="feature-work container my-4">
-        <div class="row d-flex d-flex align-items-center">
-            <div class="col-lg-5">
-                <h1 class="feature-work-heading h2 py-3 semi-bold-600">Modification du rapport n°<?php echo $nonValide[1]; ?></h1>
-                <p class="feature-work-body text-muted light-300">
+<section class="bg-light">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col test">
+                <h1 class="titre">Modification du rapport n°<?php echo $nonValide[1]; ?></h1>
+                <p class="text">
                     Formulaire permettant de rédiger un rapport de visite.
                 </p>
                 <img class="img-fluid" src="assets/img/rapport.jpg">
             </div>
-            <div class="col-lg-4 offset-lg-1 align-left">
-                <div class="row">
-                    <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rapport">
-                        <h2 style="text-align: center; text-decoration: underline;">Rapport de visite</h2><br/>
+            <div class="col test">
+                    <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="formulaire">
+                        <label class="space title-formulaire">Rapport de visite</label>
 
                         <label for="nbrapport">Numéro du rapport :</label>
                         <input type="text" style="background-color:white;border:none;" disabled name="nbrapport" id="nbrapport" value="<?php echo $nonValide[1];?>"><br/>
