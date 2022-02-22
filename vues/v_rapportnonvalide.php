@@ -10,7 +10,7 @@
             </div>
             <div class="col test">
                     <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="formulaire">
-                        <label class="space title-formulaire">Rapport de visite</label>
+                        <label class="space title-formulaire">Rapport de visite</label><br/>
 
                         <label for="nbrapport">Numéro du rapport :</label>
                         <input type="text" style="background-color:white;border:none;" disabled name="nbrapport" id="nbrapport" value="<?php echo $nonValide[1];?>"><br/>

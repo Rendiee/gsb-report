@@ -6,7 +6,7 @@
                 <p class="text">
                     Vos informations personnelles.
                 </p>
-                <img class="img-fluid" src="assets/img/profil.png">
+                <img class="img-fluid w-75" src="assets/img/profil.png">
             </div>
         <div class="col test">
             <div class="formulaire">

@@ -10,8 +10,8 @@
                 <img class="img-fluid" src="assets/img/medecin.jpg">
             </div>
             <div class="col test">
-                <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="formulaire">
-                    <label for="listepraticien">Liste des praticiens : </form>
+                <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="formulaire-recherche">
+                    <label for="listepraticien">Liste des praticiens :</label>
                     <select name="praticien" id="listechoix">
                         <option value="default">- Choisissez un praticien -</option>
                         <?php                               

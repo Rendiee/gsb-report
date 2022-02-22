@@ -4,7 +4,7 @@
             <div class="col test">
                 <h1 class="titre">Formulaire de rapport de visite</h1>
                 <p class="text">Formulaire permettant de rédiger un rapport de visite.</p>
-                <img src="assets/img/login.png" class="image-size" alt="Médecin Harold même !">
+                <img class="img-fluid" src="assets/img/rapport.jpg">
             </div>
             <div class="col test">
                 <?php if (isset($succes)){echo $succes;} ?>
@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" name="valider" id="valider" class="btn btn-info text-light">Valider</button>
+                        <button type="submit" name="valider" id="valider" class="btn btn-info text-light valider mt-3">Valider</button>
                 </form>
             </div>
         </div>

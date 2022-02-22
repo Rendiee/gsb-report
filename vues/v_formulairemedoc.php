@@ -10,8 +10,8 @@
                 <img class="img-fluid" src="assets/img/medoc.jpeg">
             </div>
             <div class="col test">
-                <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire">
-                    <label for="listemedoc">Liste des médicaments :</form>
+                <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire-recherche">
+                    <label for="listemedoc">Liste des médicaments :</label>
                     <select name="medicament" id="listechoix">
                         <option value="default">- Choisissez un médicament -</option>
                         <?php                            

@@ -10,7 +10,7 @@
             </div>
             <div class="col-lg-4 offset-lg-1 align-left">
                 <div class="row">
-                    <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
+                    <form class="form-signin formulaire" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
                         <label for="name">Nouveaux rapports :</label>
                         <select required  name="nouveauxRapports" id="listechoix">
                             <option class="form-control" value>- Nouveaux rapports -</option>

@@ -10,8 +10,8 @@
             </div>
             <div class="col-lg-4 offset-lg-1 align-left">
                 <div class="row">
-                    <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapport" method="post">
-                        <label for="name">Option rapport de visite :</form>
+                    <form class="form-signin formulaire-recherche" action="index.php?uc=rapportdevisite&action=rapport" method="post">
+                        <label for="name">Option rapport de visite :</label>
                         <select required  name="rapport" id="listechoix">
                             <option class="form-control" value>- Choisissez une option -</option>
                             <option class="form-control" value="redigerrapport">1 - Rédiger un rapport de visite</option>
