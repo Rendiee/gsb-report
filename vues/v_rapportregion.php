@@ -10,24 +10,24 @@
             </div>
             <div class="col-lg-4 offset-lg-1 align-left">
                 <div class="row">
-                    <form class="form-signin formulaire" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
+                    <form class="form-signin formulaire-recherche" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
                         <label for="name">Nouveaux rapports :</label>
                         <select required  name="nouveauxRapports" id="listechoix">
                             <option class="form-control" value>- Nouveaux rapports -</option>
                         </select>
                         <br/>
-                        <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
+                        <input class="btn btn-info text-light valider m-0" type="submit" value="Afficher les informations">
                     </form>
                 </div>
                 <br/>
                 <div class="row">
-                    <form class="form-signin" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
+                    <form class="form-signin formulaire-recherche" action="index.php?uc=rapportdevisite&action=rapportregion" method="post">
                         <label for="name">Anciens rapports :</label>
                         <select required  name="historiqueRapports" id="listechoix">
                             <option class="form-control" value>- Anciens rapports -</option>
                         </select>
                         <br/>
-                        <input class="btn btn-info text-light valider" type="submit" value="Afficher les informations">
+                        <input class="btn btn-info text-light valider m-0" type="submit" value="Afficher les informations">
                     </form>
                 </div>
             </div>

@@ -41,11 +41,7 @@
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/accueil.png">Accueil</a>
                         </li>
-                            <?php
-                        
-                            if(isset($_SESSION['login'])){
-
-                            ?>
+                            <?php if(isset($_SESSION['login'])){?>
                                 <li class="nav-item ">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=medicaments&action=formulairemedoc"><img style="max-width:17px;margin-bottom:5px;margin-right:5px" src="assets/img/pillule.png">Médicaments</a>
                                 </li>
@@ -66,23 +62,10 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><img style="max-width:15px;margin-bottom:4px;margin-right:5px" src="assets/img/deco.png">Déconnexion</a>
-                                </li>
-
-                                <?php
-
-                            }else{
-
-                                ?>
-
+                                </li><?php }else{?>
                                 <li class="nav-item">
-                                    <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=connexion"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Connexion</a>
-                                </li>
-
-                                <?php
-
-                            }
-
-                        ?>
+                                    <a class="nav-link btn-outline-info rounded-pill px-3 ms-2" href="index.php?uc=connexion&action=connexion"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/profil.png">Connexion</a>
+                                </li><?php }?>
                     </ul>
                 </div>
             </div>

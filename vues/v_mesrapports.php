@@ -4,16 +4,15 @@
             <div class="col-lg-5">
                 <h1 class="feature-work-heading h2 py-3 semi-bold-600">Rapport de ma région</h1>
                 <p class="feature-work-body text-muted light-300">
-                    Formulaire permettant d'afficher toutes les rapports de visite en fonction d'une fourchette de date
+                    Formulaire permettant d'afficher toutes les rapports de visite en fonction d'une date
                 </p>
                 <img class="img-fluid" src="assets/img/rapport.jpg">
             </div>
             <div class="col-lg-4 offset-lg-1 align-left">
                 <div class="row">
                     <?php if (isset($succes)){echo $succes;} ?>
-                    <form class="form-signin formulaire" action="index.php?uc=rapportdevisite&action=mesrapports" method="post">
+                    <form class="form-signin formulaire mx-2" action="index.php?uc=rapportdevisite&action=mesrapports" method="post">
                         <p style="color:grey;margin-top:-10px"><span style="color:red">*</span>Champs obligatoires</p>
-                        <h2 style="text-align: center; text-decoration: underline;">Fourchette de date</h2><br/>
 
                         <label for="datesaisit">Date de début : </span></label>
                         <input type="date" required name="datedebut"><span style="color:red"> *</span><br/><br/>

@@ -30,7 +30,7 @@ if(isset($_POST['connexion'])){
             <div class="col-lg-5 offset-lg-1 align-left">
                 <div class="wrapper">
                     <?php if (isset($userEmpty)){echo '<p class="alert alert-danger">'.$userEmpty.'</p>';} ?>
-                    <form class="form-signin" action="index.php?uc=connexion&action=connexion" method="post">
+                    <form class="form-signin formulaire m-auto" action="index.php?uc=connexion&action=connexion" method="post">
                         <h2 class="form-signin-heading">Se connecter</h2>
                         <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus="" />
                         <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>      
