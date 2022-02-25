@@ -1,7 +1,13 @@
+@font-face {
+	font-family: 'OldStandard';
+	src: url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap');
+}
+
 body {
 	background: #F6F9FE !important;
 	min-height: 100%;
 	position: relative;
+	font-family: 'OldStandard';
 }
 
 .wrapper {	
@@ -126,7 +132,7 @@ textarea{
 }
 
 .test {
-    padding-top: 8%;
+    padding-top: 4%;
 	padding-bottom: 8%;
 	display: flex;
     flex-direction: column;
@@ -134,24 +140,23 @@ textarea{
 }
 
 .titre {
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     padding-bottom: 1rem;
 }
 
 .text {
-    font-family: 'Open Sans', sans-serif;
     padding-bottom: 1em;
-    font-weight: 300;
-    color: #6c757d;
+	font-size: 20;
+    font-weight: 400;
+    color: #555555;
 }
 
 .formulaire-recherche{
     background-color: white;
     padding: 2em;
     margin-top: 1em;
-    box-shadow: 1px 1px 10px black;
-	width: 30vw;
+    box-shadow: 1px 1px 5px black;
+	width: 35vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -230,4 +235,21 @@ textarea{
 .text-error {
 	font-size: 20;
 	padding-bottom: 30px;
+}
+
+.titre-formulaire {
+	font-size: 22;
+	font-weight: bolder;
+}
+
+.size-img-page {
+	width: auto;
+	height: 250px;
+}
+
+.structure-hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 80px;
 }
