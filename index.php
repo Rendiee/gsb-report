@@ -62,7 +62,6 @@
         }
     }
 ?>
-</div>
 <?php include("vues/v_footer.php") ;?>
 </body>
 </html>

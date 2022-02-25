@@ -15,7 +15,6 @@
 </head>
 
 <body>
-<div id="contenu">
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -23,6 +22,9 @@
                 <i class="bi bi-journal-medical"></i>
                 <span class="text-dark h4 fw-bold">Projet</span> <span class="text-info h4 fw-bold">GSB</span>
             </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
                 <div class="flex-fill d-flex justify-content-end">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">

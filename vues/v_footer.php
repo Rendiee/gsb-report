@@ -1,7 +1,7 @@
 <div id="foot">
-    <footer class="pt-4">
+    <footer class="pt-4 d-flex flex-column justify-content-between">
         <div class="container">
-            <div class="row py-4">
+            <div class="row pt-4">
                 <div class="col-lg-3 col-12 align-left">
                     <a class="navbar-brand" href="index.php?uc=accueil">
                         <span class="text-light h5"><u>Projet GSB</u></span>
@@ -17,20 +17,24 @@
                         <li class="pb-2">
                             <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.php?uc=accueil">Accueil</a>
                         </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=rapportdevisite&action=rapport">Rapport de visite</a>
-                        </li>
-                        <?php
-                            if(isset($_SESSION['login'])){
+                        <?php if(isset($_SESSION['login'])){
                                 echo 
                                 '<li class="pb-2">
-                                    <i class="bx-fw bx bxs-chevron-right bx-xs"></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=profil">Profil</a>
+                                    <i class=\'bx-fw bx bxs-chevron-right bx-xs\'></i><a class="text-decoration-none text-light py-1" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
+                                </li>
+                                <li class="pb-2">
+                                    <i class=\'bx-fw bx bxs-chevron-right bx-xs\'></i><a class="text-decoration-none text-light py-1" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
+                                </li>
+                                <li class="pb-2">
+                                    <i class=\'bx-fw bx bxs-chevron-right bx-xs\'></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=rapportdevisite&action=redigerrapport">Rapport de visite</a>
+                                </li>                        
+                                <li class="pb-2">
+                                        <i class="bx-fw bx bxs-chevron-right bx-xs"></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=profil">Profil</a>
+                                </li>';
+                            }else{
+                                echo 
+                                '<li class="pb-2">
+                                    <i class="bx-fw bx bxs-chevron-right bx-xs"></i></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=connexion">Connexion</a>
                                 </li>';
                             }
                         ?>
@@ -39,7 +43,7 @@
             </div>
         </div>
 
-        <div class="w-100 footercustom py-3">
+        <div class="w-100 footercustom pt-3">
             <div class="container">
                 <div class="row pt-2 d-flex justify-content-center">
                     <div class="col-lg-6 col-sm-12">
