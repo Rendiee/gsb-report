@@ -19,25 +19,25 @@ if(isset($_POST['connexion'])){
 }
 
 ?>
-<section class="bg-light py-5">
-    <div class="feature-work container my-4">
-        <div class="row d-flex d-flex align-items-center">
-            <div class="col test align-items-start">
-                <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire de connexion</h1>
-                <p class="feature-work-body text-muted light-300">Formulaire permettant de se connecter au site et d'accèder au données.</p>
+<section class="bg-light">
+    <div class="container">
+        <div class="structure-hero">
+            <h1 class="titre text-center">Formulaire de connexion</h1>
+            <p class="text text-center">Formulaire permettant de se connecter au site et d'accèder au données.</p>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 pt-0">
                 <img class="img-fluid" src="assets/img/login.png">
             </div>
-            <div class="col test">
-                <div class="wrapper">
-                    <?php if (isset($userEmpty)){echo '<p class="alert alert-danger">'.$userEmpty.'</p>';} ?>
-                    <form class="form-signin formulaire m-auto" action="index.php?uc=connexion&action=connexion" method="post">
-                        <h2 class="form-signin-heading">Se connecter</h2>
-                        <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus="" />
-                        <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>      
-                        <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
-                        <!--<p><br/>Vous n'avez pas encore de compte ?<br/><a href="index.php?uc=connexion&action=inscription">S'inscrire</a></p>-->
-                    </form>
-                </div>
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 pt-0">
+                <?php if (isset($userEmpty)){echo '<p class="alert alert-danger">'.$userEmpty.'</p>';} ?>
+                <form class="form-signin formulaire m-auto" action="index.php?uc=connexion&action=connexion" method="post">
+                    <h2 class="form-signin-heading">Se connecter</h2>
+                    <input type="text" class="form-control" name="username" placeholder="Identifiant" autofocus="" />
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>      
+                    <input class="btn btn-lg btn-info btn-block text-light" type="submit" name="connexion" value="Connexion">
+                    <!--<p><br/>Vous n'avez pas encore de compte ?<br/><a href="index.php?uc=connexion&action=inscription">S'inscrire</a></p>-->
+                </form>
             </div>
         </div>
     </div>

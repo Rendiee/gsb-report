@@ -36,7 +36,7 @@
             </button>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
-                <div class="flex-fill">
+                <div class="flex-fill d-flex justify-content-end">
                     <ul class="nav navbar-nav d-flex <?php echo $css;?> mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil"><img style="max-width:15px;margin-bottom:5px;margin-right:5px" src="assets/img/accueil.png">Accueil</a>

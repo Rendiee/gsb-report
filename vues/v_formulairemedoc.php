@@ -1,19 +1,19 @@
 <section class="bg-light">
     <div class="container">
+        <div class="structure-hero">
+            <h1 class="titre text-center">Formulaire de médicament</h1>
+            <p class="text text-center">
+                Formulaire permettant d'afficher toutes les informations
+                à propos d'un médicament en particulier.
+            </p>
+        </div>
         <div class="row align-items-center justify-content-center">
-            <div class="col-12 col-sm-8 col-lg-6 test align-items-start structure-hero">
-                <h1 class="titre">Formulaire de médicament</h1>
-                <p class="text">
-                    Formulaire permettant d'afficher toutes les informations
-                    à propos d'un médicament en particulier.
-                </p>
-            </div>
-            <div class="col test">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                 <img class="img-fluid size-img-page" src="assets/img/medoc.jpeg">
             </div>
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                 <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire-recherche col-12">
-                    <label for="listemedoc">Médicaments disponible :</label>
+                    <label class="titre-formulaire" for="listemedoc">Médicaments disponible :</label>
                     <select name="medicament" id="listechoix">
                         <option value="default">- Choisissez un médicament -</option>
                         <?php                            

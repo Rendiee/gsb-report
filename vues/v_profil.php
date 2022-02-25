@@ -1,14 +1,16 @@
 <section class="bg-light">
     <div class="container">
-        <div class="row align-items-center justify-content-between">            
-            <div class="col test align-items-start">
-                <h1 class="titre">Profil de : <br/><span class="carac"><?php echo $info[1].' '.$info[2]?></span></h1>
-                <p class="text">
-                    Vos informations personnelles.
-                </p>
+        <div class="structure-hero">
+            <h1 class="titre text-center">Profil</h1>
+            <p class="text text-center">
+                Vos informations personnelles.
+            </p>
+        </div>
+        <div class="row align-items-center justify-content-center">            
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                 <img class="img-fluid w-75" src="assets/img/profil.png">
             </div>
-        <div class="col test">
+        <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
             <div class="formulaire">
 
                 <p><span class="carac">Matricule</span> : <?php echo $info[0] ?></p>

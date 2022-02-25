@@ -1,18 +1,18 @@
 <section class="bg-light">
     <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col test align-items-start structure-hero">
-                <h1 class="titre">Formulaire de praticien</h1>
-                <p class="text">
-                    Formulaire permettant d'afficher les informations
-                    à propos d'un praticien en particulier.
-                </p>
-            </div>
-            <div class="col test">
+        <div class="structure-hero">
+            <h1 class="titre text-center">Formulaire de praticien</h1>
+            <p class="text text-center">
+                Formulaire permettant d'afficher les informations
+                à propos d'un praticien en particulier.
+            </p>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                 <img class="img-fluid size-img-page" src="assets/img/medecin.jpg">
             </div>
-            <div class="col test">
-                <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="formulaire-recherche">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+                <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="formulaire-recherche col-12">
                     <label class="titre-formulaire" for="listepraticien">Praticiens disponible :</label>
                     <select name="praticien" id="listechoix">
                         <option value="default">- Choisissez un praticien -</option>

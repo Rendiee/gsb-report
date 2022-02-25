@@ -1,15 +1,14 @@
 <section class="bg-light">
     <div class="container">
+        <div class="structure-hero">
+            <h1 class="titre text-center">Modification du rapport n°<?php echo $nonValide[1]; ?></h1>
+            <p class="text text-center">
+                Formulaire permettant de rédiger un rapport de visite.
+            </p>
+        </div>
         <div class="row align-items-center justify-content-center">
-            <div class="col test align-items-start">
-                <h1 class="titre">Modification du rapport n°<?php echo $nonValide[1]; ?></h1>
-                <p class="text">
-                    Formulaire permettant de rédiger un rapport de visite.
-                </p>
-                <img class="img-fluid" src="assets/img/rapport.jpg">
-            </div>
-            <div class="col test">
-                    <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="formulaire">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-0">
+                    <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="formulaire mb-0 mt-0">
                         <label class="space title-formulaire">Rapport de visite</label><br/>
 
                         <label for="nbrapport">Numéro du rapport :</label>
@@ -55,6 +54,7 @@
                         </div>
                         <input class="btn btn-info text-light valider" type="submit" value="Valider le rapport">
                     </form>
+                    <input class="btn btn-info text-light valider my-5" type="button" onclick="history.go(-1)" value="Retour">
                 </div>                    
             </div>
         </div>
