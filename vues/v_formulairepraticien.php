@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="structure-hero">
+            <div class="col test align-items-start structure-hero">
                 <h1 class="titre">Formulaire de praticien</h1>
                 <p class="text">
                     Formulaire permettant d'afficher les informations

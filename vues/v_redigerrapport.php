@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col test">
+            <div class="col test align-items-start">
                 <h1 class="titre">Formulaire de rapport de visite</h1>
                 <p class="text">Formulaire permettant de rédiger un rapport de visite.</p>
                 <img class="img-fluid" src="assets/img/rapport.jpg">

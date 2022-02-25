@@ -1,8 +1,10 @@
 <section class="bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col test">
-                <h1 class="titre">Informations du médicament :<br/><span class="carac"><?php echo $carac[1]; ?></span></h1>
+            <div class="col test align-items-start">
+                <h1 class="titre">Informations du médicament :<br/>
+                    <span class="carac"><?php echo $carac[1]; ?></span>
+                </h1>
                 <img class="img-fluid" src="assets/img/medoc.jpeg">
             </div>
             <div class="col test">

@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">            
-            <div class="col test">
+            <div class="col test align-items-start">
                 <h1 class="titre">Profil de : <br/><span class="carac"><?php echo $info[1].' '.$info[2]?></span></h1>
                 <p class="text">
                     Vos informations personnelles.

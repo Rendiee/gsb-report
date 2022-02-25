@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-            <div class="col test">
+            <div class="col test align-items-start">
                 <h1 class="titre">Modification du rapport n°<?php echo $nonValide[1]; ?></h1>
                 <p class="text">
                     Formulaire permettant de rédiger un rapport de visite.

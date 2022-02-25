@@ -22,12 +22,12 @@ if(isset($_POST['connexion'])){
 <section class="bg-light py-5">
     <div class="feature-work container my-4">
         <div class="row d-flex d-flex align-items-center">
-            <div class="col-lg-5">
+            <div class="col test align-items-start">
                 <h1 class="feature-work-heading h2 py-3 semi-bold-600">Formulaire de connexion</h1>
                 <p class="feature-work-body text-muted light-300">Formulaire permettant de se connecter au site et d'accèder au données.</p>
                 <img class="img-fluid" src="assets/img/login.png">
             </div>
-            <div class="col-lg-5 offset-lg-1 align-left">
+            <div class="col test">
                 <div class="wrapper">
                     <?php if (isset($userEmpty)){echo '<p class="alert alert-danger">'.$userEmpty.'</p>';} ?>
                     <form class="form-signin formulaire m-auto" action="index.php?uc=connexion&action=connexion" method="post">

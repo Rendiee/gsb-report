@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col test">
+            <div class="col test align-items-start">
                 <h1 class="titre">Informations du praticien :<br/><span class="carac"><?php echo $carac['1'].' '.$carac['2']; ?></span></h1>
                 <img class="img-fluid" src="assets/img/medecin.jpg">
             </div>

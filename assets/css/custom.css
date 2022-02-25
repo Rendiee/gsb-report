@@ -155,8 +155,12 @@ textarea{
     background-color: white;
     padding: 2em;
     margin-top: 1em;
+<<<<<<< Updated upstream
     box-shadow: 1px 1px 5px black;
 	width: 35vw;
+=======
+    box-shadow: 1px 1px 10px black;
+>>>>>>> Stashed changes
 	display: flex;
 	flex-direction: column;
 	align-items: center;
