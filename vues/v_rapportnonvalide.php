@@ -12,10 +12,10 @@
                         <label class="space title-formulaire">Rapport de visite</label><br/>
 
                         <label for="nbrapport">Numéro du rapport :</label>
-                        <input type="text" style="background-color:white;border:none;" disabled name="nbrapport" id="nbrapport" value="<?php echo $nonValide[1];?>"><br/>
+                        <input type="text" disabled name="nbrapport" class="w-25 bg-white border-0" value="<?php echo $nonValide[1];?>"><br/>
 
                         <label for="matricule">Matricule du collaborateur :</label>
-                        <input type="text" style="background-color:white;border:none;" disabled name="medicament" id="nbrapport" value="<?php echo $nonValide[0];?>"><br/>
+                        <input type="text" disabled name="medicament" class="w-25 bg-white border-0" value="<?php echo $nonValide[0];?>"><br/>
 
                         <label for="praticien">Praticien concerné :</label>
                         <input type="text" disabled name="medicament" id="nbrapport" value="<?php echo $nomPraticien[0].' - '.$nomPraticien[1].' '.$nomPraticien[2];?>"><br/>

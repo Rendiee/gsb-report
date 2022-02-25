@@ -14,11 +14,11 @@
                     <label class="space title-formulaire">Rapport de visite</label>
                     <div class="form-group space">
                         <label for="nbrapport">Numéro du rapport :</label>
-                        <input class="form-control" type="text" name="nbrapport" id="nbrapport" value="<?php echo $num;?>" disabled>
+                        <input class="w-25 bg-white border-0" type="text" name="nbrapport" value="<?php echo $num;?>" disabled>
                     </div>
                     <div class="form-group space">
                         <label for="matricule">Matricule du collaborateur :</label>
-                        <input class="form-control" type="text" name="matricule" id="nbrapport" value="<?php echo $_SESSION['matricule'];?>" disabled>
+                        <input class="w-25 bg-white border-0" type="text" name="matricule" value="<?php echo $_SESSION['matricule'];?>" disabled>
                     </div>
                     <div class="form-group space">
                         <label for="praticien">Praticien concerné <span style="color:red">*</span> :</label>
@@ -33,15 +33,15 @@
                     </div>
                     <div class="form-group space">
                         <label for="datevisite">Date de visite : </label>
-                        <input class="form-control" type="date" name="datevisite" id="datevisite">
+                        <input type="date" name="datevisite" id="datevisite">
                     </div>
                     <div class="form-group space">
                         <label for="bilan">Bilan du rapport :</label>
-                        <textarea class="form-control" name="bilanrapport" id="bilanrapport"></textarea>
+                        <textarea name="bilanrapport" id="bilanrapport"></textarea>
                     </div>
                     <div class="form-group space">
                         <label for="datesaisit">Date de saisie du rapport <span style="color:red">*</span> : </label>
-                        <input class="form-control" type="date" name="datesaisit" id="datesaisit">
+                        <input type="date" name="datesaisit" id="datesaisit">
                     </div>
                     <div class="form-group space">
                         <label for="motif">Motif <span style="color:red">*</span> :</label>

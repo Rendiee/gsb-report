@@ -12,12 +12,12 @@
             </div>
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
                 <div class="row">
-                    <?php if (isset($succes)){echo $succes;} ?>
-                    <div class="formulaire-recherche">        
+                    <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center">Un problème est survenu lors de la selection du rapport</p>'; $_SESSION['erreur']=false;}?>
+                    <div class="formulaire-recherche">
                         <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center">
                             <label for="name">Liste des rapports non valide :</label>
                             <select required name="nonValide" id="listechoix">
-                                <option class="form-control" value>- Choisissez un rapport non valide -</option>
+                                <option class="form-control text-center" value>- Rapport non valide -</option>
                                 <?php                                
                                     foreach($info as $key){
                                         echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].'</option>';

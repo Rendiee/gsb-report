@@ -23,14 +23,31 @@ function getMotif(){
 }
 
 function getNonValide(){
-
     try 
     {	
-
         $monPdo = connexionPDO();
         $req = 'SELECT COUNT(`RAP_SAISITDEFINITIVE`) FROM `rapport_visite` WHERE `RAP_SAISITDEFINITIVE`=0';
         $res = $monPdo->query($req);
         $result = $res->fetch();
+
+        return $result;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+}
+
+function nonValideExistant($num){
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare('SELECT * FROM `rapport_visite` WHERE RAP_NUM=:num AND COL_MATRICULE="'.$_SESSION['matricule'].'" AND `RAP_SAISITDEFINITIVE`=0');
+        $req -> bindParam(':num', $num, PDO::PARAM_STR);
+        $req -> execute();
+        $result = $req->fetch();
 
         return $result;
     } 

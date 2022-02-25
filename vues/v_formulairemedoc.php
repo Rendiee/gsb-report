@@ -12,13 +12,14 @@
                 <img class="img-fluid size-img-page" src="assets/img/medoc.jpeg">
             </div>
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
-                <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire-recherche col-12">
+                <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center">Un problème est survenu lors de la selection du médicament</p>'; $_SESSION['erreur']=false;}?>
+                <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire-recherche col-12 m-0">
                     <label class="titre-formulaire" for="listemedoc">Médicaments disponible :</label>
-                    <select name="medicament" id="listechoix">
-                        <option value="default">- Choisissez un médicament -</option>
+                    <select required name="medicament" id="listechoix">
+                        <option value class="form-control text-center">- Choisissez un médicament -</option>
                         <?php                            
                             foreach($result as $key){
-                                echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'" class="form-control">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
                             }                           
                         ?>
                     </select>

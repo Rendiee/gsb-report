@@ -28,6 +28,7 @@ switch($action)
 			}   
 			include("vues/v_afficherpraticien.php");
 		}else{
+			$_SESSION['erreur'] = true;
 			header("location: index.php?uc=praticiens&action=formulairepraticien");
 		}
 		break;

@@ -11,7 +11,7 @@ if(isset($_REQUEST['rapport'])){
 if(isset($_REQUEST['mesrapports'])){
 	$action = 'mesrapports';
 }
-if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport a l'infini)
+if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (wévite d'inserer un rapport a l'infini)
 	unset($_SESSION['stop']);
 }
 switch($action)
@@ -69,14 +69,19 @@ switch($action)
 
 		if(isset($_REQUEST['nonValide'])){
 			$rap=$_REQUEST['nonValide'];
-			$nonValide = getInformationNonValide($rap);
-			$nomPraticien = getAllInformationPraticien($nonValide[9]);
-			$nomMotif = getNomMotif($nonValide[10]);
-			$result = getAllMatriculeCollaborateur();
-			$motif = getMotif();
-			$medoc = getAllNomMedicament();
-			$prat = getAllMatriculePraticien();
-			include("vues/v_rapportnonvalide.php");
+			if(!empty(nonValideExistant($rap))){
+				$nonValide = getInformationNonValide($rap);
+				$nomPraticien = getAllInformationPraticien($nonValide[9]);
+				$nomMotif = getNomMotif($nonValide[10]);
+				$result = getAllMatriculeCollaborateur();
+				$motif = getMotif();
+				$medoc = getAllNomMedicament();
+				$prat = getAllMatriculePraticien();
+				include("vues/v_rapportnonvalide.php");
+			}else{
+				$_SESSION['erreur']=true;
+				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
+			}
 		}else{
 			header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 		}

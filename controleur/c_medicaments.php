@@ -28,7 +28,8 @@ switch($action)
 			}   
 			include("vues/v_affichermedoc.php");				
 		}else{
-			header("location: index.php?uc=medicaments&action=formulairemedoc");
+			$_SESSION['erreur'] = true;
+			header("Location: index.php?uc=medicaments&action=formulairemedoc");
 		}
 	    break;
 

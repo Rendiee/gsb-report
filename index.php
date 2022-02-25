@@ -11,7 +11,11 @@
     }
 ?>    
 <?php
-    include("vues/v_header.php");
+    if(empty($_SESSION['login'])){
+        include("vues/v_headerDeco.php");
+    }else{
+        include("vues/v_header.php");
+    }    
     switch($uc)
     {
         case 'accueil':
