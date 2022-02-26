@@ -1,13 +1,13 @@
 <section class="bg-light">
     <div class="container">
-        <div class="structure-hero">
+        <div class="structure-hero pt-lg-5 pt-4">
             <h1 class="titre text-center">Informations du praticien <span class="carac"><?php echo $carac['1'].' '.$carac['2']; ?></span></h1>
         </div>
         <div class="row align-items-center justify-content-center">
-            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5">
                 <img class="img-fluid" src="assets/img/medecin.jpg">
             </div>
-            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5 py-3">
                 <div class="formulaire">                    
                     <p><span class="carac">Nom</span> : <?php echo $carac[1] ?></p>
                     <p><span class="carac">Prénom</span> : <?php echo $carac[2] ?></p>

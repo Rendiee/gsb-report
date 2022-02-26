@@ -29,14 +29,6 @@ switch($action)
 
 	}
 
-	case 'inscription':
-	{
-
-        include("vues/v_inscription.php");
-		break;
-
-	}
-
 	case 'profil':
 	{	
 

@@ -1,18 +1,18 @@
 <section class="bg-light">
     <div class="container">
-        <div class="structure-hero">
+        <div class="structure-hero pt-lg-5 pt-4">
             <h1 class="titre text-center">Formulaire de rapport non valide</h1>
             <p class="text text-center">
                Formulaire affichant tous les rapports non valide encore existant.
             </p>
         </div>
         <div class="row align-items-center justify-content-center">
-            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">                
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5">                
                 <img class="img-fluid" src="assets/img/rapport.jpg">
             </div>
-            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+            <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5 py-3">
                 <div class="row">
-                    <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center">Un problème est survenu lors de la selection du rapport</p>'; $_SESSION['erreur']=false;}?>
+                    <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du rapport</p>'; $_SESSION['erreur']=false;}?>
                     <div class="formulaire-recherche">
                         <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center">
                             <label for="name">Liste des rapports non valide :</label>
