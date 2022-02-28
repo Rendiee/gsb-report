@@ -105,6 +105,14 @@ input[type="submit"] {
 	width: 100%;
 }
 
+@media (max-width: 1399px) {
+	.text-rapport {
+		width: fit-content !important;
+	}
+	.bouton-rapport {
+		width: 33% !important;
+	}
+}
 @media (max-width: 991px) {
 	.rapport {
 		margin: auto;
@@ -138,6 +146,9 @@ input[type="submit"] {
 		min-width: 80%;
 		max-width: 80%;
 	}
+	.bouton-rapport {
+		width: 50% !important;
+	}
 }
 
 textarea {
@@ -145,12 +156,6 @@ textarea {
 	width: 100%;
 	margin-bottom: 15px;
 	height: 80px;
-}
-
-#datevisite,
-#datesaisit {
-	align-items: right;
-	margin-bottom: 20px;
 }
 
 .valider {
@@ -161,7 +166,7 @@ textarea {
 	height: fit-content;
 }
 
-.rediger{
+.rediger {
 	height: 550px;
 }
 

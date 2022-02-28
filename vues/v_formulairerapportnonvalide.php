@@ -24,10 +24,10 @@
                                     }                                
                                 ?>
                             </select>
-                            <input class="btn btn-info text-light valider" type="submit" value="Modifier le rapport">
+                            <input class="btn btn-info text-light valider w-auto" type="submit" value="Modifier le rapport">
                         </form>
                         <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="m-0">
-                            <input class="btn btn-info text-light valider m-0" type="submit" value="Saisir un nouveau rapport" name="nouveau">
+                            <input class="btn btn-info text-light valider m-0 w-auto" type="submit" value="Saisir un nouveau rapport" name="nouveau">
                         </form>
                     </div>
                  </div>                    
