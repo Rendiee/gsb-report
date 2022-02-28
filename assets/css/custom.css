@@ -157,7 +157,12 @@ textarea {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	min-width: 50%;
+	width: 50%;
+	height: fit-content;
+}
+
+.rediger{
+	height: 550px;
 }
 
 .test {

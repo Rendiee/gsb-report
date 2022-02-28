@@ -36,7 +36,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark p-0">
                                 <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=redigerrapport">Rédiger un rapport</a></li>
                                 <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=mesrapports">Mes rapports</a></li>
-                                <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=rapportregion">Rapport de ma région</a></li>
+                                <?php if($_SESSION['habilitation']==2) echo '<li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=rapportregion">Rapport de ma région</a></li>' ?>
                             </ul>
                         </li>
                         <li class="nav-item ">

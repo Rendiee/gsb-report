@@ -270,3 +270,8 @@ footer a.text-light:hover {
 	margin-bottom: 4px;
 	margin-right: 5px;
 }
+
+.vr{
+	width: 1px;
+	background-color: #000;
+}

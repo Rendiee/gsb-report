@@ -102,7 +102,7 @@ switch($action)
 				include("vues/v_rapportregion.php");
 			}
 		}else{
-			header("location: index.php?uc=rapportdevisite&action=rapport");
+			header("location: index.php?uc=accueil");
 		}
 		break;
 
