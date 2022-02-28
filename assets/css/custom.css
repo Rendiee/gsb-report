@@ -1,7 +1,3 @@
-@font-face {
-	font-family: "OldStandard";
-	src: url("https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap");
-}
 body,
 html {
 	height: 100%;
@@ -12,7 +8,6 @@ body {
 	background: #f6f9fe !important;
 	width: 100%;
 	position: relative;
-	font-family: "OldStandard";
 	display: table;
 }
 
@@ -62,6 +57,12 @@ input[type="password"] {
 
 input[type="submit"] {
 	margin-top: 20px;
+}
+
+.carac {
+	text-decoration: underline;
+	font-weight: 600;
+	color: #000;
 }
 
 #listechoix {
@@ -259,7 +260,7 @@ textarea {
 
 .size-img-page {
 	width: auto;
-	max-height: 250px;
+	max-height: 300px;
 }
 
 .structure-hero {
