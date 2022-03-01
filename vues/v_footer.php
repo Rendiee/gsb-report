@@ -48,7 +48,7 @@
                 <div class="row pt-2 d-flex justify-content-center">
                     <div class="col-lg-6 col-sm-12">
                         <p class="text-center text-light light-300">
-                            © Copyright 2021 Randy Durelle | Tristan Da Silva.
+                            © Copyright 2022 Randy Durelle | Tristan Da Silva.
                         </p>
                     </div>
                 </div>
