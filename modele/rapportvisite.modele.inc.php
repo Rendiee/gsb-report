@@ -184,4 +184,48 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
 
 }
 
+function getRegionCodeConnected($colMatricule) {
+
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare('SELECT REG_CODE as \'reg_code\' FROM collaborateur WHERE COL_MATRICULE = :colMat');
+        $req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
+        $req -> execute();
+        $res = $req -> fetch();
+
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function getRapportParRegion($regCode, $date1, $date2) {
+
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare('SELECT * FROM rapport_visite r INNER JOIN collaborateur c ON r.COL_MATRICULE = c.COL_MATRICULE WHERE c.REG_CODE = :regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin;');
+        $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
+        $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
+        $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
+        $req -> execute();
+        $res = $req -> fetch();
+
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
 ?>

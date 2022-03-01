@@ -99,6 +99,7 @@ switch($action)
 				include("vues/v_historiqueRapports.php");
 			}
 			else{
+				$regCode = getRegionCodeConnected($_SESSION['matricule']);
 				include("vues/v_rapportregion.php");
 			}
 		}else{
