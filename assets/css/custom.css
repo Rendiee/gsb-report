@@ -113,6 +113,13 @@ input[type="submit"] {
 		width: 33% !important;
 	}
 }
+
+@media (max-width: 800px) {
+	.bouton-rapport {
+		width: 40% !important;
+	}
+}
+
 @media (max-width: 991px) {
 	.rapport {
 		margin: auto;
@@ -162,7 +169,6 @@ textarea {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	width: 50%;
 	height: fit-content;
 }
 
