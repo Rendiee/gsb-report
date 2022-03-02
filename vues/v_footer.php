@@ -67,26 +67,5 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/isotope.pkgd.js"></script>
 
-<script>
-    $(window).load(function() {
-
-        var $projects = $('.projects').isotope({
-            itemSelector: '.project',
-            layoutMode: 'fitRows'
-        });
-        $(".filter-btn").click(function() {
-            var data_filter = $(this).attr("data-filter");
-            $projects.isotope({
-                filter: data_filter
-            });
-            $(".filter-btn").removeClass("active");
-            $(".filter-btn").removeClass("shadow");
-            $(this).addClass("active");
-            $(this).addClass("shadow");
-            return false;
-        });
-    });
-</script>
-
 <script src="assets/js/gsb.js"></script>
 <script src="assets/js/custom.js"></script>

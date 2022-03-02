@@ -2,6 +2,41 @@
 
 include_once 'bd.inc.php';
 
+function getRapportVisiteCollaborateur($matricule, $date1, $date2, $pratNum, $pratPresent){
+
+    $requete = 'SELECT * FROM rapport_visite r WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin';
+    $pratAddon = ' AND r.PRA_NUM = :pratNum';
+
+    if($pratPresent){
+
+        $requete = $requete . $pratAddon;
+
+    }
+
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare($requete);
+        $req -> bindParam(':matricule', $matricule, PDO::PARAM_STR);
+        $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
+        $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
+        if($pratPresent){
+            $req -> bindParam(':pratNum', $pratNum, PDO::PARAM_INT);
+        }
+        $req -> execute();
+        $res = $req -> fetchAll();
+
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
 function getMotif(){
 
     try 

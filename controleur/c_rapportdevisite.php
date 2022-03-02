@@ -121,10 +121,16 @@ switch($action)
 					$pra=false;
 				}
 			}else{
-				$pra=true;
+				$pra=false;
 			}
-			if($dated<=$datef && $pra){
-				include("vues/v_affichermesrapports.php");
+			if($dated<=$datef){
+				$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
+				if(empty($infoMesRapports)){
+					$succes='<p class="alert alert-danger" style="text-align:center">Aucun rapport de visite à cette période.</p>';
+					include("vues/v_mesrapports.php");
+				}else{
+					include("vues/v_affichermesrapports.php");
+				}
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 				if($dated>$datef){
