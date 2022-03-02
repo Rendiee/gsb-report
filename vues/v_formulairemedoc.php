@@ -15,8 +15,8 @@
                 <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du médicament</p>'; $_SESSION['erreur']=false;}?>
                 <form action="index.php?uc=medicaments&action=affichermedoc" method="post" class="formulaire-recherche col-12 m-0">
                     <label class="titre-formulaire" for="listemedoc">Médicaments disponible :</label>
-                    <select required name="medicament" id="listechoix">
-                        <option value class="form-control text-center">- Choisissez un médicament -</option>
+                    <select required name="medicament" class="form-select mt-3">
+                        <option value class="text-center">- Choisissez un médicament -</option>
                         <?php                            
                             foreach($result as $key){
                                 echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'" class="form-control">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';

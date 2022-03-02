@@ -15,7 +15,7 @@
                 <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du praticien</p>'; $_SESSION['erreur']=false;}?>
                 <form action="index.php?uc=praticiens&action=afficherpraticien" method="post" class="formulaire-recherche col-12 m-0">
                     <label class="titre-formulaire" for="listepraticien">Praticiens disponible :</label>
-                    <select required name="praticien" id="listechoix">
+                    <select required name="praticien" class="form-select mt-3">
                         <option value class="form-control text-center">- Choisissez un praticien -</option>
                         <?php                               
                             foreach($result as $key){
