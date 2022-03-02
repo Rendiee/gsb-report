@@ -19,13 +19,13 @@
                             <select required name="nonValide" id="listechoix">
                                 <option class="form-control text-center" value>- Rapport non valide -</option>
                                 <?php
-                                echo $key['RAP_DATEVISITE'];          
                                     foreach($info as $key){
-                                        $dateFormat = DateTime::createFromFormat("d-m-Y", $key['RAP_DATEVISITE']);
-                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].' : '.$dateFormat.'</option>';
+                                        $phpdate = strtotime($key['RAP_DATEVISITE']);
+
+                                        //$dateFormat = DateTime::createFromFormat("d-m-Y", $key['RAP_DATEVISITE']);
+                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].' : '.$phpdate.'</option>';
                                     }
                                     
-                                    echo $key['RAP_DATEVISITE'];
                                 ?>
                             </select>
                             <input class="btn btn-info text-light valider w-auto" type="submit" value="Modifier le rapport">
