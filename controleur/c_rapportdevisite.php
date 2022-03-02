@@ -126,7 +126,8 @@ switch($action)
 			if($dated<=$datef){
 				$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
 				if(empty($infoMesRapports)){
-					$succes='<p class="alert alert-danger" style="text-align:center">Aucun rapport de visite à cette période.</p>';
+					$succes='<p class="alert alert-danger text-center">Aucun rapport de visite à cette période.</p>';
+					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 					include("vues/v_mesrapports.php");
 				}else{
 					include("vues/v_affichermesrapports.php");
@@ -134,19 +135,18 @@ switch($action)
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 				if($dated>$datef){
-					$succes='<p class="alert alert-danger" style="text-align:center">La fourchette selectionnée est incorrecte.</p>';					
-					include("vues/v_mesrapports.php");
+					$succes='<p class="alert alert-danger text-center">La fourchette selectionnée est incorrecte.</p>';
 				}else{
-					$succes='<p class="alert alert-danger" style="text-align:center">Un problème est survenu lors da selection d\'un praticien.</p>';
-					include("vues/v_mesrapports.php");
+					$succes='<p class="alert alert-danger text-center">Un problème est survenu lors da selection d\'un praticien.</p>';
 				}
+				include("vues/v_mesrapports.php");
 			}
 		}else{
 			if(getAllInformationPraticienVisite($_SESSION['matricule'])){
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 				include("vues/v_mesrapports.php");
 			}else{
-				$succes='<p class="alert alert-danger" style="text-align:center">Vous n\'avez aucun rapport de visite à votre nom.</p>';
+				$succes='<p class="alert alert-danger text-center">Vous n\'avez aucun rapport de visite à votre nom.</p>';
 				include("vues/v_aucunrapport.php");
 			}
 		}
@@ -155,8 +155,7 @@ switch($action)
 	
 	default :
 	{
-
-		include("vues/v_formulairerapportdevisite.php");
+		header("location: index.php?uc=accueil");
 		break;
 
 	}

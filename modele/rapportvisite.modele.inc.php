@@ -98,7 +98,7 @@ function getAllInformationNonValide($mat){
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT * FROM `rapport_visite` WHERE COL_Matricule=:mat AND `RAP_SAISITDEFINITIVE`=0');
+        $req = $monPdo -> prepare('SELECT `RAP_NUM`, p.PRA_NOM, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as \'RAP_DATEVISITE\' FROM `rapport_visite` r JOIN praticien p ON p.PRA_NUM=r.PRA_NUM WHERE COL_Matricule=:mat AND `RAP_SAISITDEFINITIVE`=0;');
         $req -> bindParam(':mat', $mat, PDO::PARAM_STR);
         $req -> execute();
         $result = $req->fetchAll();

@@ -20,10 +20,7 @@
                                 <option class="form-control text-center" value>- Rapport non valide -</option>
                                 <?php
                                     foreach($info as $key){
-                                        $phpdate = strtotime($key['RAP_DATEVISITE']);
-
-                                        //$dateFormat = DateTime::createFromFormat("d-m-Y", $key['RAP_DATEVISITE']);
-                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].' : '.$phpdate.'</option>';
+                                        echo '<option class="form-control" value="'.$key['RAP_NUM'].'">N°'.$key['RAP_NUM'].' - '.$key['PRA_NOM'].' - '.$key['RAP_DATEVISITE'].'</option>';
                                     }
                                     
                                 ?>
