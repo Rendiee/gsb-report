@@ -114,6 +114,8 @@ switch($action)
 		if(isset($_POST['mesrapports'])){
 			$dated=date_create($_POST['datedebut']);
 			$datef=date_create($_POST['datefin']);
+			$dateDeb=$_POST['datedebut'];
+			$dateFi=$_POST['datefin'];
 			if(!empty($_POST['praticien']) ){
 				if(is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
 					$pra=true;
@@ -130,6 +132,8 @@ switch($action)
 					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 					include("vues/v_mesrapports.php");
 				}else{
+					$dateDebut=new DateTime($dateDeb);
+					$dateFin=new DateTime($dateFi);
 					include("vues/v_affichermesrapports.php");
 				}
 			}else{

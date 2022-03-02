@@ -1,9 +1,9 @@
 <section class="bg-light">
     <div class="container">
         <div class="structure-hero pt-lg-5 pt-4">
-            <h1 class="titre text-center">Rapport de ma région</h1>
+            <h1 class="titre text-center">Mes rapports</h1>
             <p class="text text-center">
-                Formulaire permettant d'afficher toutes les rapports de visite en fonction d'une date
+                Formulaire permettant d'afficher les rapports de visite d'une période donnée
             </p>
         </div>
         <div class="row align-items-center justify-content-center">

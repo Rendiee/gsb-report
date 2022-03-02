@@ -3,7 +3,7 @@
         <div class="structure-hero pt-lg-5 pt-4">
             <h1 class="titre text-center">Rapport de ma région</h1>
             <p class="text text-center">
-                Formulaire permettant d'afficher toutes les rapports de visite en fonction d'une date
+                Formulaire permettant d'afficher les rapports de visite de ma région d'une période donnée
             </p>
         </div>
         <div class="row align-items-center justify-content-center">
@@ -17,17 +17,17 @@
                         <p style="color:grey;margin-top:-10px"><span style="color:red">*</span>Champs obligatoires</p>
 
                         <label for="datesaisit">Date de début : </span></label>
-                        <input type="date" required name="datedebut"><span style="color:red"> *</span><br/><br/>
+                        <input class="m-0 form-control py-0 d-inline w-50 text-rapport" type="date" required name="datedebut"><span style="color:red"> *</span><br/><br/>
                         
                         <label for="datesaisit">Date de fin : </label>
-                        <input type="date" required name="datefin"><span style="color:red"> *</span><br/><br/>
+                        <input class="m-0 form-control py-0 d-inline w-50 text-rapport" type="date" required name="datefin"><span style="color:red"> *</span><br/><br/>
 
                         <label for="praticien">Praticien visité</label>
-                        <select name="praticien" id="listemotif">
-                            <option class="form-control" value>- Choisissez un praticien - (facultatif)</option>
+                        <select name="praticien" class="form-select">
+                            <option value>- Choisissez un praticien - (facultatif)</option>
                             <?php
                                 foreach($prat as $key){
-                                    echo '<option class="form-control" value="'.$key['num'].'">'.$key['num'].' - '.$key['nom'].' '.$key['prenom'].'</option>';
+                                    echo '<option  value="'.$key['num'].'">'.$key['num'].' - '.$key['nom'].' '.$key['prenom'].'</option>';
                                 }                                
                             ?>
                         </select>

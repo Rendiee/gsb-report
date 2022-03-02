@@ -173,7 +173,11 @@ textarea {
 }
 
 .rediger {
-	height: 550px;
+	max-height: 550px;
+}
+
+.retour-rap {
+	background-color: #fff;
 }
 
 .test {

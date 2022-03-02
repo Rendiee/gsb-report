@@ -4,13 +4,13 @@ include_once 'bd.inc.php';
 
 function getRapportVisiteCollaborateur($matricule, $date1, $date2, $pratNum, $pratPresent){
 
-    $requete = 'SELECT * FROM rapport_visite r WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin';
-    $pratAddon = ' AND r.PRA_NUM = :pratNum';
+    $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut AND RAP_SAISITDEFINITIVE=1 AND r.RAP_DATEVISITE <= :dateFin';
+    $pratAddon = ' AND r.PRA_NUM = :pratNum ORDER BY RAP_DATEVISITE';
 
     if($pratPresent){
-
         $requete = $requete . $pratAddon;
-
+    }else{
+        $requete = $requete . ' ORDER BY RAP_DATEVISITE';
     }
 
     try 
