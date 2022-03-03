@@ -116,7 +116,7 @@ switch($action)
 			$datef=date_create($_POST['datefin']);
 			$dateDeb=$_POST['datedebut'];
 			$dateFi=$_POST['datefin'];
-			if(!empty($_POST['praticien']) ){
+			if(!empty($_POST['praticien'])){
 				if(is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
 					$pra=true;
 				}else{
@@ -125,12 +125,12 @@ switch($action)
 			}else{
 				$pra=false;
 			}
-			if($dated<=$datef){
+			if(isset($_POST['praticien']) && $dated<=$datef){
 				$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
 				if(empty($infoMesRapports)){
-					$succes='<p class="alert alert-danger text-center">Aucun rapport de visite à cette période.</p>';
+					$_SESSION['aucunRap']=true;
 					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
-					include("vues/v_mesrapports.php");
+					header("location: index.php?uc=rapportdevisite&action=mesrapports");
 				}else{
 					$dateDebut=new DateTime($dateDeb);
 					$dateFin=new DateTime($dateFi);
@@ -139,11 +139,11 @@ switch($action)
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 				if($dated>$datef){
-					$succes='<p class="alert alert-danger text-center">La fourchette selectionnée est incorrecte.</p>';
+					$_SESSION['fourchetteRap']=true;
 				}else{
-					$succes='<p class="alert alert-danger text-center">Un problème est survenu lors da selection d\'un praticien.</p>';
+					$_SESSION['pratRap']=true;
 				}
-				include("vues/v_mesrapports.php");
+				header("location: index.php?uc=rapportdevisite&action=mesrapports");
 			}
 		}else{
 			if(getAllInformationPraticienVisite($_SESSION['matricule'])){

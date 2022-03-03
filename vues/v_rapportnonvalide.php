@@ -68,8 +68,8 @@
                             </div>                            
                         </div>
                         <div class="d-flex w-100 justify-content-center pt-3">
-                            <input class="btn btn-info text-light valider w-25 bouton-rapport m-0 me-1" type="submit" value="Valider le rapport">
-                            <input class="btn btn-info text-light valider w-25 bouton-rapport m-0 ms-1" type="button" onclick="history.go(-1)" value="Retour">
+                            <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 me-1" type="submit" value="Valider le rapport">
+                            <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 ms-1" type="button" onclick="history.go(-1)" value="Retour">
                         </div>
                     </form>
                     

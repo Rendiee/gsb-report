@@ -109,15 +109,6 @@ input[type="submit"] {
 	.text-rapport {
 		width: fit-content !important;
 	}
-	.bouton-rapport {
-		width: 33% !important;
-	}
-}
-
-@media (max-width: 800px) {
-	.bouton-rapport {
-		width: 40% !important;
-	}
 }
 
 @media (max-width: 991px) {
@@ -153,9 +144,6 @@ input[type="submit"] {
 		min-width: 80%;
 		max-width: 80%;
 	}
-	.bouton-rapport {
-		width: 50% !important;
-	}
 }
 
 textarea {
@@ -173,6 +161,10 @@ textarea {
 }
 
 .rediger {
+	height: 550px;
+}
+
+.max-rediger {
 	max-height: 550px;
 }
 
