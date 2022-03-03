@@ -14,10 +14,10 @@
                                     $text = ' / ' . $key['MED_DEPOTLEGAL_2'];
                                 }
                                 echo '<form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="d-flex flex-column w-100">
-                                    <label for="praticien">'.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</label>
+                                    <label for="praticien">N°'.$key['RAP_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</label>
                                     <div class="d-flex align-items-center justify-content-between w-100">
                                         <option value="'.$key['RAP_NUM'].'" class="m-0 p-0"></option>
-                                        <div class="mw-100 overflow-auto form-control">N°'.$key['RAP_NUM'].' - '.$key['dateVisite'].' - <u>Motif</u> : '.$key['MOT_LIBELLE'].' - <u>Médicament(s)</u> : '.$key['MED_DEPOTLEGAL_1'].$text.'</div>
+                                        <div class="mw-100 overflow-auto form-control">'.$key['dateVisite'].' | <u>Motif</u> : '.$key['MOT_LIBELLE'].' | <u>Médicament(s)</u> : '.$key['MED_DEPOTLEGAL_1'].$text.'</div>
                                         <input class="btn btn-info text-light valider m-0 ms-3" type="submit" value="Voir">
                                     </div>
                                     </form> ';
