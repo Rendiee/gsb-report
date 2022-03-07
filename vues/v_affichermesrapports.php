@@ -5,7 +5,7 @@
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
-                <div class="max-rediger h-auto formulaire mb-0 mt-0 d-flex align-items-center flex-column justify-content-between overflow-auto pb-0">
+                <div class="mesRapports max-rediger h-auto formulaire mb-0 mt-0 d-flex align-items-center flex-column justify-content-between pb-0">
                     <div class="w-100 d-flex flex-column">
                         <?php                            
                             foreach($infoMesRapports as $key){
@@ -16,7 +16,7 @@
                                 echo '<form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="d-flex flex-column w-100">
                                     <label for="praticien">N°'.$key['RAP_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</label>
                                     <div class="d-flex align-items-center justify-content-between w-100">
-                                        <option value="'.$key['RAP_NUM'].'" class="m-0 p-0"></option>
+                                        <input name="RAP_NUM" value="'.$key['RAP_NUM'].'" class="d-none">
                                         <div class="mw-100 overflow-auto form-control d-flex justify-content-between align-items-center">
                                             <div class="col-6 col-sm-5 col-md-3 text-center">'.$key['dateVisite'].'</div>
                                             <div class="text-center d-none d-sm-block">|</div>
@@ -24,7 +24,7 @@
                                             <div class="text-center d-none d-sm-block">|</div>
                                             <div class="col-6 col-sm-5 col-md-3 text-center"><u>Médicament(s)</u> : '.$key['MED_DEPOTLEGAL_1'].$text.'</div>
                                         </div>
-                                        <input class="btn btn-info text-light valider m-0 ms-3" type="submit" value="Voir">
+                                        <input class="btn btn-info text-light valider m-0 ms-3" type="submit" value="Voir" name="voirRapport">
                                     </div>
                                     </form> ';
                             }                           

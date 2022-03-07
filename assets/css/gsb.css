@@ -275,3 +275,23 @@ footer a.text-light:hover {
 	width: 1px;
 	background-color: #000;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .mesRapports {
+	overflow: overlay;
+    scrollbar-width: auto;
+    scrollbar-color: #AAAAAA #ffffff;
+  }
+  /* Chrome, Edge, and Safari */
+  .mesRapports::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .mesRapports::-webkit-scrollbar-track {
+    background: transparent
+  }
+  .mesRapports::-webkit-scrollbar-thumb {
+    background-color: #AAAAAA;
+    border-radius: 8px;
+  }

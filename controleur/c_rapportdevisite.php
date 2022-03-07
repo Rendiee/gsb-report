@@ -111,7 +111,10 @@ switch($action)
 
 	case 'mesrapports':
 	{	
-		if(isset($_POST['mesrapports'])){
+		if(isset($_POST['voirRapport'])){
+			$infoRapport=getInformationsMesRapports($_POST['RAP_NUM']);
+			include("vues/v_voirMesRapports.php");
+		}elseif(isset($_POST['mesrapports'])){
 			$dated=date_create($_POST['datedebut']);
 			$datef=date_create($_POST['datefin']);
 			$dateDeb=$_POST['datedebut'];
