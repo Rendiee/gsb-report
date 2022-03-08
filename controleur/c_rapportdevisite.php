@@ -11,7 +11,7 @@ if(isset($_REQUEST['rapport'])){
 if(isset($_REQUEST['mesrapports'])){
 	$action = 'mesrapports';
 }
-if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (wévite d'inserer un rapport a l'infini)
+if(!isset($_POST['valider'])){//sert à eviter le renvoie du formulaire si on F5 (évite d'inserer un rapport à l'infini)
 	unset($_SESSION['stop']);
 }
 switch($action)
@@ -40,7 +40,7 @@ switch($action)
 			}else{
 				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
 			}			
-			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport a l'infini)
+			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport à l'infini)
 			$_SESSION['stop']=true;
 		}
 
@@ -65,8 +65,7 @@ switch($action)
 	}
 
 	case 'rapportNonValide':
-	{		
-
+	{	
 		if(isset($_REQUEST['nonValide'])){
 			$rap=$_REQUEST['nonValide'];
 			if(!empty(nonValideExistant($rap))){
@@ -91,7 +90,6 @@ switch($action)
 
 	case 'rapportregion':
 	{
-
 		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){				
 			if(!empty($_REQUEST['nouveauxRapports'])){
 				include("vues/v_nouveauxRapports.php");
@@ -113,6 +111,16 @@ switch($action)
 	{	
 		if(isset($_POST['voirRapport'])){
 			$infoRapport=getInformationsMesRapports($_POST['RAP_NUM']);
+			if($infoRapport['RAP_MOTIFAUTRE']==NULL){
+				$motif=$infoRapport['MOT_LIBELLE'];
+			}else{
+				$motif=$infoRapport['RAP_MOTIFAUTRE'];
+			}
+			if($infoRapport['MED_DEPOTLEGAL_2'] == NULL){
+				$medoc = $infoRapport['MED_DEPOTLEGAL_1'];
+			}else{
+				$medoc = $infoRapport['MED_DEPOTLEGAL_1'].' / '.$medoc = $infoRapport['MED_DEPOTLEGAL_2'];
+			}
 			include("vues/v_voirMesRapports.php");
 		}elseif(isset($_POST['mesrapports'])){
 			$dated=date_create($_POST['datedebut']);
@@ -153,7 +161,7 @@ switch($action)
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 				include("vues/v_mesrapports.php");
 			}else{
-				$succes='<p class="alert alert-danger text-center">Vous n\'avez aucun rapport de visite à votre nom.</p>';
+				$succes='Vous n\'avez aucun rapport de visite à votre nom.';
 				include("vues/v_aucunrapport.php");
 			}
 		}

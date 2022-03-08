@@ -37,8 +37,8 @@ switch($action)
 
 	default :
 	{
-
-		include("vues/v_formulairepraticien.php");
+		
+		header('Location: index.php?uc=praticiens&action=formulairepraticien');
 		break;
 		
 	}
