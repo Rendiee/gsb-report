@@ -8,6 +8,7 @@
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
+            <?php if (isset($succes)){echo $succes; unset($succes);}?>
                 <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rediger formulaire mb-0 mt-0 d-flex align-items-center flex-column">
                     <p class="w-100 m-0 text-black-50"><span style="color:red">* </span>Champs obligatoires</p>
                     <label class="title-formulaire pb-3">Rapport de visite</label>
@@ -93,7 +94,7 @@
                         </div>
                     </div>
                     <div class="d-flex w-100 justify-content-center pt-3">
-                        <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 me-1" type="submit" value="Valider le rapport">
+                        <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 me-1" type="submit" value="Valider le rapport" name="valider">
                         <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 ms-1" type="button" onclick="history.go(-1)" value="Retour">
                     </div>
                 </form>

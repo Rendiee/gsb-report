@@ -12,6 +12,7 @@
             </div>
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5 py-3">
                 <?php if ($_SESSION['erreur']){echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du rapport</p>'; $_SESSION['erreur']=false;}?>
+                <?php if (isset($succes)){echo $succes; unset($succes);}?>
                 <div class="formulaire-recherche">
                     <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center">
                         <label for="name">Liste des rapports non valide :</label>

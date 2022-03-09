@@ -19,7 +19,7 @@ switch($action)
 	case 'redigerrapport':
 	{		
 		
-		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){			
+		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){
 			if(isset($_POST['saisitdefinitive'])){
 				$def = 1;
 			}else{
@@ -33,12 +33,12 @@ switch($action)
 			}
 			if(getNomMotif($_POST['motif'])){
 				if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null)){
-					$succes = '<p class="alert alert-success">Rapport saisit avec succès</p>';
+					$succes = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
 				}else{
-					$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
+					$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
 				}
 			}else{
-				$succes = '<p class="alert alert-danger">Un problème est survenu lors de la validation du rapport</p>';
+				$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
 			}			
 			unset($_POST['valider']);//sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport à l'infini)
 			$_SESSION['stop']=true;
