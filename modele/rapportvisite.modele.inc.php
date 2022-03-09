@@ -27,7 +27,9 @@ function getRapportVisiteCollaborateur($matricule, $date1, $date2, $pratNum, $pr
         $res = $req -> fetchAll();
 
         return $res;
-    } 
+    }
+
+    
 
     catch (PDOException $e) 
     {
