@@ -61,7 +61,7 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <label for="medicamentproposer">1er médicament présenté :</label>
-                                <select name="medicamentproposer" id="listemotif" class="form-select m-0">
+                                <select name="medicamentproposer1" id="listemotif" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
                                         foreach($medoc as $key){
@@ -72,7 +72,7 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <label for="medicamentproposer">2ème médicament présenté :</label>
-                                <select name="medicamentproposer" id="listemotif" class="form-select m-0">
+                                <select name="medicamentproposer2" id="listemotif" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
                                         foreach($medoc as $key){

@@ -28,11 +28,11 @@ switch($action)
 			if(empty($_POST['datevisite'])){
 				$_POST['datevisite']=NULL;
 			}
-			if(!getDepotMedoc($_POST['medicamentproposer'])){
-				$_POST['medicamentproposer']=NULL;
+			if(!getDepotMedoc($_POST['medicamentproposer1'])){
+				$_POST['medicamentproposer1']=NULL;
 			}
 			if(getNomMotif($_POST['motif'])){
-				if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer'],null,$_POST['praticien'],$_POST['motif'],null)){
+				if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer1'],null,$_POST['praticien'],$_POST['motif'],null)){
 					$succes = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
 				}else{
 					$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
