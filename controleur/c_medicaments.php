@@ -5,7 +5,7 @@ if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
 }else{
 	$action = $_REQUEST['action'];
 }
-
+unset($_SESSION['mesrapports']);
 switch($action)
 {
 	case 'formulairemedoc':

@@ -45,7 +45,7 @@ include_once 'bd.inc.php';
 		try 
 		{
         	$monPdo = connexionPDO();
-			$req = 'SELECT p.PRA_NUM AS \'num\', p.PRA_NOM AS \'nom\', p.PRA_PRENOM AS \'prenom\', p.PRA_ADRESSE AS \'adresse\', p.PRA_CP AS \'cp\', p.PRA_VILLE AS \'vill\e\', p.PRA_COEFNOTORIETE AS \'coefnoto\', p.PRA_COEFCONFIANCE AS \'coefconf\', tp.TYP_LIBELLE AS \'typeprat\' FROM praticien p JOIN type_praticien tp ON tp.TYP_CODE = p.TYP_CODE JOIN rapport_visite rv ON rv.`PRA_NUM`=p.PRA_NUM AND rv.RAP_SAISITDEFINITIVE=0 AND `COL_MATRICULE`= "'.$mat.'"';
+			$req = 'SELECT p.PRA_NUM AS \'num\', p.PRA_NOM AS \'nom\', p.PRA_PRENOM AS \'prenom\', p.PRA_ADRESSE AS \'adresse\', p.PRA_CP AS \'cp\', p.PRA_VILLE AS \'vill\e\', p.PRA_COEFNOTORIETE AS \'coefnoto\', p.PRA_COEFCONFIANCE AS \'coefconf\', tp.TYP_LIBELLE AS \'typeprat\' FROM praticien p JOIN type_praticien tp ON tp.TYP_CODE = p.TYP_CODE JOIN rapport_visite rv ON rv.`PRA_NUM`=p.PRA_NUM AND `COL_MATRICULE`= "'.$mat.'"';
 			$res = $monPdo->query($req);
 			$result = $res->fetchAll();
 

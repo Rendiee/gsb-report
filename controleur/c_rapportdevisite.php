@@ -18,7 +18,7 @@ switch($action)
 {
 	case 'redigerrapport':
 	{		
-		
+		unset($_SESSION['mesrapports']);
 		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){
 			if(isset($_POST['saisitdefinitive'])){
 				$def = 1;
@@ -66,6 +66,7 @@ switch($action)
 
 	case 'rapportNonValide':
 	{	
+		unset($_SESSION['mesrapports']);
 		if(isset($_REQUEST['nonValide'])){
 			$rap=$_REQUEST['nonValide'];
 			if(!empty(nonValideExistant($rap))){
@@ -89,7 +90,8 @@ switch($action)
 	}
 
 	case 'rapportregion':
-	{
+	{	
+		unset($_SESSION['mesrapports']);
 		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){				
 			if(!empty($_REQUEST['nouveauxRapports'])){
 				include("vues/v_nouveauxRapports.php");
@@ -116,13 +118,34 @@ switch($action)
 			}else{
 				$motif=$infoRapport['RAP_MOTIFAUTRE'];
 			}
-			if($infoRapport['MED_DEPOTLEGAL_2'] == NULL){
+
+			if($infoRapport['RAP_SAISITDEFINITIVE']){
+				$definitif = 'Oui';
+			}else{
+				$definitif = 'Non';
+			}
+
+			if($infoRapport['MED_DEPOTLEGAL_1'] == NULL){
+				$medoc = 'Aucun';
+			}elseif($infoRapport['MED_DEPOTLEGAL_2'] == NULL){
 				$medoc = $infoRapport['MED_DEPOTLEGAL_1'];
 			}else{
 				$medoc = $infoRapport['MED_DEPOTLEGAL_1'].' / '.$medoc = $infoRapport['MED_DEPOTLEGAL_2'];
 			}
+
+			if($infoRapport['RAP_DATEVISITE'] == null){
+				$infoRapport['RAP_DATEVISITE'] = 'Aucune date saisie';
+			}
+
+			if($infoRapport['RAP_BILAN'] == null){
+				$infoRapport['RAP_BILAN'] == 'Aucun bilan saisi';
+			}
 			include("vues/v_voirMesRapports.php");
-		}elseif(isset($_POST['mesrapports'])){
+		}elseif(isset($_SESSION['mesrapports']) || isset($_POST['mesrapports'])){
+			if(isset($_POST['mesrapports'])){
+				$_SESSION['mesrapports'] = $_POST;
+			}
+			$_POST = $_SESSION['mesrapports'];
 			$dated=date_create($_POST['datedebut']);
 			$datef=date_create($_POST['datefin']);
 			$dateDeb=$_POST['datedebut'];

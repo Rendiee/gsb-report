@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="structure-hero pt-lg-5 pt-4">
-            <h1 class="titre text-center">Informaiton du rapport n°<?php echo $infoRapport['RAP_NUM']; ?></h1>
+            <h1 class="titre text-center">Informations du rapport n°<?php echo $infoRapport['RAP_NUM']; ?></h1>
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
@@ -35,11 +35,14 @@
                             </div>
                             <div>
                                 <div><span class="carac">Médicament(s)</span> : <?php echo $medoc;?></div>
-                            </div> 
+                            </div>
+                            <div>
+                                <div><span class="carac">Rapport définitif</span> : <?php echo $definitif;?></div>
+                            </div>
                         </div>                            
                     </div>
                     <div class="d-flex w-100 justify-content-center pt-3">
-                        <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 ms-1" type="button" onclick="history.go(-1)" value="Retour">
+                        <input class="btn btn-info text-light valider col-xl-3 col-6 col-sm-5 col-md-4 m-0 ms-1" type="button" onclick="location.href='index.php?uc=rapportdevisite&action=mesrapports'" value="Retour">
                     </div>
                 </form>
             </div>
