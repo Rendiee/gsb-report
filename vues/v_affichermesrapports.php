@@ -30,8 +30,10 @@
                             }                           
                         ?>
                     </div>
-                    <div class="position-sticky bottom-0 retour-rap w-100 py-3">                        
-                        <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3" type="button" onclick="history.go(-1)" value="Retour">
+                    <div class="position-sticky bottom-0 retour-rap w-100 py-3">
+                        <form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="m-0 p-0">
+                            <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3 my-0" type="submit" value="Retour" name="retourMesRapports">
+                        </form>
                     </div>
                 </div>
             </div>

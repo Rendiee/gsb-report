@@ -25,7 +25,7 @@
                             <div>
                                 <label for="praticien">Praticien concerné <span style="color:red">*</span> :</label>
                                 <select required name="praticien" id="listemotif" class="form-select m-0">
-                                    <option value="default">- Choisissez un praticien -</option>
+                                    <option value>- Choisissez un praticien -</option>
                                     <?php
                                         foreach($prat as $key){
                                             echo '<option value="'.$key['PRA_NUM'].'">'.$key['PRA_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</option>';
@@ -34,24 +34,24 @@
                                 </select>
                             </div>
                             <div class="d-flex flex-column flex-xxl-row">
-                                <label for="datevisite">Date de visite :&nbsp</label>
-                                <input type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datevisite" id="datevisite">
+                                <label for="datevisite">Date de visite <span style="color:red">*</span> :&nbsp</label>
+                                <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datevisite" id="datevisite">
                             </div>
                             <div>
-                                <label for="bilan">Bilan du rapport :</label>
-                                <textarea name="bilanrapport" id="bilanrapport" class="form-control m-0"></textarea>
+                                <label for="bilan">Bilan du rapport <span style="color:red">*</span> :</label>
+                                <textarea required name="bilanrapport" id="bilanrapport" class="form-control m-0"></textarea>
                             </div>
                             </div>
                         <div class="vr m-3"></div>
                         <div class="w-50 h-100 d-flex flex-column justify-content-between">
                             <div class="d-flex flex-column flex-xxl-row">
                                 <label for="datesaisit">Date de saisie <span style="color:red">*</span> :&nbsp</label>
-                                <input type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datesaisit" id="datesaisit">
+                                <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datesaisit" id="datesaisit">
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <label for="motif">Motif <span style="color:red">*</span> :&nbsp</label>
-                                <select name="motif" id="listemotif" class="form-select w-75 m-0">
-                                    <option value="default" >- Choisissez un motif -</option>
+                                <select required name="motif" id="listemotif" class="form-select w-75 m-0">
+                                    <option value >- Choisissez un motif -</option>
                                     <?php
                                         foreach($motif as $key){
                                             echo '<option value="'.$key['MOT_ID'].'">'.$key['MOT_ID'].' - '.$key['MOT_LIBELLE'].'</option>';

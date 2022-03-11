@@ -19,7 +19,8 @@
     switch($uc)
     {
         case 'accueil':
-        {
+        {   
+            unset($_SESSION['mesrapports']);
             include("vues/v_accueil.php");
             break;
         }
@@ -56,7 +57,8 @@
             break; 
         }
         default :
-        {
+        {   
+            unset($_SESSION['mesrapports']);
             include("vues/v_accueil.php");
             break;
         }

@@ -25,14 +25,14 @@ switch($action)
 			}else{
 				$def = 0;
 			}
-			if(empty($_POST['datevisite'])){
-				$_POST['datevisite']=NULL;
+			if(empty($_POST['praticien']) || empty($_POST['datevisite']) || empty($_POST['bilanrapport']) || empty($_POST['datesaisit']) || empty($_POST['motif'])){
+				$vide = true;
 			}
 			if(!getDepotMedoc($_POST['medicamentproposer1'])){
 				$_POST['medicamentproposer1']=NULL;
 			}
 			if(getNomMotif($_POST['motif'])){
-				if(insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer1'],null,$_POST['praticien'],$_POST['motif'],null)){
+				if(!isset($vide) && insertRapportVisite($_POST['datevisite'],$_POST['bilanrapport'],$_POST['datesaisit'],$def,null,$_POST['medicamentproposer1'],null,$_POST['praticien'],$_POST['motif'],null)){
 					$succes = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
 				}else{
 					$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
@@ -111,6 +111,9 @@ switch($action)
 
 	case 'mesrapports':
 	{	
+		if(isset($_POST['retourMesRapports'])){
+			unset($_SESSION['mesrapports']);
+		}
 		if(isset($_POST['voirRapport'])){
 			$infoRapport=getInformationsMesRapports($_POST['RAP_NUM']);
 			if($infoRapport['RAP_MOTIFAUTRE']==NULL){
@@ -163,6 +166,7 @@ switch($action)
 				$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
 				if(empty($infoMesRapports)){
 					$_SESSION['aucunRap']=true;
+					unset($_SESSION['mesrapports']);
 					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 					header("location: index.php?uc=rapportdevisite&action=mesrapports");
 				}else{
@@ -172,6 +176,7 @@ switch($action)
 				}
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+				unset($_SESSION['mesrapports']);
 				if($dated>$datef){
 					$_SESSION['fourchetteRap']=true;
 				}else{
