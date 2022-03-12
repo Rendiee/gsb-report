@@ -19,7 +19,7 @@
                         <option value class="text-center">- Choisissez un médicament -</option>
                         <?php                            
                             foreach($result as $key){
-                                echo '<option value="'.$key['MED_NOMCOMMERCIAL'].'" class="form-control">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                echo '<option value="'.$key['MED_DEPOTLEGAL'].'" class="form-control">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
                             }                           
                         ?>
                     </select>

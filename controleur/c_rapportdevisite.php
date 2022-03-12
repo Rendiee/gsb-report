@@ -19,6 +19,7 @@ switch($action)
 	case 'redigerrapport':
 	{		
 		unset($_SESSION['mesrapports']);
+		unset($_SESSION['praticienMonRapport']);
 		if(isset($_POST['valider']) && !isset($_SESSION['stop'])){
 			if(isset($_POST['saisitdefinitive'])){
 				$def = 1;
@@ -67,6 +68,7 @@ switch($action)
 	case 'rapportNonValide':
 	{	
 		unset($_SESSION['mesrapports']);
+		unset($_SESSION['praticienMonRapport']);
 		if(isset($_REQUEST['nonValide'])){
 			$rap=$_REQUEST['nonValide'];
 			if(!empty(nonValideExistant($rap))){
@@ -92,6 +94,7 @@ switch($action)
 	case 'rapportregion':
 	{	
 		unset($_SESSION['mesrapports']);
+		unset($_SESSION['praticienMonRapport']);
 		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){				
 			if(!empty($_REQUEST['nouveauxRapports'])){
 				include("vues/v_nouveauxRapports.php");
@@ -111,86 +114,101 @@ switch($action)
 
 	case 'mesrapports':
 	{	
-		if(isset($_POST['retourMesRapports'])){
-			unset($_SESSION['mesrapports']);
-		}
-		if(isset($_POST['voirRapport'])){
-			$infoRapport=getInformationsMesRapports($_POST['RAP_NUM']);
-			if($infoRapport['RAP_MOTIFAUTRE']==NULL){
-				$motif=$infoRapport['MOT_LIBELLE'];
-			}else{
-				$motif=$infoRapport['RAP_MOTIFAUTRE'];
+		if(isset($_POST['praticienMonRapport']) && is_numeric($_POST['praticienMonRapport']) && getAllInformationPraticien($_POST['praticienMonRapport'])){
+			$pra=$_POST['praticienMonRapport'];
+			$carac = getAllInformationPraticien($pra);
+			if(empty($carac[7])){
+				$carac[7]='Non défini(e)';
 			}
+			include("vues/v_afficherPraticienMonRapport.php");
+		}elseif(isset($_POST['medocMonRapport']) && getAllInformationMedicamentNom($_POST['medocMonRapport'])){
+			$med=$_POST['medocMonRapport'];
+			$carac = getAllInformationMedicamentNom($med);
+			if(empty($carac[7])){
+				$carac[7]='Non défini(e)';
+			}   
+			include("vues/v_afficherMedicamentMonRapport.php");	
+		}else{
+			if(isset($_POST['retourFormulaireMesRapports'])){
+				unset($_SESSION['mesrapports']);
+			}
+			if(isset($_POST['retourListeMesRapports'])){
+				unset($_SESSION['praticienMonRapport']);
+			}
+			if(isset($_SESSION['praticienMonRapport']) || isset($_POST['voirRapport'])){
+				if(isset($_POST['voirRapport'])){
+					$_SESSION['praticienMonRapport'] = $_POST;
+				}
+				$_POST = $_SESSION['praticienMonRapport'];
+				$infoRapport=getInformationsMesRapports($_POST['RAP_NUM']);
+				if($infoRapport['RAP_MOTIFAUTRE']==NULL){
+					$motif=$infoRapport['MOT_LIBELLE'];
+				}else{
+					$motif=$infoRapport['RAP_MOTIFAUTRE'];
+				}
 
-			if($infoRapport['RAP_SAISITDEFINITIVE']){
-				$definitif = 'Oui';
-			}else{
-				$definitif = 'Non';
-			}
-
-			if($infoRapport['MED_DEPOTLEGAL_1'] == NULL){
-				$medoc = 'Aucun';
-			}elseif($infoRapport['MED_DEPOTLEGAL_2'] == NULL){
-				$medoc = $infoRapport['MED_DEPOTLEGAL_1'];
-			}else{
-				$medoc = $infoRapport['MED_DEPOTLEGAL_1'].' / '.$medoc = $infoRapport['MED_DEPOTLEGAL_2'];
-			}
-
-			if($infoRapport['RAP_DATEVISITE'] == null){
-				$infoRapport['RAP_DATEVISITE'] = 'Aucune date saisie';
-			}
-
-			if($infoRapport['RAP_BILAN'] == null){
-				$infoRapport['RAP_BILAN'] == 'Aucun bilan saisi';
-			}
-			include("vues/v_afficherMonRapport.php");
-		}elseif(isset($_SESSION['mesrapports']) || isset($_POST['mesrapports'])){
-			if(isset($_POST['mesrapports'])){
-				$_SESSION['mesrapports'] = $_POST;
-			}
-			$_POST = $_SESSION['mesrapports'];
-			$dated=date_create($_POST['datedebut']);
-			$datef=date_create($_POST['datefin']);
-			$dateDeb=$_POST['datedebut'];
-			$dateFi=$_POST['datefin'];
-			if(!empty($_POST['praticien'])){
-				if(is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
-					$pra=true;
+				if($infoRapport['RAP_SAISITDEFINITIVE']){
+					$definitif = 'Oui';
+				}else{
+					$definitif = 'Non';
+				}
+				if($infoRapport['MED_DEPOTLEGAL_1'] == NULL){
+					$medoc = 'Aucun';
+				}elseif($infoRapport['MED_DEPOTLEGAL_2'] == NULL){
+					$medoc1 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_1']);
+				}else{
+					$medoc1 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_1']);
+					$medoc2 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_2']);
+				}
+				include("vues/v_afficherMonRapport.php");
+			}elseif(isset($_SESSION['mesrapports']) || isset($_POST['mesrapports'])){
+				if(isset($_POST['mesrapports'])){
+					$_SESSION['mesrapports'] = $_POST;
+				}
+				$_POST = $_SESSION['mesrapports'];
+				$dated=date_create($_POST['datedebut']);
+				$datef=date_create($_POST['datefin']);
+				$dateDeb=$_POST['datedebut'];
+				$dateFi=$_POST['datefin'];
+				if(!empty($_POST['praticien'])){
+					if(is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))){
+						$pra=true;
+					}else{
+						$pra=false;
+					}
 				}else{
 					$pra=false;
 				}
-			}else{
-				$pra=false;
-			}
-			if(isset($_POST['praticien']) && $dated<=$datef){
-				$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
-				if(empty($infoMesRapports)){
-					$_SESSION['aucunRap']=true;
-					unset($_SESSION['mesrapports']);
+				if(isset($_POST['praticien']) && $dated<=$datef){
+					$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
+					if(empty($infoMesRapports)){
+						$_SESSION['aucunRap']=true;
+						unset($_SESSION['mesrapports']);
+						$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+						header("location: index.php?uc=rapportdevisite&action=mesrapports");
+					}else{
+						$dateDebut=new DateTime($dateDeb);
+						$dateFin=new DateTime($dateFi);
+						include("vues/v_listeMesRapports.php");
+					}
+				}else{
 					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+					unset($_SESSION['mesrapports']);
+					if($dated>$datef){
+						$_SESSION['fourchetteRap']=true;
+					}else{
+						$_SESSION['pratRap']=true;
+					}
 					header("location: index.php?uc=rapportdevisite&action=mesrapports");
-				}else{
-					$dateDebut=new DateTime($dateDeb);
-					$dateFin=new DateTime($dateFi);
-					include("vues/v_listeMesRapports.php");
 				}
 			}else{
-				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
-				unset($_SESSION['mesrapports']);
-				if($dated>$datef){
-					$_SESSION['fourchetteRap']=true;
+				if(getAllInformationPraticienVisite($_SESSION['matricule'])){
+					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
+					include("vues/v_formulaireMesRapports.php");
 				}else{
-					$_SESSION['pratRap']=true;
+					$succes='Vous n\'avez aucun rapport de visite à votre nom.';
+					include("vues/v_problemeSurvenu.php");
 				}
-				header("location: index.php?uc=rapportdevisite&action=mesrapports");
-			}
-		}else{
-			if(getAllInformationPraticienVisite($_SESSION['matricule'])){
-				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
-				include("vues/v_formulaireMesRapports.php");
-			}else{
-				$succes='Vous n\'avez aucun rapport de visite à votre nom.';
-				include("vues/v_problemeSurvenu.php");
 			}
 		}
 		break;

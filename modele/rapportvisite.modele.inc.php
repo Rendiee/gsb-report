@@ -119,7 +119,7 @@ function getInformationsMesRapports($num){
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT `COL_MATRICULE`, `RAP_NUM`, p.PRA_NOM, p.PRA_PRENOM, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as \'RAP_DATEVISITE\', `RAP_BILAN`, concat(DAY(`RAP_DATESAISIT`),\'/\',MONTH(`RAP_DATESAISIT`),\'/\',YEAR(`RAP_DATESAISIT`)) as \'RAP_DATESAISIT\', `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, m.MOT_LIBELLE FROM `rapport_visite` r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON p.PRA_NUM=r.PRA_NUM WHERE `RAP_NUM`=:num;');
+        $req = $monPdo -> prepare('SELECT `COL_MATRICULE`, `RAP_NUM`, p.PRA_NOM, p.PRA_PRENOM, r.PRA_NUM, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as \'RAP_DATEVISITE\', `RAP_BILAN`, concat(DAY(`RAP_DATESAISIT`),\'/\',MONTH(`RAP_DATESAISIT`),\'/\',YEAR(`RAP_DATESAISIT`)) as \'RAP_DATESAISIT\', `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, m.MOT_LIBELLE FROM `rapport_visite` r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON p.PRA_NUM=r.PRA_NUM WHERE `RAP_NUM`=:num;');
         $req -> bindParam(':num', $num, PDO::PARAM_INT);
         $req -> execute();
         $result = $req->fetch();

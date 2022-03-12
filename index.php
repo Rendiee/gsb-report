@@ -21,11 +21,14 @@
         case 'accueil':
         {   
             unset($_SESSION['mesrapports']);
+			unset($_SESSION['praticienMonRapport']);
             include("vues/v_accueil.php");
             break;
         }
         case 'medicaments' :
         {   
+            unset($_SESSION['mesrapports']);
+            unset($_SESSION['praticienMonRapport']);
             if(!empty($_SESSION['login'])){
                 include("controleur/c_medicaments.php");
             }else{
@@ -35,6 +38,8 @@
         }
         case 'praticiens' :
         {   
+            unset($_SESSION['mesrapports']);
+            unset($_SESSION['praticienMonRapport']);
             if(!empty($_SESSION['login'])){
                 include("controleur/c_praticiens.php");
             }else{
@@ -52,13 +57,16 @@
             break; 
         }
         case 'connexion' :
-        {
+        {   
+            unset($_SESSION['mesrapports']);
+            unset($_SESSION['praticienMonRapport']);
             include("controleur/c_connexion.php");
             break; 
         }
         default :
         {   
             unset($_SESSION['mesrapports']);
+            unset($_SESSION['praticienMonRapport']);
             include("vues/v_accueil.php");
             break;
         }

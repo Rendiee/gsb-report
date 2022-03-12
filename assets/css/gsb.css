@@ -271,27 +271,31 @@ footer a.text-light:hover {
 	margin-right: 5px;
 }
 
-.vr{
+.vr {
 	width: 1px;
 	background-color: #000;
 }
 
+.d-contents {
+	display: contents !important;
+}
+
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  .mesRapports {
+/* Firefox */
+.mesRapports {
 	overflow: overlay;
-    scrollbar-width: auto;
-    scrollbar-color: #AAAAAA #ffffff;
-  }
-  /* Chrome, Edge, and Safari */
-  .mesRapports::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  .mesRapports::-webkit-scrollbar-track {
-    background: transparent
-  }
-  .mesRapports::-webkit-scrollbar-thumb {
-    background-color: #AAAAAA;
-    border-radius: 8px;
-  }
+	scrollbar-width: auto;
+	scrollbar-color: #aaaaaa #ffffff;
+}
+/* Chrome, Edge, and Safari */
+.mesRapports::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+.mesRapports::-webkit-scrollbar-track {
+	background: transparent;
+}
+.mesRapports::-webkit-scrollbar-thumb {
+	background-color: #aaaaaa;
+	border-radius: 8px;
+}
