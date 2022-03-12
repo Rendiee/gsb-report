@@ -46,7 +46,7 @@ switch($action)
 
 		if(!empty(getAllInformationNonValide($_SESSION['matricule'])) && !isset($_REQUEST['nouveau'])){
 			$info = getAllInformationNonValide($_SESSION['matricule']);
-			include("vues/v_formulairerapportnonvalide.php");
+			include("vues/v_listeRapportsNonValide.php");
 		}else{
 			$result = getAllMatriculeCollaborateur();
 			$motif = getMotif();
@@ -58,7 +58,7 @@ switch($action)
 			}else{
 				$num = $getId['max_id'] + 1;
 			}
-			include("vues/v_redigerrapport.php");
+			include("vues/v_redigerRapport.php");
 		}
 		break;
 
@@ -77,7 +77,7 @@ switch($action)
 				$motif = getMotif();
 				$medoc = getAllNomMedicament();
 				$prat = getAllMatriculePraticien();
-				include("vues/v_rapportnonvalide.php");
+				include("vues/v_ModifierRapportNonValide.php");
 			}else{
 				$_SESSION['erreur']=true;
 				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
@@ -100,7 +100,7 @@ switch($action)
 			}
 			else{
 				$regCode = getRegionCodeConnected($_SESSION['matricule']);
-				include("vues/v_rapportregion.php");
+				include("vues/v_formulaireRapportRegion.php");
 			}
 		}else{
 			header("location: index.php?uc=accueil");
@@ -143,7 +143,7 @@ switch($action)
 			if($infoRapport['RAP_BILAN'] == null){
 				$infoRapport['RAP_BILAN'] == 'Aucun bilan saisi';
 			}
-			include("vues/v_voirMesRapports.php");
+			include("vues/v_afficherMonRapport.php");
 		}elseif(isset($_SESSION['mesrapports']) || isset($_POST['mesrapports'])){
 			if(isset($_POST['mesrapports'])){
 				$_SESSION['mesrapports'] = $_POST;
@@ -172,7 +172,7 @@ switch($action)
 				}else{
 					$dateDebut=new DateTime($dateDeb);
 					$dateFin=new DateTime($dateFi);
-					include("vues/v_affichermesrapports.php");
+					include("vues/v_listeMesRapports.php");
 				}
 			}else{
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
@@ -187,10 +187,10 @@ switch($action)
 		}else{
 			if(getAllInformationPraticienVisite($_SESSION['matricule'])){
 				$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
-				include("vues/v_mesrapports.php");
+				include("vues/v_formulaireMesRapports.php");
 			}else{
 				$succes='Vous n\'avez aucun rapport de visite à votre nom.';
-				include("vues/v_aucunrapport.php");
+				include("vues/v_problemeSurvenu.php");
 			}
 		}
 		break;

@@ -12,7 +12,7 @@
 ?>    
 <?php
     if(empty($_SESSION['login'])){
-        include("vues/v_headerDeco.php");
+        include("vues/v_headerDeconnexion.php");
     }else{
         include("vues/v_header.php");
     }    
@@ -29,7 +29,7 @@
             if(!empty($_SESSION['login'])){
                 include("controleur/c_medicaments.php");
             }else{
-                include("vues/v_interdit.php");
+                include("vues/v_accesInterdit.php");
             }
             break;
         }
@@ -38,7 +38,7 @@
             if(!empty($_SESSION['login'])){
                 include("controleur/c_praticiens.php");
             }else{
-                include("vues/v_interdit.php");
+                include("vues/v_accesInterdit.php");
             }
             break;
         }
@@ -47,7 +47,7 @@
             if(!empty($_SESSION['login'])){
                 include("controleur/c_rapportdevisite.php");
             }else{
-                include("vues/v_interdit.php");
+                include("vues/v_accesInterdit.php");
             }
             break; 
         }

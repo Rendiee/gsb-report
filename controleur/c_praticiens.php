@@ -12,7 +12,7 @@ switch($action)
 	{
 			
 		$result = getAllMatriculePraticien();
-	    include("vues/v_formulairepraticien.php");
+	    include("vues/v_formulairePraticien.php");
 	    break;
 
 	}
@@ -26,7 +26,7 @@ switch($action)
 			if(empty($carac[7])){
 				$carac[7]='Non défini(e)';
 			}   
-			include("vues/v_afficherpraticien.php");
+			include("vues/v_afficherPraticien.php");
 		}else{
 			$_SESSION['erreur'] = true;
 			header("location: index.php?uc=praticiens&action=formulairepraticien");

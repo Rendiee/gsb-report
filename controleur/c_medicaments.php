@@ -12,7 +12,7 @@ switch($action)
 	{
 
 		$result = getAllNomMedicament();
-	    include("vues/v_formulairemedoc.php");
+	    include("vues/v_formulaireMedicament.php");
 	    break;
 
 	}
@@ -26,7 +26,7 @@ switch($action)
 			if(empty($carac[7])){
 				$carac[7]='Non défini(e)';
 			}   
-			include("vues/v_affichermedoc.php");				
+			include("vues/v_afficherMedicament.php");				
 		}else{
 			$_SESSION['erreur'] = true;
 			header("Location: index.php?uc=medicaments&action=formulairemedoc");

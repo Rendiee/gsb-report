@@ -16,7 +16,7 @@
                                 <div><span class="carac">Matricule du collaborateur</span> : <?php echo $_SESSION['matricule'];?></div>
                             </div>
                             <div>
-                                <div><span class="carac">Patricien concerné</span> : <?php echo $infoRapport['PRA_NOM'].' '.$infoRapport['PRA_PRENOM'];?></div>
+                                <div><span class="carac">Patricien concerné</span> : <?php echo '<a href="" class="link-primary">'.$infoRapport['PRA_NOM'].' '.$infoRapport['PRA_PRENOM'].'</a>';?></div>
                             </div>
                             <div>
                                 <div><span class="carac">Bilan</span> : <?php echo $infoRapport['RAP_BILAN'];?></div>
