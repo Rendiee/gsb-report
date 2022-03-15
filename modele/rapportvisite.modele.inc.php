@@ -245,7 +245,7 @@ function getRegionCodeConnected($colMatricule) {
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT REG_CODE as \'reg_code\' FROM collaborateur WHERE COL_MATRICULE = :colMat');
+        $req = $monPdo -> prepare('SELECT REG_CODE FROM collaborateur WHERE COL_MATRICULE = :colMat');
         $req -> bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
         $req -> execute();
         $res = $req -> fetch();
@@ -271,7 +271,28 @@ function getRapportParRegion($regCode, $date1, $date2) {
         $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
         $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
         $req -> execute();
-        $res = $req -> fetch();
+        $res = $req -> fetchAll();
+
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function getVisiteurRegion($regCode) {
+
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare('SELECT COL_MATRICULE, COL_NOM, COL_PRENOM FROM collaborateur WHERE REG_CODE = :regCode');
+        $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
+        $req -> execute();
+        $res = $req -> fetchAll();
 
         return $res;
     } 

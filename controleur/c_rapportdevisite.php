@@ -95,15 +95,20 @@ switch($action)
 	{	
 		unset($_SESSION['mesrapports']);
 		unset($_SESSION['praticienMonRapport']);
-		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){				
-			if(!empty($_REQUEST['nouveauxRapports'])){
-				include("vues/v_nouveauxRapports.php");
-			}elseif(!empty($_REQUEST['historiqueRapports'])){
-				include("vues/v_historiqueRapports.php");
-			}
-			else{
-				$regCode = getRegionCodeConnected($_SESSION['matricule']);
-				include("vues/v_formulaireRapportRegion.php");
+		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){	
+			
+			$regCode = getRegionCodeConnected($_SESSION['matricule']);
+			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
+
+			include("vues/v_formulaireRapportRegion.php");
+			if(isset($_POST['rapportregion'])){
+
+				$dateDeb=$_POST['datedebut'];
+				$dateFi=$_POST['datefin'];
+
+				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin']);
+
+				include("vues/v_rapportRegion.php");
 			}
 		}else{
 			header("location: index.php?uc=accueil");
