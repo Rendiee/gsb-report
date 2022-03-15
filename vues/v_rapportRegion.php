@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="structure-hero pt-lg-5 pt-4">
-            <h1 class="titre text-center">Test 3</h1>
+        <h1 class="titre text-center">Tous les rapports de la région du <?php echo date_format($dateDebut, 'd/m/Y').' au '.date_format($dateFin, 'd/m/Y');?></h1>
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
@@ -37,7 +37,9 @@
                         ?>
                     </div>
                     <div class="position-sticky bottom-0 retour-rap w-100 py-3">
-                        <h1>Test 2</h1>
+                        <form action="index.php?uc=rapportdevisite&action=rapportregion" method="post" class="m-0 p-0">
+                            <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3 my-0" type="submit" value="Retour" name="retourFormulaireMesRapports">
+                        </form>
                     </div>
                 </div>
             </div>

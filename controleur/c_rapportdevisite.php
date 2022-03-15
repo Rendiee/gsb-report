@@ -101,9 +101,10 @@ switch($action)
 			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
 
 			if(isset($_POST['rapportregion'])){
-
 				$dateDeb=$_POST['datedebut'];
 				$dateFi=$_POST['datefin'];
+				$dateDebut=new DateTime($dateDeb);
+				$dateFin=new DateTime($dateFi);
 
 				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin']);
 				include("vues/v_rapportRegion.php");
