@@ -100,15 +100,15 @@ switch($action)
 			$regCode = getRegionCodeConnected($_SESSION['matricule']);
 			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
 
-			include("vues/v_formulaireRapportRegion.php");
 			if(isset($_POST['rapportregion'])){
 
 				$dateDeb=$_POST['datedebut'];
 				$dateFi=$_POST['datefin'];
 
 				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin']);
-
 				include("vues/v_rapportRegion.php");
+			}else{
+				include("vues/v_formulaireRapportRegion.php");
 			}
 		}else{
 			header("location: index.php?uc=accueil");

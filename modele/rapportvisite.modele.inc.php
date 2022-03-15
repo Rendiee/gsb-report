@@ -266,7 +266,7 @@ function getRapportParRegion($regCode, $date1, $date2) {
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT * FROM rapport_visite r INNER JOIN collaborateur c ON r.COL_MATRICULE = c.COL_MATRICULE WHERE c.REG_CODE = :regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin;');
+        $req = $monPdo -> prepare('SELECT r.*, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM JOIN collaborateur c ON c.COL_MATRICULE=r.COL_MATRICULE WHERE c.REG_CODE=:regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin');
         $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
         $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
         $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
@@ -289,7 +289,7 @@ function getVisiteurRegion($regCode) {
     try 
     {	
         $monPdo = connexionPDO();
-        $req = $monPdo -> prepare('SELECT COL_MATRICULE, COL_NOM, COL_PRENOM FROM collaborateur WHERE REG_CODE = :regCode');
+        $req = $monPdo -> prepare('SELECT COL_MATRICULE, COL_NOM, COL_PRENOM FROM collaborateur WHERE REG_CODE = :regCode AND COL_MATRICULE NOT IN (select COL_MATRICULE from collaborateur where COL_MATRICULE = "'.$_SESSION['matricule'].'")');
         $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
         $req -> execute();
         $res = $req -> fetchAll();
