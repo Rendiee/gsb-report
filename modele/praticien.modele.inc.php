@@ -64,7 +64,7 @@ include_once 'bd.inc.php';
 			$req = 'SELECT PRA_NUM FROM rapport_visite rv WHERE `COL_MATRICULE`= "'.$_SESSION['matricule'].'" AND PRA_NUM='.$mat;
 			$res = $monPdo->query($req);
 			$resultat = $res->fetch();
-            if($resultat){
+            if(!empty($resultat)){
                 $result=true;
             }else{
                 $result=false;
