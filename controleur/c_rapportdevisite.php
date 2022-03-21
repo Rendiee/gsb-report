@@ -98,15 +98,22 @@ switch($action)
 		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){	
 			
 			$regCode = getRegionCodeConnected($_SESSION['matricule']);
-			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
 
-			if(isset($_POST['rapportregion'])){
+			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
+			$dated =date_create($_POST['datedebut']);
+			$datef =date_create($_POST['datefin']);
+
+			if(isset($_POST['rapportregion']) && $dated <= $datef){
 				$dateDeb=$_POST['datedebut'];
 				$dateFi=$_POST['datefin'];
-				$dateDebut=new DateTime($dateDeb);
-				$dateFin=new DateTime($dateFi);
 
-				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin']);
+				if(!empty($_POST['visiteur'])){
+					$visiteur = true;
+				} else {
+					$visiteur = false;
+				}
+
+				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin'], $_POST['visiteur'], $visiteur);
 				include("vues/v_rapportRegion.php");
 			}else{
 				include("vues/v_formulaireRapportRegion.php");

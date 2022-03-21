@@ -22,8 +22,8 @@
                         <label for="datesaisit">Date de fin : </label>
                         <input class="m-0 form-control py-0 d-inline w-50 text-rapport" type="date" required name="datefin"><span style="color:red"> *</span><br/><br/>
 
-                        <label for="praticien">Visiteur de la région</label>
-                        <select name="praticien" class="form-select">
+                        <label for="visiteur">Visiteur de la région</label>
+                        <select name="visiteur" class="form-select">
                             <option value>- Choisissez un visiteur - (facultatif)</option>
                             <?php
                                 foreach($visiteurRegion as $key){
