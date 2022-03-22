@@ -1,7 +1,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="structure-hero pt-lg-5 pt-4">
-        <h1 class="titre text-center">Tous les rapports de la région du <?php echo date_format($dateDebut, 'd/m/Y').' au '.date_format($dateFin, 'd/m/Y');?></h1>
+        <h1 class="titre text-center">Tous les rapports de la région du <?php echo date_format($dateDebut, 'd/m/Y').' au '.date_format($dateFin, 'd/m/Y'); if($collab){echo '<br/> du collaborateur '.$rapportRegion[0]['COL_NOM'].' '.$rapportRegion[0]['COL_PRENOM'];}?></h1>
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
@@ -19,8 +19,8 @@
                                     $medoc2 = getDepotMedoc($key['MED_DEPOTLEGAL_2']);                                    
                                     $text = $medoc1[1] . ' / ' . $medoc2[1];
                                 }
-                                echo '<form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="d-flex flex-column w-100">
-                                    <label for="praticien">N°'.$key['RAP_NUM'].' - '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</label>
+                                echo '<form action="index.php?uc=rapportdevisite&action=rapportregion" method="post" class="d-flex flex-column w-100">
+                                    <label for="praticien">Rapport N°'.$key['RAP_NUM'].'<br/>Praticien concerné : '.$key['PRA_NOM'].' '.$key['PRA_PRENOM'].'</label>
                                     <div class="d-flex align-items-center justify-content-between w-100">
                                         <input name="RAP_NUM" value="'.$key['RAP_NUM'].'" class="d-none">
                                         <div class="mw-100 overflow-auto form-control d-flex justify-content-between align-items-center">
