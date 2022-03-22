@@ -96,26 +96,42 @@ switch($action)
 		unset($_SESSION['mesrapports']);
 		unset($_SESSION['praticienMonRapport']);
 		if(isset($_SESSION['habilitation']) && $_SESSION['habilitation']==2){	
-			
-			$regCode = getRegionCodeConnected($_SESSION['matricule']);
 
-			$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
-			$dated =date_create($_POST['datedebut']);
-			$datef =date_create($_POST['datefin']);
-
-			if(isset($_POST['rapportregion']) && $dated <= $datef){
+			if(isset($_POST['rapportregion'])){
+				$dated=date_create($_POST['datedebut']);
+				$datef=date_create($_POST['datefin']);
 				$dateDeb=$_POST['datedebut'];
 				$dateFi=$_POST['datefin'];
-
-				if(!empty($_POST['visiteur'])){
-					$visiteur = true;
-				} else {
-					$visiteur = false;
+				if(!empty($_POST['collaborateur'])){
+					if(getCollabExistant($_POST['collaborateur'])){
+						$collab=true;
+					}else{
+						$collab=false;
+					}
+				}else{
+					$collab=false;
 				}
-
-				$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin'], $_POST['visiteur'], $visiteur);
-				include("vues/v_rapportRegion.php");
+				if(isset($_POST['collaborateur']) && $dated<=$datef){
+					$rapportRegion = getRapportParRegion($_SESSION['regionCode'], $_POST['datedebut'], $_POST['datefin'], $_POST['collaborateur'], $collab);
+					if(empty($rapportRegion)){
+						$_SESSION['aucunRap']=true;
+						header("location: index.php?uc=rapportdevisite&action=rapportregion");
+					}else{
+						$dateDebut=new DateTime($dateDeb);
+						$dateFin=new DateTime($dateFi);
+						include("vues/v_listeRapportRegion.php");
+					}
+				}else{
+					if($dated>$datef){
+						$_SESSION['fourchetteRap']=true;
+					}else{
+						$_SESSION['pratRap']=true;
+					}
+					header("location: index.php?uc=rapportdevisite&action=rapportregion");
+				}
 			}else{
+				$regCode = getRegionCodeConnected($_SESSION['matricule']);
+				$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
 				include("vues/v_formulaireRapportRegion.php");
 			}
 		}else{
@@ -197,7 +213,6 @@ switch($action)
 					if(empty($infoMesRapports)){
 						$_SESSION['aucunRap']=true;
 						unset($_SESSION['mesrapports']);
-						$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 						header("location: index.php?uc=rapportdevisite&action=mesrapports");
 					}else{
 						$dateDebut=new DateTime($dateDeb);
@@ -205,7 +220,6 @@ switch($action)
 						include("vues/v_listeMesRapports.php");
 					}
 				}else{
-					$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 					unset($_SESSION['mesrapports']);
 					if($dated>$datef){
 						$_SESSION['fourchetteRap']=true;

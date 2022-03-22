@@ -2,41 +2,6 @@
 
 include_once 'bd.inc.php';
 
-function getRapportParRegion($regCode, $date1, $date2, $colMat, $colPresent) {
-
-    $requete = 'SELECT r.*, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM JOIN collaborateur c ON c.COL_MATRICULE=r.COL_MATRICULE WHERE c.REG_CODE=:regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin';
-    $visiteurAddon = 'AND r.COL_MATRICULE = :colMat ORDER BY RAP_DATEVISITE';
-
-    if($colPresent){
-        $requete = $requete . $visiteurAddon;
-    } else {
-        $requete = $requete . ' ORDER BY RAP_DATEVISITE';
-    }
-
-    try 
-    {	
-        $monPdo = connexionPDO();
-        $req = $monPdo -> prepare($requete);
-        $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
-        $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
-        $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
-        if($colPresent){
-            $req -> bindParam(':colMat', $colMat, PDO::PARAM_STR);
-        }
-        $req -> execute();
-        $res = $req -> fetchAll();
-
-        return $res;
-    } 
-
-    catch (PDOException $e) 
-    {
-           print "Erreur !: " . $e->getMessage();
-            die();
-    }
-
-}
-
 function getRapportVisiteCollaborateur($matricule, $date1, $date2, $pratNum, $pratPresent){
 
     $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin';
@@ -296,6 +261,38 @@ function getRegionCodeConnected($colMatricule) {
 
 }
 
+function getRapportParRegion($regCode, $date1, $date2, $collab, $collabPresent) {
+    $requete = 'SELECT r.*, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE, c.COL_NOM, c.COL_PRENOM FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM JOIN collaborateur c ON c.COL_MATRICULE=r.COL_MATRICULE WHERE c.REG_CODE=:regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin AND r.COL_MATRICULE NOT IN (select COL_MATRICULE from rapport_visite where COL_MATRICULE = "'.$_SESSION['matricule'].'")';
+    $collabAddon = ' AND r.COL_MATRICULE = :matricule ORDER BY dateVisite';
+
+    if($collabPresent){
+        $requete = $requete . $collabAddon;
+    }else{
+        $requete = $requete . ' ORDER BY RAP_DATEVISITE';
+    }
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare($requete);
+        $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
+        $req -> bindParam(':dateDebut', $date1, PDO::PARAM_STR);
+        $req -> bindParam(':dateFin', $date2, PDO::PARAM_STR);
+        if($collabPresent){ 
+            $req -> bindParam(':matricule', $collab, PDO::PARAM_STR);
+        }
+        $req -> execute();
+        $res = $req -> fetchAll();
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
 function getVisiteurRegion($regCode) {
 
     try 
@@ -316,5 +313,42 @@ function getVisiteurRegion($regCode) {
     }
 
 }
+
+function getAllInformationCollaborateurRegion($regCode) {
+
+    try 
+    {	
+        $monPdo = connexionPDO();
+        $req = $monPdo -> prepare('SELECT `COL_MATRICULE`, `COL_NOM`, `COL_PRENOM`, `COL_ADRESSE`, `COL_CP`, `COL_VILLE`, `COL_DATEEMBAUCHE`, c.`HAB_ID`, h.HAB_LIB, c.`SEC_CODE`, s.SEC_LIBELLE, c.`REG_CODE`, r.REG_NOM FROM `collaborateur` c LEFT JOIN habilitation h ON h.HAB_ID = c.HAB_ID LEFT JOIN secteur s ON s.SEC_CODE = c.SEC_CODE LEFT JOIN region r ON r.REG_CODE = c.REG_CODE WHERE c.REG_CODE = :regCode;');
+        $req -> bindParam(':regCode', $regCode, PDO::PARAM_STR);
+        $req -> execute();
+        $res = $req -> fetchAll();
+
+        return $res;
+    } 
+
+    catch (PDOException $e) 
+    {
+           print "Erreur !: " . $e->getMessage();
+            die();
+    }
+
+}
+
+function getCollabExistant($mat){
+
+            $monPdo = connexionPDO();
+			$req = $monPdo -> prepare('SELECT COL_MATRICULE FROM collaborateur WHERE `COL_MATRICULE`= :mat;');
+            $req -> bindParam(':mat', $mat, PDO::PARAM_STR);
+            $req -> execute();
+			$resultat = $req->fetch();
+            if(!empty($resultat)){
+                $result=true;
+            }else{
+                $result=false;
+            }
+
+			return $result;
+	}
 
 ?>
