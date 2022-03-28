@@ -55,9 +55,14 @@
                                     <?php
                                         foreach($motif as $key){
                                             echo '<option value="'.$key['MOT_ID'].'">'.$key['MOT_ID'].' - '.$key['MOT_LIBELLE'].'</option>';
-                                        }                                    
+                                        }                         
                                     ?>
+                                    <option value="9">9 - Autre</option>
                                 </select>
+                            </div>
+                            <div class="d-flex flex-column" id="text-motif-autre">
+                            <input type="text" id="txtOther" />
+                                        Test
                             </div>
                             <div class="d-flex flex-column">
                                 <label for="medicamentproposer">1er médicament présenté :</label>
