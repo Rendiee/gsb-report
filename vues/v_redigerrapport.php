@@ -11,20 +11,20 @@
             <?php if (isset($succes)){echo $succes; unset($succes);}?>
                 <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="rediger formulaire mb-0 mt-0 d-flex align-items-center flex-column">
                     <p class="w-100 m-0 text-black-50"><span style="color:red">* </span>Champs obligatoires</p>
-                    <label class="title-formulaire pb-3">Rapport de visite</label>
+                    <div class="title-formulaire pb-3">Rapport de visite</div>
                     <div class="d-flex h-100">
                         <div class="w-50 h-100 d-flex flex-column justify-content-between">
                             <div>
                                 <label for="nbrapport">Numéro du rapport :</label>
-                                <input class="w-25 bg-white border-0 m-0" type="text" name="nbrapport" value="<?php echo $num;?>" disabled>
+                                <input class="w-25 bg-white border-0 m-0" type="text" name="nbrapport" id="nbrapport" value="<?php echo $num;?>" disabled>
                             </div>
                             <div>
                                 <label for="matricule">Matricule du collaborateur :</label>
-                                <input class="w-25 bg-white border-0 m-0" type="text" name="matricule" value="<?php echo $_SESSION['matricule'];?>" disabled>
+                                <input class="w-25 bg-white border-0 m-0" type="text" name="matricule" id="matricule" value="<?php echo $_SESSION['matricule'];?>" disabled>
                             </div>
                             <div>
                                 <label for="praticien">Praticien concerné <span style="color:red">*</span> :</label>
-                                <select required name="praticien" id="listemotif" class="form-select m-0">
+                                <select required name="praticien" id="praticien" class="form-select m-0">
                                     <option value>- Choisissez un praticien -</option>
                                     <?php
                                         foreach($prat as $key){
@@ -49,8 +49,8 @@
                                 <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datesaisit" id="datesaisit">
                             </div>
                             <div class="d-flex justify-content-between align-items-center" id="divMotif">
-                                <label for="motif">Motif <span style="color:red">*</span> :&nbsp</label>
-                                <select onChange="addMotifAutre(this);" required name="motif" id="listemotif" class="form-select w-75 m-0">
+                                <label for="listemotif">Motif <span style="color:red">*</span> :&nbsp</label>
+                                <select onChange="addMotifAutre(this);" required name="listemotif" id="listemotif" class="form-select w-75 m-0">
                                     <option value >- Choisissez un motif -</option>
                                     <?php
                                         foreach($motif as $key){
@@ -60,9 +60,9 @@
                                     <option value="9">9 - Autre</option>
                                 </select>
                             </div>
-                            <div class="d-flex flex-column">
+                            <div id="medoc"class="d-flex flex-column">
                                 <label for="medicamentproposer1">1er médicament présenté :</label>
-                                <select name="medicamentproposer1" id="listemotif" class="form-select m-0">
+                                <select onChange="addMedicament(this);" name="medicamentproposer1" id="medicamentproposer1" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
                                         foreach($medoc as $key){
@@ -71,25 +71,25 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="d-flex flex-column">
+                            <!-- <div class="d-flex flex-column">
                                 <label for="medicamentproposer2">2ème médicament présenté :</label>
-                                <select name="medicamentproposer2" id="listemotif" class="form-select m-0">
+                                <select name="medicamentproposer2" id="medicamentproposer2" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
-                                        foreach($medoc as $key){
-                                            echo '<option value="'.$key['MED_DEPOTLEGAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
-                                        }                                
+                                        // foreach($medoc as $key){
+                                        //     echo '<option value="'.$key['MED_DEPOTLEGAL'].'">'.$key['MED_DEPOTLEGAL'].' - '.$key['MED_NOMCOMMERCIAL'].'</option>';
+                                        // }                                
                                     ?>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="echantillon">
-                                    <label for="echantillon" class="form-check-label">Échantillon distribué</label>                            
+                                    <label for="echantillon" class="form-check-label">Échantillon distribué</label>
+                                    <input class="form-check-input" type="checkbox" name="echantillon" id="echantillon">
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="saisitdefinitive" id="saisitdefinitive">
-                                    <label for="saisitdefinitive" class="form-check-label ">Saisie définitive</label><br/>                            
+                                    <label for="saisitdefinitive" class="form-check-label ">Saisie définitive</label>
+                                    <input class="form-check-input" type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br/>
                                 </div>  
                             </div>
                         </div>

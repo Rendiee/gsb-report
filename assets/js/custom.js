@@ -18,3 +18,22 @@ function addMotifAutre(mot) {
 		$("#motif-autre").remove();
 	}
 }
+
+function addMedicament(mot) {
+	if ($(mot).val() != "default") {
+		$("#medoc-autre").remove();
+		$("#medoc").after(
+			$('<div class="d-flex flex-column" id="medoc-autre">').append(
+				$('<label for="medicamentproposer2" id="labelMedoc">2ème médicament présenté :</label>')
+			)
+		);
+		$("#labelMedoc").after(
+			$('<select name="medicamentproposer2" id="medicamentproposer2" class="form-select m-0">').append(
+				'<option value="default">- Choisissez un médicament -</option>'
+			)
+		);
+		$.ajax({});
+	} else {
+		$("#medoc-autre").remove();
+	}
+}
