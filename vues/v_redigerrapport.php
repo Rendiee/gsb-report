@@ -38,7 +38,7 @@
                                 <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datevisite" id="datevisite">
                             </div>
                             <div>
-                                <label for="bilan">Bilan du rapport <span style="color:red">*</span> :</label>
+                                <label for="bilanrapport">Bilan du rapport <span style="color:red">*</span> :</label>
                                 <textarea required name="bilanrapport" id="bilanrapport" class="form-control m-0"></textarea>
                             </div>
                             </div>
@@ -48,9 +48,9 @@
                                 <label for="datesaisit">Date de saisie <span style="color:red">*</span> :&nbsp</label>
                                 <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datesaisit" id="datesaisit">
                             </div>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center" id="divMotif">
                                 <label for="motif">Motif <span style="color:red">*</span> :&nbsp</label>
-                                <select required name="motif" id="listemotif" class="form-select w-75 m-0">
+                                <select onChange="getMotif(this);" required name="motif" id="listemotif" class="form-select w-75 m-0">
                                     <option value >- Choisissez un motif -</option>
                                     <?php
                                         foreach($motif as $key){
@@ -60,12 +60,8 @@
                                     <option value="9">9 - Autre</option>
                                 </select>
                             </div>
-                            <div class="d-flex flex-column" id="text-motif-autre">
-                            <input type="text" id="txtOther" />
-                                        Test
-                            </div>
                             <div class="d-flex flex-column">
-                                <label for="medicamentproposer">1er médicament présenté :</label>
+                                <label for="medicamentproposer1">1er médicament présenté :</label>
                                 <select name="medicamentproposer1" id="listemotif" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
@@ -76,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="d-flex flex-column">
-                                <label for="medicamentproposer">2ème médicament présenté :</label>
+                                <label for="medicamentproposer2">2ème médicament présenté :</label>
                                 <select name="medicamentproposer2" id="listemotif" class="form-select m-0">
                                     <option value="default">- Choisissez un médicament -</option>
                                     <?php
