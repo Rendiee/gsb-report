@@ -50,7 +50,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center" id="divMotif">
                                 <label for="motif">Motif <span style="color:red">*</span> :&nbsp</label>
-                                <select onChange="getMotif(this);" required name="motif" id="listemotif" class="form-select w-75 m-0">
+                                <select onChange="addMotifAutre(this);" required name="motif" id="listemotif" class="form-select w-75 m-0">
                                     <option value >- Choisissez un motif -</option>
                                     <?php
                                         foreach($motif as $key){

@@ -9,13 +9,12 @@
 //             alert('test2');
 //         }
 //     });
-function getMotif(mot) {
+function addMotifAutre(mot) {
 	if ($(mot).val() == 9) {
 		$("#divMotif").after(
 			'<textarea required name="motif-autre" id="motif-autre" placeholder="Veuillez saisir le motif autre" class="form-control m-0"></textarea>'
 		);
 	} else {
 		$("#motif-autre").remove();
-		$("#txtOther").removeAttr("disabled");
 	}
 }
