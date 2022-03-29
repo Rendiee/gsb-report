@@ -299,3 +299,22 @@ footer a.text-light:hover {
 	background-color: #aaaaaa;
 	border-radius: 8px;
 }
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.rediger-overflow {
+	overflow-y: scroll;
+	scrollbar-width: auto;
+	scrollbar-color: #aaaaaa #ffffff;
+}
+/* Chrome, Edge, and Safari */
+.rediger-overflow::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+.rediger-overflow::-webkit-scrollbar-track {
+	background: transparent;
+}
+.rediger-overflow::-webkit-scrollbar-thumb {
+	background-color: #aaaaaa;
+	border-radius: 8px;
+}

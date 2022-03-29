@@ -161,11 +161,11 @@ textarea {
 }
 
 .rediger {
-	height: 575px;
+	min-height: 350px;
 }
 
 .max-rediger {
-	max-height: 575px;
+	max-height: 375px;
 }
 
 .retour-rap {

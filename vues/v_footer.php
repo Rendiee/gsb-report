@@ -13,12 +13,12 @@
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
                     <h3 class="h4 pb-lg-3 text-light light-300">Information</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.php?uc=accueil">Accueil</a>
-                        </li>
-                        <?php if(isset($_SESSION['login'])){
-                                echo 
+                        <ul class="list-unstyled text-light light-300">
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.php?uc=accueil">Accueil</a>
+                            </li>
+                            <?php if (isset($_SESSION['login'])) {
+                                echo
                                 '<li class="pb-2">
                                     <i class=\'bx-fw bx bxs-chevron-right bx-xs\'></i><a class="text-decoration-none text-light py-1" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
                                 </li>
@@ -30,20 +30,20 @@
                                     <ul class="dropdown-menu dropdown-menu-dark p-0">
                                         <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=redigerrapport">Rédiger un rapport</a></li>
                                         <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=mesrapports">Mes rapports</a></li>';
-                                        if($_SESSION['habilitation']==2) echo '<li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=rapportregion">Rapport de ma région</a></li>';
+                                if ($_SESSION['habilitation'] == 2) echo '<li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=rapportregion">Rapport de ma région</a></li>';
                                 echo '</ul>
                                 </li>
                                 <li class="pb-2">
                                         <i class="bx-fw bx bxs-chevron-right bx-xs"></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=profil">Profil</a>
                                 </li>';
-                            }else{
-                                echo 
+                            } else {
+                                echo
                                 '<li class="pb-2">
                                     <i class="bx-fw bx bxs-chevron-right bx-xs"></i><a class="text-decoration-none text-light py-1" href="index.php?uc=connexion&action=connexion">Connexion</a>
                                 </li>';
                             }
-                        ?>
-                    </ul>
+                            ?>
+                        </ul>
                 </div>
             </div>
         </div>
