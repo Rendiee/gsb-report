@@ -37,7 +37,7 @@ function addEchantillon(ech) {
 		);
 		$("#Echantillon" + i + "").prepend(
 			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
-				'<option value="default">- Choisissez un médicament -</option>'
+				'<option value="default">- Choisissez un échantillon -</option>'
 			)
 		);
 		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");
@@ -59,7 +59,7 @@ function addOtherEchantillon() {
 		$("#addechantillon").append('<div id="Echantillon' + i + '" class=" mb-1 d-flex flex-row"><input min="1" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon' + i + '" type="number"><button type="button" id="button" value="' + i + '" onclick="addOtherEchantillon();" class="btn btn-outline-secondary me-1"><i class="bi bi-plus-lg"></i></button><button type="button" id="buttonMinus" value="' + i + '" onclick="minusEchantillon(this);" class="btn btn-outline-secondary"><i class="bi bi-dash-lg"></i></button></div></div>');
 		$("#Echantillon" + i + "").prepend(
 			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
-				'<option value="default">- Choisissez un médicament -</option>'
+				'<option value="default">- Choisissez un échantillon -</option>'
 			)
 		);
 		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");
@@ -71,7 +71,7 @@ function addOtherEchantillon() {
 		$("#addechantillon").append('<div id="Echantillon' + i + '" class=" mb-1 d-flex flex-row"><input min="1" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon' + i + '" type="number"><button type="button" id="buttonMinus" value="' + i + '" onclick="minusEchantillon(this);" class="btn btn-outline-secondary"><i class="bi bi-dash-lg"></i></button></div></div>');
 		$("#Echantillon" + i + "").prepend(
 			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
-				'<option value="default">- Choisissez un médicament -</option>'
+				'<option value="default">- Choisissez un échantillon -</option>'
 			)
 		);
 		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");

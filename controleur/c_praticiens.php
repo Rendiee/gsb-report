@@ -1,45 +1,37 @@
 <?php
-
-if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])){
-	$action="formulairepraticien";
-}else{
+if (!isset($_REQUEST['action']) || empty($_REQUEST['action'])) {
+	$action = "formulairepraticien";
+} else {
 	$action = $_REQUEST['action'];
 }
-switch($action)
-{
-	case 'formulairepraticien':
-	{
-			
-		$result = getAllMatriculePraticien();
-	    include("vues/v_formulairePraticien.php");
-	    break;
+switch ($action) {
+	case 'formulairepraticien': {
 
-	}
-
-	case 'afficherpraticien':
-	{	
-
-		if(isset($_REQUEST['praticien']) && is_numeric($_REQUEST['praticien']) && getAllInformationPraticien($_REQUEST['praticien'])){
-			$pra=$_REQUEST['praticien'];
-			$carac = getAllInformationPraticien($pra);
-			if(empty($carac[7])){
-				$carac[7]='Non défini(e)';
-			}   
-			include("vues/v_afficherPraticien.php");
-		}else{
-			$_SESSION['erreur'] = true;
-			header("location: index.php?uc=praticiens&action=formulairepraticien");
+			$result = getAllMatriculePraticien();
+			include("vues/v_formulairePraticien.php");
+			break;
 		}
-		break;
 
-	}
+	case 'afficherpraticien': {
 
-	default :
-	{
-		
-		header('Location: index.php?uc=praticiens&action=formulairepraticien');
-		break;
-		
-	}
+			if (isset($_REQUEST['praticien']) && is_numeric($_REQUEST['praticien']) && getAllInformationPraticien($_REQUEST['praticien'])) {
+				$pra = $_REQUEST['praticien'];
+				$carac = getAllInformationPraticien($pra);
+				if (empty($carac[7])) {
+					$carac[7] = 'Non défini(e)';
+				}
+				include("vues/v_afficherPraticien.php");
+			} else {
+				$_SESSION['erreur'] = true;
+				header("location: index.php?uc=praticiens&action=formulairepraticien");
+			}
+			break;
+		}
+
+	default: {
+
+			header('Location: index.php?uc=praticiens&action=formulairepraticien');
+			break;
+		}
 }
 ?>
