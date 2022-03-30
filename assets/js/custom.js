@@ -31,16 +31,17 @@ function addMedicament(med) {
 
 function addEchantillon(ech) {
 	if (ech.checked) {
+		var i = 1;
 		$("#redigerEtEchantillon").after(
-			'<div class="col-8 d-flex flex-column justify-content-center align-items-center mt-3 mb-5 mx-auto" id="addechantillon"><div id="unEchantillon" class=" mb-1 d-flex flex-row"><input min="1" max="10" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon" type="number"><button type="button" onclick="addOtherEchantillon();" class="btn btn-outline-secondary"><i class="bi bi-plus-lg"></i></button></div></div>'
+			'<div class="col-10 d-flex flex-column justify-content-center align-items-center mt-3 mb-5 mx-auto" id="addechantillon"><div id="Echantillon' + i + '" class=" mb-1 d-flex flex-row"><input min="1" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon' + i + '" type="number"><button type="button" id="button" value="' + i + '" onclick="addOtherEchantillon();" class="btn btn-outline-secondary"><i class="bi bi-plus-lg"></i></button></div></div>'
 		);
-		$("#unEchantillon").prepend(
-			$('<select name="echantillonadd" id="echantillonadd" class="form-select m-0 me-1">').append(
+		$("#Echantillon" + i + "").prepend(
+			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
 				'<option value="default">- Choisissez un médicament -</option>'
 			)
 		);
-		$(".listemedoc").clone().appendTo("#echantillonadd");
-		$("#echantillonadd").focus();
+		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");
+		$("#echantillonadd" + i + "").focus();
 	} else {
 		if (confirm("Voulez-vous vraiment décocher Échantillon ?")) {
 			$("#addechantillon").remove();
@@ -51,5 +52,39 @@ function addEchantillon(ech) {
 }
 
 function addOtherEchantillon() {
-	$("#unEchantillon").clone().appendTo("#addechantillon");
+	if (parseInt($('#button').val()) < 9) {
+		var i = parseInt($('#button').val()) + 1;
+		$('#button').remove();
+		$('#buttonMinus').remove();
+		$("#addechantillon").append('<div id="Echantillon' + i + '" class=" mb-1 d-flex flex-row"><input min="1" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon' + i + '" type="number"><button type="button" id="button" value="' + i + '" onclick="addOtherEchantillon();" class="btn btn-outline-secondary me-1"><i class="bi bi-plus-lg"></i></button><button type="button" id="buttonMinus" value="' + i + '" onclick="minusEchantillon(this);" class="btn btn-outline-secondary"><i class="bi bi-dash-lg"></i></button></div></div>');
+		$("#Echantillon" + i + "").prepend(
+			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
+				'<option value="default">- Choisissez un médicament -</option>'
+			)
+		);
+		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");
+		$("#echantillonadd" + i + "").focus();
+	}else{
+		var i = parseInt($('#button').val()) + 1;
+		$('#button').remove();
+		$('#buttonMinus').remove();
+		$("#addechantillon").append('<div id="Echantillon' + i + '" class=" mb-1 d-flex flex-row"><input min="1" value="1" class="form-control me-1 rounded w-25 text-center" id="nbEchantillon' + i + '" type="number"><button type="button" id="buttonMinus" value="' + i + '" onclick="minusEchantillon(this);" class="btn btn-outline-secondary"><i class="bi bi-dash-lg"></i></button></div></div>');
+		$("#Echantillon" + i + "").prepend(
+			$('<select name="echantillonadd" id="echantillonadd' + i + '" class="form-select m-0 me-1">').append(
+				'<option value="default">- Choisissez un médicament -</option>'
+			)
+		);
+		$(".listemedoc").clone().appendTo("#echantillonadd" + i + "");
+		$("#echantillonadd" + i + "").focus();
+	}
+}
+
+function minusEchantillon(min) {
+	var i = parseInt($('#buttonMinus').val()) - 1;
+		$(min).parent().remove();
+	if (i > 1) {
+		$('#Echantillon' + i + '').append('<button type="button" id="button" value="' + i + '" onclick="addOtherEchantillon();" class="btn btn-outline-secondary me-1"><i class="bi bi-plus-lg"></i></button><button type="button" id="buttonMinus" value="' + i + '" onclick="minusEchantillon(this);" class="btn btn-outline-secondary"><i class="bi bi-dash-lg"></i></button>');
+	}else{
+		$('#Echantillon' + i + '').append('<button type="button" id="button" value="' + i + '" onclick="addOtherEchantillon();" class="btn btn-outline-secondary me-1"><i class="bi bi-plus-lg"></i></button>');
+	}
 }

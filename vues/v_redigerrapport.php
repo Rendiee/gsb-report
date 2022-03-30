@@ -15,7 +15,7 @@
                 <form action="index.php?uc=rapportdevisite&action=redigerrapport" method="post" class="formulaire mb-0 mt-0 d-flex align-items-center flex-column">
                     <p class="w-100 m-0 text-black-50"><span style="color:red">* </span>Champs obligatoires</p>
                     <div class="title-formulaire pb-3">Rapport de visite</div>
-                    <div class="d-flex flex-column rediger-overflow max-rediger w-100">
+                    <div class="d-flex flex-column rediger-overflow max-rediger w-100 px-1 pb-1">
                         <div class="d-flex rediger" id="redigerEtEchantillon">
                             <div class="w-50 d-flex flex-column justify-content-between">
                                 <div>
