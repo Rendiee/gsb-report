@@ -168,6 +168,14 @@ textarea {
 	max-height: 375px;
 }
 
+.infos {
+	height: 550px;
+}
+
+.max-infos {
+	max-height: 550px;
+}
+
 .retour-rap {
 	background-color: #fff;
 }

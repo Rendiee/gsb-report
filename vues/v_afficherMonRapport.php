@@ -5,7 +5,7 @@
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="test col-12 col-sm-9 col-lg-8 col-xl-7 py-3">
-                <div class="rediger formulaire mb-0 mt-0 d-flex align-items-center flex-column">
+                <div class="infos formulaire mb-0 mt-0 d-flex align-items-center flex-column">
                     <label class="title-formulaire">Rapport de visite</label><br />
                     <div class="d-flex h-100 w-100">
                         <div class="w-50 h-100 d-flex flex-column justify-content-around">
