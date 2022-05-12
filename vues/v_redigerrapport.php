@@ -62,7 +62,6 @@
                                                 echo '<option value="' . $key['MOT_ID'] . '">' . $key['MOT_ID'] . ' - ' . $key['MOT_LIBELLE'] . '</option>';
                                             }
                                             ?>
-                                            <option value="9">9 - Autre</option>
                                         </select>
                                     </div>
                                 </div>

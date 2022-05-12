@@ -44,7 +44,7 @@
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil"><img id="imgProfil" src="assets/img/profil.png">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');"><img id="imgDeco" src="assets/img/deco.png">Déconnexion</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');">Déconnexion</a>
                         </li>
                     </ul>
                 </div>

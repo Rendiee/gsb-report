@@ -24,14 +24,26 @@ switch ($action) {
 				} else {
 					$def = 0;
 				}
-				if (empty($_POST['praticien']) || empty($_POST['datevisite']) || empty($_POST['bilanrapport']) || empty($_POST['datesaisit']) || empty($_POST['motif'])) {
+				if (empty($_POST['praticien']) || empty($_POST['datevisite']) || empty($_POST['bilanrapport']) || empty($_POST['datesaisit']) || empty($_POST['listemotif'])) {
 					$vide = true;
 				}
 				if (!getDepotMedoc($_POST['medicamentproposer1'])) {
 					$_POST['medicamentproposer1'] = NULL;
 				}
-				if (getNomMotif($_POST['motif'])) {
-					if (!isset($vide) && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, null, $_POST['medicamentproposer1'], null, $_POST['praticien'], $_POST['motif'], null)) {
+				if(!isset($_POST['medicamentproposer2'])){
+					$med2 = null;
+				}elseif(!getDepotMedoc($_POST['medicamentproposer2'])){
+					$med2 = null;
+				}else{
+					$med2 = $_POST['medicamentproposer2'];
+				}
+				if(isset($_POST['motif-autre'])){
+					$motifAutre = $_POST['motif-autre'];
+				}else{
+					$motifAutre = null;
+				}
+				if (getNomMotif($_POST['listemotif'])) {
+					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null)) {
 						$succes = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
 					} else {
 						$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
@@ -142,7 +154,7 @@ switch ($action) {
 					if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
 						$motif = $infoRapport['MOT_LIBELLE'];
 					} else {
-						$motif = $infoRapport['RAP_MOTIFAUTRE'];
+						$motif = 'Autre : '.$infoRapport['RAP_MOTIFAUTRE'];
 					}
 
 					if ($infoRapport['RAP_SAISITDEFINITIVE']) {
