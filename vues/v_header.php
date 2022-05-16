@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/gsb.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                 <div class="flex-fill d-flex justify-content-end">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil"><img id="imgAccueil" src="assets/img/accueil.png">Accueil</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil">Accueil</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=medicaments&action=formulairemedoc"><img id="imgMedoc" src="assets/img/pillule.png">Médicaments</a>

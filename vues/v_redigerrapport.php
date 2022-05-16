@@ -100,3 +100,17 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        $('input[name="datesaisit"]').val(today);
+    })
+    $('form').on('submit', function(event) {
+        if (!document.getElementById('saisitdefinitive').checked) {
+            return confirm('Le rapport va être enregistrer à l\'état non définitif, voulez-vous quand même enregistrer le rapport ?');
+        }
+    })
+</script>

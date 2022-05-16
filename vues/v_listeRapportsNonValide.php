@@ -15,9 +15,13 @@
                     echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du rapport</p>';
                     $_SESSION['erreur'] = false;
                 } ?>
-                <?php if (isset($succes)) {
-                    echo $succes;
-                    unset($succes);
+                <?php if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    $_SESSION['countMsg']++;
+                    if ($_SESSION['countMsg'] == 2) {
+                        unset($_SESSION['countMsg']);
+                        unset($_SESSION['msg']);
+                    }
                 } ?>
                 <div class="formulaire-recherche">
                     <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center">

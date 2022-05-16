@@ -11,14 +11,11 @@ if (isset($_REQUEST['rapport'])) {
 if (isset($_REQUEST['mesrapports'])) {
 	$action = 'mesrapports';
 }
-if (!isset($_POST['valider'])) { //sert à eviter le renvoie du formulaire si on F5 (évite d'inserer un rapport à l'infini)
-	unset($_SESSION['stop']);
-}
 switch ($action) {
 	case 'redigerrapport': {
 			unset($_SESSION['mesrapports']);
 			unset($_SESSION['praticienMonRapport']);
-			if (isset($_POST['valider']) && !isset($_SESSION['stop'])) {
+			if (isset($_POST['valider'])) {
 				if (isset($_POST['saisitdefinitive'])) {
 					$def = 1;
 				} else {
@@ -30,29 +27,29 @@ switch ($action) {
 				if (!getDepotMedoc($_POST['medicamentproposer1'])) {
 					$_POST['medicamentproposer1'] = NULL;
 				}
-				if(!isset($_POST['medicamentproposer2'])){
+				if (!isset($_POST['medicamentproposer2'])) {
 					$med2 = null;
-				}elseif(!getDepotMedoc($_POST['medicamentproposer2'])){
+				} elseif (!getDepotMedoc($_POST['medicamentproposer2'])) {
 					$med2 = null;
-				}else{
+				} else {
 					$med2 = $_POST['medicamentproposer2'];
 				}
-				if(isset($_POST['motif-autre'])){
+				if (isset($_POST['motif-autre'])) {
 					$motifAutre = $_POST['motif-autre'];
-				}else{
+				} else {
 					$motifAutre = null;
 				}
+				$_SESSION['countMsg'] = 0;
 				if (getNomMotif($_POST['listemotif'])) {
 					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null)) {
-						$succes = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
+						$_SESSION['msg'] = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
 					} else {
-						$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
+						$_SESSION['msg'] = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
 					}
 				} else {
-					$succes = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
+					$_SESSION['msg'] = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
 				}
-				unset($_POST['valider']); //sert à eviter le renvoie du formulaire si on F5 (et évite d'inserer un rapport à l'infini)
-				$_SESSION['stop'] = true;
+				header('location: index.php?uc=rapportdevisite&action=redigerrapport');
 			}
 
 			if (!empty(getAllInformationNonValide($_SESSION['matricule'])) && !isset($_REQUEST['nouveau'])) {
@@ -154,7 +151,7 @@ switch ($action) {
 					if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
 						$motif = $infoRapport['MOT_LIBELLE'];
 					} else {
-						$motif = 'Autre : '.$infoRapport['RAP_MOTIFAUTRE'];
+						$motif = 'Autre : ' . $infoRapport['RAP_MOTIFAUTRE'];
 					}
 
 					if ($infoRapport['RAP_SAISITDEFINITIVE']) {
