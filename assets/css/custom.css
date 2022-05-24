@@ -288,3 +288,7 @@ textarea {
 	flex-direction: column;
 	align-items: center;
 }
+
+.fit {
+	width: fit-content;
+}

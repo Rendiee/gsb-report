@@ -25,16 +25,16 @@
                 <div class="flex-fill d-flex justify-content-end">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=accueil">Accueil</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=accueil">Accueil</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=medicaments&action=formulairemedoc"><img id="imgMedoc" src="assets/img/pillule.png">Médicaments</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=medicaments&action=formulairemedoc">Médicaments</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=praticiens&action=formulairepraticien"><img id="imgPrat" src="assets/img/praticien.png">Praticiens</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=praticiens&action=formulairepraticien">Praticiens</a>
                         </li>
                         <li class="nav-item  dropdown">
-                            <a class="nav-link dropdown-toggle btn-outline-info rounded-pill px-3" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img id="imgRap" src="assets/img/rapport.png">Rapport de visite</a>
+                            <a class="nav-link dropdown-toggle btn-outline-info rounded-pill px-3 fw-bold" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rapport de visite</a>
                             <ul class="dropdown-menu dropdown-menu-dark p-0">
                                 <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=redigerrapport">Rédiger un rapport</a></li>
                                 <li><a class="dropdown-item" href="index.php?uc=rapportdevisite&action=mesrapports">Mes rapports</a></li>
@@ -42,10 +42,10 @@
                             </ul>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=profil"><img id="imgProfil" src="assets/img/profil.png">Profil</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=profil">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-info rounded-pill px-3" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');">Déconnexion</a>
+                            <a class="nav-link btn-outline-info rounded-pill px-3 fw-bold" href="index.php?uc=connexion&action=deconnexion" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?');">Déconnexion</a>
                         </li>
                     </ul>
                 </div>

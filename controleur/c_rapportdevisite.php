@@ -42,12 +42,12 @@ switch ($action) {
 				$_SESSION['countMsg'] = 0;
 				if (getNomMotif($_POST['listemotif'])) {
 					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null)) {
-						$_SESSION['msg'] = '<p class="alert alert-success w-100 text-center">Rapport saisit avec succès</p>';
+						$_SESSION['msg'] = '<p class="alert alert-success text-center fit mx-auto">Rapport saisit avec succès</p>';
 					} else {
-						$_SESSION['msg'] = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
+						$_SESSION['msg'] = '<p class="alert alert-danger text-center fit mx-auto">Un problème est survenu lors de la validation du rapport</p>';
 					}
 				} else {
-					$_SESSION['msg'] = '<p class="alert alert-danger w-100 text-center">Un problème est survenu lors de la validation du rapport</p>';
+					$_SESSION['msg'] = '<p class="alert alert-danger text-center fit mx-auto">Un problème est survenu lors de la validation du rapport</p>';
 				}
 				header('location: index.php?uc=rapportdevisite&action=redigerrapport');
 			}
@@ -148,6 +148,7 @@ switch ($action) {
 					}
 					$_POST = $_SESSION['praticienMonRapport'];
 					$infoRapport = getInformationsMesRapports($_POST['RAP_NUM']);
+					var_dump($infoRapport);
 					if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
 						$motif = $infoRapport['MOT_LIBELLE'];
 					} else {
@@ -173,10 +174,20 @@ switch ($action) {
 						$_SESSION['mesrapports'] = $_POST;
 					}
 					$_POST = $_SESSION['mesrapports'];
-					$dated = date_create($_POST['datedebut']);
-					$datef = date_create($_POST['datefin']);
-					$dateDeb = $_POST['datedebut'];
-					$dateFi = $_POST['datefin'];
+
+					if (empty($_POST['datedebut'])) {
+						$dateDeb = "";
+					} else {
+						$dated = date_create($_POST['datedebut']); // CONVERTION DES VARIABLES STRING EN DATE POUR COMPARÉ LES DATES
+						$dateDeb = $_POST['datedebut'];
+					}
+					if (empty($_POST['datefin'])) {
+						$dateFin = "";
+					} else {
+						$datef = date_create($_POST['datefin']); // CONVERTION DES VARIABLES STRING EN DATE POUR COMPARÉ LES DATES
+						$dateFin = $_POST['datefin'];
+					}
+
 					if (!empty($_POST['praticien'])) {
 						if (is_numeric($_POST['praticien']) && getPraticiExistant(intval($_POST['praticien']))) {
 							$pra = true;
@@ -186,16 +197,14 @@ switch ($action) {
 					} else {
 						$pra = false;
 					}
-					if (isset($_POST['praticien']) && $dated <= $datef) {
-						$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $_POST['datedebut'], $_POST['datefin'], $_POST['praticien'], $pra);
+					if (isset($_POST['praticien'])) {
+						$infoMesRapports = getRapportVisiteCollaborateur($_SESSION['matricule'], $dateDeb, $dateFin, $_POST['praticien'], $pra);
 						if (empty($infoMesRapports)) {
 							$_SESSION['aucunRap'] = true;
 							unset($_SESSION['mesrapports']);
 							$prat = getAllInformationPraticienVisite($_SESSION['matricule']);
 							header("location: index.php?uc=rapportdevisite&action=mesrapports");
 						} else {
-							$dateDebut = new DateTime($dateDeb);
-							$dateFin = new DateTime($dateFi);
 							include("vues/v_listeMesRapports.php");
 						}
 					} else {

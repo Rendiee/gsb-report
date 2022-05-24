@@ -12,7 +12,7 @@
             </div>
             <div class="test col-12 col-sm-8 col-lg-6 col-xl-5 col-xxl-4 py-lg-5 py-3">
                 <?php if ($_SESSION['erreur']) {
-                    echo '<p class="alert alert-danger text-center w-100">Un problème est survenu lors de la selection du rapport</p>';
+                    echo '<p class="alert alert-danger text-center w-100 fit mx-auto">Un problème est survenu lors de la selection du rapport</p>';
                     $_SESSION['erreur'] = false;
                 } ?>
                 <?php if (isset($_SESSION['msg'])) {
@@ -24,7 +24,7 @@
                     }
                 } ?>
                 <div class="formulaire-recherche">
-                    <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center">
+                    <form action="index.php?uc=rapportdevisite&action=rapportNonValide" method="post" class="form-signin d-flex flex-column align-items-center fit mx-auto">
                         <label for="name">Liste des rapports non valide :</label>
                         <select required name="nonValide" class="form-select mt-3">
                             <option class="text-center" value>- Rapport non valide -</option>

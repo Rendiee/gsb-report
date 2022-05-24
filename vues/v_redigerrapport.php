@@ -48,9 +48,11 @@
                             </div>
                             <div class="vr m-3"></div>
                             <div class="w-50 d-flex flex-column justify-content-between">
-                                <div class="d-flex flex-column flex-xxl-row">
-                                    <label for="datevisite">Date de visite <span style="color:red">*</span> :&nbsp</label>
-                                    <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datevisite" id="datevisite">
+                                <div>
+                                    <div class="d-flex flex-column flex-xxl-row">
+                                        <label for="datevisite">Date de visite <span style="color:red">*</span> :&nbsp</label>
+                                        <input required type="date" class="form-control m-0 py-0 w-50 text-rapport" name="datevisite" id="datevisite" onblur="checkDateSaisieRapport(this)">
+                                    </div>
                                 </div>
                                 <div id="divmotifautre">
                                     <div class="d-flex justify-content-between align-items-center" id="divMotif">
@@ -87,7 +89,7 @@
                     </div>
                     <div class="col-8 border-top border-dark mt-1 d-flex justify-content-center">
                         <div class="form-check form-switch mb-2 pt-3 m-auto">
-                            <label for="saisitdefinitive" class="form-check-label ">Saisie définitive</label>
+                            <label for="saisitdefinitive" class="form-check-label">Saisie définitive</label>
                             <input class="form-check-input" type="checkbox" name="saisitdefinitive" id="saisitdefinitive"><br />
                         </div>
                     </div>
@@ -109,6 +111,9 @@
         $('input[name="datesaisit"]').val(today);
     })
     $('form').on('submit', function(event) {
+        if (!checkDateSaisieRapport()) {
+            event.preventDefault();
+        }
         if (!document.getElementById('saisitdefinitive').checked) {
             return confirm('Le rapport va être enregistrer à l\'état non définitif, voulez-vous quand même enregistrer le rapport ?');
         }
