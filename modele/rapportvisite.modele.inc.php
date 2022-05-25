@@ -7,9 +7,9 @@ function getRapportVisiteCollaborateur($matricule, $date1, $date2, $pratNum, $pr
     try {
         if (empty($date1) && empty($date2)) {
             $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule';
-        } elseif (!empty($date1)) {
+        } elseif (!empty($date1) && empty($date2)) {
             $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut';
-        } elseif (!empty($date2)) {
+        } elseif (!empty($date2) && empty($date1)) {
             $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE <= :dateFin';
         } else {
             $requete = 'SELECT *, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM WHERE r.COL_MATRICULE = :matricule AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin';
@@ -170,6 +170,27 @@ function getMaxIdRapportVisite($colMatricule)
         $res = $req->fetch();
 
         return $res;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+function modifierRapportNonValide($bilan, $dateVisite, $medoc1, $medoc2, $definitif, $num){
+    try {
+        $matricule = $_SESSION['matricule'];
+
+        $monPdo = connexionPDO();
+        $req = $monPdo->prepare('UPDATE rapport_visite SET RAP_BILAN = :bilan, RAP_DATEVISITE = :dateVisite, MED_DEPOTLEGAL_1 = :medoc1, MED_DEPOTLEGAL_2 = :medoc2, RAP_SAISITDEFINITIVE = :definitif WHERE COL_MATRICULE = :matricule AND RAP_NUM = :num');
+        $req->bindParam(':bilan', $bilan);
+        $req->bindParam(':dateVisite', $dateVisite);
+        $req->bindParam(':medoc1', $medoc1);
+        $req->bindParam(':medoc2', $medoc2);
+        $req->bindParam(':definitif', $definitif);
+        $req->bindParam(':matricule', $matricule);
+        $req->bindParam(':num', $num);
+        $req->execute();
+
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();

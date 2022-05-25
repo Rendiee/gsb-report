@@ -42,7 +42,7 @@ switch ($action) {
 				$_SESSION['countMsg'] = 0;
 				if (getNomMotif($_POST['listemotif'])) {
 					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null)) {
-						$_SESSION['msg'] = '<p class="alert alert-success text-center fit mx-auto">Rapport saisit avec succès</p>';
+						$_SESSION['msg'] = '<p class="alert alert-success text-center fit mx-auto">Rapport saisi avec succès</p>';
 					} else {
 						$_SESSION['msg'] = '<p class="alert alert-danger text-center fit mx-auto">Un problème est survenu lors de la validation du rapport</p>';
 					}
@@ -89,7 +89,27 @@ switch ($action) {
 					$_SESSION['erreur'] = true;
 					header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 				}
-			} else {
+			} elseif($_POST['validerNonValide']){
+				if(isset($_POST['saisitdefinitive'])){
+					$definitif = 1;
+				}else{
+					$definitif = 0;
+				}
+				if($_POST['medicamentproposer1'] == "default"){
+					$medoc1 = null;
+					$medoc2 = null;
+				}elseif($_POST['medicamentproposer2'] == "default"){
+					$medoc1 = $_POST['medicamentproposer1'];
+					$medoc2 = null;
+				}else{
+					$medoc1 = $_POST['medicamentproposer1'];
+					$medoc2 = $_POST['medicamentproposer2'];
+				}
+				modifierRapportNonValide($_POST['bilanrapport'], $_POST['datevisite'], $medoc1, $medoc2, $definitif, $_POST['nbrapport']);
+				$_SESSION['msg'] = '<p class="alert alert-success text-center fit mx-auto">Rapport modifié avec succès</p>';
+				$_SESSION['countMsg'] = 0;
+				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
+			}else {
 				header("location: index.php?uc=rapportdevisite&action=redigerrapport");
 			}
 			break;

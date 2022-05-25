@@ -114,8 +114,12 @@
         if (!checkDateSaisieRapport()) {
             event.preventDefault();
         }
-        if (!document.getElementById('saisitdefinitive').checked) {
+        if ($('#medicamentproposer1').val() == "default" && !document.getElementById('saisitdefinitive').checked) {
+            return confirm('Vous n\'avez saisis aucun médicament présenté et le rapport va être enregistrer à l\'état non définitif, voulez-vous quand même enregistrer le rapport ?');
+        }else if (!document.getElementById('saisitdefinitive').checked) {
             return confirm('Le rapport va être enregistrer à l\'état non définitif, voulez-vous quand même enregistrer le rapport ?');
+        }else if ($('#medicamentproposer1').val() == "default"){
+            return confirm('Vous n\'avez saisis aucun médicament présenté, voulez-vous quand même enregistrer le rapport ?');
         }
     })
 </script>
