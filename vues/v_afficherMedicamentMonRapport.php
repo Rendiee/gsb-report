@@ -16,7 +16,7 @@
                     <p><span class="carac">Contre indication</span> : <?php echo $carac[4] ?></p>
                     <p><span class="carac">Prix de l'échantillon</span> : <?php echo $carac[5] . '€' ?></p>
                     <p><span class="carac">Famille</span> : <?php echo $carac[6] ?></p>
-                    <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3" type="button" onclick="location.href='index.php?uc=rapportdevisite&action=mesrapports'" value="Retour">
+                    <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3" type="button" onclick="location.href='index.php?uc=rapportdevisite&action=<?php if(isset($rapportRegion)){ ?>rapportregion<?php } else { ?>mesrapports<?php } ?>'" value="Retour">
                 </div>
             </div>
         </div>

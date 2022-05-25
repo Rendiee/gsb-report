@@ -17,7 +17,7 @@
                             </div>
                             <div>
                                 <div><span class="carac">Patricien concerné</span> :
-                                    <form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="m-0 p-0 d-inline">
+                                    <form action="index.php?uc=rapportdevisite&action=rapportregion" method="post" class="m-0 p-0 d-inline">
                                         <input class="m-0 p-0 border-0 bg-transparent link-info text-decoration-underline" type="submit" value="<?php echo $infoRapport['PRA_NOM'] . ' ' . $infoRapport['PRA_PRENOM']; ?>">
                                         <input type="hidden" name="praticienMonRapport" value="<?php echo $infoRapport['PRA_NUM']; ?>">
                                     </form>
@@ -42,11 +42,11 @@
                                 <div><span class="carac">Médicament(s)</span> :
                                     <?php
                                     if (isset($medoc1)) {
-                                        echo '<form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="m-0 p-0 d-inline">
+                                        echo '<form action="index.php?uc=rapportdevisite&action=rapportregion" method="post" class="m-0 p-0 d-inline">
                                                 <input class="m-0 p-0 border-0 bg-transparent link-info text-decoration-underline" name="medocMonRapport" type="submit" value="' . $medoc1[1] . '">
                                                 </form>';
                                         if (isset($medoc2)) {
-                                            echo ' / <form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="m-0 p-0 d-inline">
+                                            echo ' / <form action="index.php?uc=rapportdevisite&action=rapportregion" method="post" class="m-0 p-0 d-inline">
                                                 <input class="m-0 p-0 border-0 bg-transparent link-info text-decoration-underline" name="medocMonRapport" type="submit" value="' . $medoc2[1] . '">
                                                 </form>';
                                         }

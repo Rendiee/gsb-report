@@ -118,6 +118,22 @@ switch ($action) {
 	case 'rapportregion': {
 			unset($_SESSION['mesrapports']);
 			unset($_SESSION['praticienMonRapport']);
+			$rapportRegion = true;
+			if (isset($_POST['praticienMonRapport']) && is_numeric($_POST['praticienMonRapport']) && getAllInformationPraticien($_POST['praticienMonRapport'])) {
+				$pra = $_POST['praticienMonRapport'];
+				$carac = getAllInformationPraticien($pra);
+				if (empty($carac[7])) {
+					$carac[7] = 'Non défini(e)';
+				}
+				include("vues/v_afficherPraticienMonRapport.php");
+			} elseif (isset($_POST['medocMonRapport']) && getAllInformationMedicamentNom($_POST['medocMonRapport'])) {
+				$med = $_POST['medocMonRapport'];
+				$carac = getAllInformationMedicamentNom($med);
+				if (empty($carac[7])) {
+					$carac[7] = 'Non défini(e)';
+				}
+				include("vues/v_afficherMedicamentMonRapport.php");
+			}
 			if(isset($_REQUEST['col']) && isset($_REQUEST['rapNum'])){
 				$infoRapport = getInformationsMesRapports($_REQUEST['rapNum'], $_REQUEST['col']);
 				if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
@@ -139,7 +155,7 @@ switch ($action) {
 					$medoc1 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_1']);
 					$medoc2 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_2']);
 				}
-				include("vues/v_afficherMonRapport.php");
+				include("vues/v_afficherRapportRegion.php");
 			}elseif (isset($_SESSION['habilitation']) && $_SESSION['habilitation'] == 2) {
 
 				$regCode = getRegionCodeConnected($_SESSION['matricule']);

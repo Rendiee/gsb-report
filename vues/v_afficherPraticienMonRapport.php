@@ -17,7 +17,7 @@
                     <p><span class="carac">Notoriété</span> : <?php echo $carac[6] ?></p>
                     <p><span class="carac">Confiance</span> : <?php echo $carac[7] ?></p>
                     <p><span class="carac">Type de praticien</span> : <?php echo $carac[8] ?></p>
-                    <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3" type="button" onclick="location.href='index.php?uc=rapportdevisite&action=mesrapports'" value="Retour">
+                    <input class="btn btn-info text-light valider col-6 col-sm-5 col-md-4 col-lg-3" type="button" onclick="location.href='index.php?uc=rapportdevisite&action=<?php if(isset($rapportRegion)){ ?>rapportregion<?php } else { ?> mesrapports<?php } ?>'" value="Retour" >
                 </div>
             </div>
         </div>
