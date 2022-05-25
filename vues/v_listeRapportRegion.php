@@ -18,22 +18,22 @@
                                 $medoc1 = getDepotMedoc($key['MED_DEPOTLEGAL_1']);
                                 $medoc2 = getDepotMedoc($key['MED_DEPOTLEGAL_2']);
                                 $text = $medoc1[1] . ' / ' . $medoc2[1];
-                            }
-                            echo '<form action="index.php?uc=rapportdevisite&action=mesrapports" method="post" class="d-flex flex-column w-100">
-                                    <label for="praticien">N°' . $key['RAP_NUM'] . ' - ' . $key['PRA_NOM'] . ' ' . $key['PRA_PRENOM'] . '</label>
-                                    <div class="d-flex align-items-center justify-content-between w-100">
-                                        <input name="RAP_NUM" value="' . $key['RAP_NUM'] . '" class="d-none">
-                                        <div class="mw-100 overflow-auto form-control d-flex justify-content-between align-items-center">
-                                            <div class="col-6 col-sm-5 col-md-3 text-center">' . $key['dateVisite'] . '</div>
-                                            <div class="text-center d-none d-sm-block">|</div>
-                                            <div class="col-6 col-sm-5 col-md-3 text-center"><u>Motif</u> : ' . $key['MOT_LIBELLE'] . '</div>
-                                            <div class="text-center d-none d-sm-block">|</div>
-                                            <div class="col-6 col-sm-5 col-md-3 text-center"><u>Médicament(s)</u> : ' . $text . '</div>
-                                        </div>
-                                        <input class="btn btn-info text-light valider m-0 ms-3" type="submit" value="Voir" name="voirRapport">
+                            } ?>
+                            <form action="index.php?uc=rapportdevisite&action=rapportregion&col=<?= $key['COL_MATRICULE']?>&rapNum=<?= $key['RAP_NUM']?>" method="post" class="d-flex flex-column w-100">
+                                <label for="praticien"><?= 'Rapport de <span class="text-decoration-underline">' . $key['COL_PRENOM'][0] . '. ' . $key['COL_NOM'] . '</span> sur <span class="text-decoration-underline">' . $key['PRA_PRENOM'][0] . '. ' . $key['PRA_NOM']?></span></label>
+                                <div class="d-flex align-items-center justify-content-between w-100">
+                                    <input name="RAP_NUM" value="<?= $key['RAP_NUM']?>" class="d-none">
+                                    <div class="mw-100 overflow-auto form-control d-flex justify-content-between align-items-center">
+                                        <div class="col-6 col-sm-5 col-md-3 text-center"><?= $key['dateVisite'] ?></div>
+                                        <div class="text-center d-none d-sm-block">|</div>
+                                        <div class="col-6 col-sm-5 col-md-3 text-center"><u>Motif</u> : <?= $key['MOT_LIBELLE'] ?></div>
+                                        <div class="text-center d-none d-sm-block">|</div>
+                                        <div class="col-6 col-sm-5 col-md-3 text-center"><u>Médicament(s)</u> : <?= $text ?></div>
                                     </div>
-                                    </form> ';
-                        }
+                                    <input class="btn btn-info text-light valider m-0 ms-3" type="submit" value="Voir" name="voirRapport">
+                                </div>
+                            </form>
+                        <?php }
                         ?>
                     </div>
                     <div class="position-sticky bottom-0 retour-rap w-100 py-3">

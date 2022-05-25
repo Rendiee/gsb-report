@@ -78,12 +78,12 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div id="divCheck" class="d-flex justify-content-between align-items-center">
+                                <!-- <div id="divCheck" class="d-flex justify-content-between align-items-center">
                                     <div class="form-check form-switch m-auto">
                                         <label for="checkEnchantillon" id="labelCheck" class="form-check-label">Échantillon distribué</label>
                                         <input class="form-check-input" onchange="addEchantillon(this);" type="checkbox" name="echantillon" id="checkEnchantillon">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

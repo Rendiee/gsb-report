@@ -109,12 +109,13 @@ function getAllInformationNonValide($mat)
     }
 }
 
-function getInformationsMesRapports($num)
+function getInformationsMesRapports($num, $matricule)
 {
     try {
         $monPdo = connexionPDO();
-        $req = $monPdo->prepare('SELECT `COL_MATRICULE`, `RAP_NUM`, p.PRA_NOM, p.PRA_PRENOM, r.PRA_NUM, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as \'RAP_DATEVISITE\', `RAP_BILAN`, concat(DAY(`RAP_DATESAISIT`),\'/\',MONTH(`RAP_DATESAISIT`),\'/\',YEAR(`RAP_DATESAISIT`)) as \'RAP_DATESAISIT\', `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, m.MOT_LIBELLE FROM `rapport_visite` r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON p.PRA_NUM=r.PRA_NUM WHERE COL_MATRICULE = "' . $_SESSION['matricule'] . '" AND `RAP_NUM`=:num;');
+        $req = $monPdo->prepare('SELECT `COL_MATRICULE`, `RAP_NUM`, p.PRA_NOM, p.PRA_PRENOM, r.PRA_NUM, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as \'RAP_DATEVISITE\', `RAP_BILAN`, concat(DAY(`RAP_DATESAISIT`),\'/\',MONTH(`RAP_DATESAISIT`),\'/\',YEAR(`RAP_DATESAISIT`)) as \'RAP_DATESAISIT\', `RAP_SAISITDEFINITIVE`, `RAP_MOTIFAUTRE`, `MED_DEPOTLEGAL_1`, `MED_DEPOTLEGAL_2`, m.MOT_LIBELLE FROM `rapport_visite` r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON p.PRA_NUM=r.PRA_NUM WHERE COL_MATRICULE = :matricule AND `RAP_NUM`=:num;');
         $req->bindParam(':num', $num, PDO::PARAM_INT);
+        $req->bindParam(':matricule', $matricule);
         $req->execute();
         $result = $req->fetch();
 
@@ -260,7 +261,7 @@ function getRapportParRegion($regCode, $date1, $date2)
 
     try {
         $monPdo = connexionPDO();
-        $req = $monPdo->prepare('SELECT r.*, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM JOIN collaborateur c ON c.COL_MATRICULE=r.COL_MATRICULE WHERE c.REG_CODE=:regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin');
+        $req = $monPdo->prepare('SELECT r.*, concat(DAY(`RAP_DATEVISITE`),\'/\',MONTH(`RAP_DATEVISITE`),\'/\',YEAR(`RAP_DATEVISITE`)) as dateVisite, p.PRA_NOM, p.PRA_PRENOM, m.MOT_LIBELLE, c.COL_NOM, c.COL_PRENOM FROM rapport_visite r JOIN motif_principale m ON m.MOT_ID=r.MOT_ID JOIN praticien p ON r.PRA_NUM=p.PRA_NUM JOIN collaborateur c ON c.COL_MATRICULE=r.COL_MATRICULE WHERE c.REG_CODE=:regCode AND r.RAP_DATEVISITE >= :dateDebut AND r.RAP_DATEVISITE <= :dateFin');
         $req->bindParam(':regCode', $regCode, PDO::PARAM_STR);
         $req->bindParam(':dateDebut', $date1, PDO::PARAM_STR);
         $req->bindParam(':dateFin', $date2, PDO::PARAM_STR);

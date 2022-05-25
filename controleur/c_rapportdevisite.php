@@ -118,7 +118,29 @@ switch ($action) {
 	case 'rapportregion': {
 			unset($_SESSION['mesrapports']);
 			unset($_SESSION['praticienMonRapport']);
-			if (isset($_SESSION['habilitation']) && $_SESSION['habilitation'] == 2) {
+			if(isset($_REQUEST['col']) && isset($_REQUEST['rapNum'])){
+				$infoRapport = getInformationsMesRapports($_REQUEST['rapNum'], $_REQUEST['col']);
+				if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
+					$motif = $infoRapport['MOT_LIBELLE'];
+				} else {
+					$motif = 'Autre : ' . $infoRapport['RAP_MOTIFAUTRE'];
+				}
+
+				if ($infoRapport['RAP_SAISITDEFINITIVE']) {
+					$definitif = 'Oui';
+				} else {
+					$definitif = 'Non';
+				}
+				if ($infoRapport['MED_DEPOTLEGAL_1'] == NULL) {
+					$medoc = 'Aucun';
+				} elseif ($infoRapport['MED_DEPOTLEGAL_2'] == NULL) {
+					$medoc1 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_1']);
+				} else {
+					$medoc1 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_1']);
+					$medoc2 = getDepotMedoc($infoRapport['MED_DEPOTLEGAL_2']);
+				}
+				include("vues/v_afficherMonRapport.php");
+			}elseif (isset($_SESSION['habilitation']) && $_SESSION['habilitation'] == 2) {
 
 				$regCode = getRegionCodeConnected($_SESSION['matricule']);
 				$visiteurRegion = getVisiteurRegion($regCode['REG_CODE']);
@@ -130,7 +152,7 @@ switch ($action) {
 					$dateFin = new DateTime($dateFi);
 
 					$rapportRegion = getRapportParRegion($regCode['REG_CODE'], $_POST['datedebut'], $_POST['datefin']);
-					include("vues/v_rapportRegion.php");
+					include("vues/v_listeRapportRegion.php");
 				} else {
 					include("vues/v_formulaireRapportRegion.php");
 				}
@@ -167,8 +189,7 @@ switch ($action) {
 						$_SESSION['praticienMonRapport'] = $_POST;
 					}
 					$_POST = $_SESSION['praticienMonRapport'];
-					$infoRapport = getInformationsMesRapports($_POST['RAP_NUM']);
-					var_dump($infoRapport);
+					$infoRapport = getInformationsMesRapports($_POST['RAP_NUM'], $_SESSION['matricule']);
 					if ($infoRapport['RAP_MOTIFAUTRE'] == NULL) {
 						$motif = $infoRapport['MOT_LIBELLE'];
 					} else {
