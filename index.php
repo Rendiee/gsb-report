@@ -63,6 +63,11 @@
             include("controleur/c_connexion.php");
             break; 
         }
+        case 'exam' :
+            {   
+                include("controleur/c_exam.php");
+                break; 
+            }
         default :
         {   
             unset($_SESSION['mesrapports']);

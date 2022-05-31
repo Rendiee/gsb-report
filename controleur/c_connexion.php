@@ -17,8 +17,8 @@ switch ($action) {
 
 	case 'deconnexion': {
 
-			session_destroy();
 			header('location: index.php?uc=accueil');
+			session_destroy();
 			break;
 		}
 
