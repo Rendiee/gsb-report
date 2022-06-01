@@ -41,7 +41,7 @@ switch ($action) {
 				}
 				$_SESSION['countMsg'] = 0;
 				if (getNomMotif($_POST['listemotif'])) {
-					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null)) {
+					if (!isset($vide) && $_POST['datevisite'] <= $_POST['datesaisit'] && insertRapportVisite($_POST['datevisite'], $_POST['bilanrapport'], $_POST['datesaisit'], $def, $motifAutre, $_POST['medicamentproposer1'], $med2, $_POST['praticien'], $_POST['listemotif'], null, $_POST['contact'])) {
 						$_SESSION['msg'] = '<p class="alert alert-success text-center fit mx-auto">Rapport saisi avec succès</p>';
 					} else {
 						$_SESSION['msg'] = '<p class="alert alert-danger text-center fit mx-auto">Un problème est survenu lors de la validation du rapport</p>';
@@ -60,6 +60,8 @@ switch ($action) {
 				$motif = getMotif();
 				$medoc = getAllNomMedicament();
 				$prat = getAllMatriculePraticien();
+				$mode = getModeContacte();
+
 				$getId = getMaxIdRapportVisite($_SESSION['matricule']);
 				if ($getId == null) {
 					$num = 1;

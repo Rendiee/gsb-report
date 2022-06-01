@@ -73,4 +73,62 @@ include_once 'bd.inc.php';
 			return $result;
 	}
 
+	/*
+	* Function qui va récupérer toutes les
+	* villes présentes dans la base de donnée
+	* appartenant aux praticiens
+	*
+	* @return $result : array contenant une liste de ville
+	*/
+
+	function getAllVillePraticien(){
+
+		try 
+            {
+                $monPdo = connexionPDO();
+                $req = 'SELECT p.PRA_VILLE as ville FROM praticien p GROUP BY p.PRA_VILLE';
+                $res = $monPdo->query($req);
+                $result = $res->fetchAll();
+
+                return $result;
+            } 
+
+        catch (PDOException $e) 
+            {
+                print "Erreur !: " . $e->getMessage();
+                    die();
+            }
+
+	}
+
+	/*
+	* Function qui va récupérer tous les praticiens
+	* habitant dans la ville passer en paramètre.
+	* 
+	* @param $ville : ville pour récupérer tous les praticiens de celle-ci
+	*
+	* @return $res : array contenant les numéros, les prénoms et les noms des praticiens habitant dans la ville passé en paramètre
+	*/
+
+	function getPraticienFromVille($ville){
+
+		try 
+            {
+                $monPdo = connexionPDO();
+                $req = $monPdo->prepare('SELECT p.PRA_NUM as num, p.PRA_PRENOM as prenom, p.PRA_NOM as nom FROM praticien p WHERE p.PRA_VILLE = :ville;');
+				$req->bindParam(':ville', $ville, PDO::PARAM_STR);
+				$req->execute();
+				$res = $req->fetchAll();
+
+                return $res;
+            } 
+
+        catch (PDOException $e) 
+            {
+                print "Erreur !: " . $e->getMessage();
+                    die();
+            }
+
+	}
+
 ?>

@@ -198,7 +198,7 @@ function modifierRapportNonValide($bilan, $dateVisite, $medoc1, $medoc2, $defini
     }
 }
 
-function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $med1, $med2, $praNum, $motifId, $praNumRemplacant)
+function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $motifAutre, $med1, $med2, $praNum, $motifId, $praNumRemplacant, $mode)
 {
 
     try {
@@ -216,7 +216,7 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
 
 
         $monPdo = connexionPDO();
-        $req = $monPdo->prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant)');
+        $req = $monPdo->prepare('INSERT INTO rapport_visite VALUES (:colMat, :rapNum, :rapDateVisite, :rapBilan, :rapDateSaisit, :rapSaisitDefinitive, :rapMotifAutre, :medoc1, :medoc2, :praNum, :motId, :praNumRemplacant, :mode)');
         $req->bindParam(':colMat', $colMatricule, PDO::PARAM_STR);
         $req->bindParam(':rapNum', $getId, PDO::PARAM_INT);
         $req->bindParam(':rapDateVisite', $dateVisite, PDO::PARAM_STR);
@@ -229,6 +229,7 @@ function insertRapportVisite($dateVisite, $bilan, $dateSaisit, $saisitDef, $moti
         $req->bindParam(':praNum', $praNum, PDO::PARAM_INT);
         $req->bindParam(':motId', $motifId, PDO::PARAM_INT);
         $req->bindParam(':praNumRemplacant', $praNumRemplacant, PDO::PARAM_INT);
+        $req->bindParam(':mode', $mode, PDO::PARAM_INT);
 
         $req->execute();
         //$req->debugDumpParams();
@@ -291,3 +292,52 @@ function getVisiteurRegion($regCode)
         die();
     }
 }
+
+/*
+* Function qui va chercher dans la base
+* de donnée tous les modes de contacts
+* existant.
+*
+* @return $result : array contenant les différents modes de contacts avec l'id et le libelle
+*/
+
+function getModeContacte()
+{
+    try {
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT id, libelle FROM contacte';
+        $res = $monPdo->query($req);
+        $result = $res->fetchAll();
+
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+/*
+* Function qui va compter pour chaque
+* mode de contact le nombre présent en tout
+* dans tous les rapports de visites.
+*
+* @return $result : array contenant pour chaque mode de contact, le nombre présent et son libelle
+*/
+
+function getProportionModeDeContact()
+{
+    try {
+
+        $monPdo = connexionPDO();
+        $req = 'SELECT COUNT(r.contact) as nb, c.libelle as lib FROM rapport_visite r INNER JOIN contacte c ON r.contact = c.id GROUP BY r.contact';
+        $res = $monPdo->query($req);
+        $result = $res->fetchAll();
+
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+

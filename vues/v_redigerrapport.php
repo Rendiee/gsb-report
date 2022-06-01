@@ -78,6 +78,17 @@
                                         ?>
                                     </select>
                                 </div>
+                                <div>
+                                    <label for="praticien">Mode de contact :</label>
+                                    <select required name="contact" id="contact" class="form-select m-0">
+                                        <option value>- Mode de contact -</option>
+                                        <?php
+                                        foreach ($mode as $key) {
+                                            echo '<option value="' . $key['id'] . '">' . $key['id'] . ' - ' . $key['libelle'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                 <!-- <div id="divCheck" class="d-flex justify-content-between align-items-center">
                                     <div class="form-check form-switch m-auto">
                                         <label for="checkEnchantillon" id="labelCheck" class="form-check-label">Échantillon distribué</label>
